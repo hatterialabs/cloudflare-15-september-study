@@ -1,0 +1,28 @@
+# Weby bez HTTPS a fetcher claude.ai (výtah, 16. 9. 2026)
+
+Výtah z interního dokumentu; seznamy jednotlivých domén a údaje o konkrétním hostingu jsou vynechány. Zdrojová data: data/http-only-weby-2026-09-16.json.gz.
+
+## 7. Doplněk 16. 9. 00:00 UTC: mrtvé HTTPS v celé populaci (nový nález)
+Měření exekutora z domácí IP (httpx, UA torumata-probe, 48 paralelně, 23:40–23:51 UTC 15. 9.): u 1 883 domén populace, které 14. 9. na HTTPS neodpověděly na žádnou příčku, ověřen `https://` i `http://…/robots.txt`. Artefakt: `vyzkum/https-mrtve-http-zive-2026-09-16.json.gz`.
+
+| země | dosažitelných domén (T0) | HTTPS mrtvé, HTTP živé | podíl | HTTPS dnes už odpovídá | mrtvé oboje |
+|---|---|---|---|---|---|
+| at | 1920 | 99 | 5,2 % | 14 | 86 |
+| cz | 4866 | 263 | 5,4 % | 26 | 113 |
+| de | 1890 | 86 | 4,6 % | 9 | 80 |
+| es | 1847 | 112 | 6,1 % | 13 | 104 |
+| fr | 1875 | 102 | 5,4 % | 12 | 89 |
+| it | 1879 | 71 | 3,8 % | 5 | 72 |
+| nl | 1930 | 65 | 3,4 % | 3 | 45 |
+| pl | 1955 | 76 | 3,9 % | 4 | 67 |
+| sk | 1835 | 71 | 3,9 % | 14 | 44 |
+| uk | 1824 | 73 | 4,0 % | 8 | 57 |
+| **vše** | **21 821** | **1 018** | **4,7 %** | 108 | 757 |
+
+Čtení: 4,7 % z nejnavštěvovanějších domén deseti zemí (Tranco) má web dostupný jen přes HTTP. Fetcher claude.ai u 8 takových domén (§2) vrátil `ROBOTS_DISALLOWED`, tj. robots.txt hledal přes HTTPS a nedostupnost přeložil podle RFC 9309 na úplný zákaz. **Hypotéza k ověření (ne fakt):** fetcher nezkouší HTTP fallback; ověřit na 20 doménách ze seznamu mimo poskytovatel A (soubor JSON) — pokud i ty vrátí `ROBOTS_DISALLOWED`, je to obecná vlastnost fetcheru, ne poskytovatel A. Pro torumatu: kontrola „HTTPS funguje?" patří před celý žebřík (P1) a do článku 1 jako samostatný odstavec („weby bez HTTPS jsou pro fetcher claude.ai neviditelné a jeho chyba tvrdí, že to zakazují; ostatní asistenti NEtestováni — ChatGPT, Perplexity, Google = otevřená otázka, měřit stejným vzorkem 20 domén"). Mez: jednorázové měření, 108 domén mělo HTTPS zpět (flapping), 757 bylo mrtvých na obou protokolech (offline nebo jen www).
+
+## 8. Kontrola 2 (16. 9. 00:00 UTC, vlastník z claude.ai): hypotéza „fetcher nezkouší HTTP" — POTVRZENA
+Vstup: `vyzkum/domeny-kontrola2-claude-fetch-2026-09-15.csv` (20 domén s mrtvým HTTPS a živým HTTP, vybraných náhodně ze §7, seed 1, jen `no_cf`; ASN dořešeno Team Cymru 16. 9.).
+Výsledek: **19/20 `ROBOTS_DISALLOWED`**, 1/20 `SITE_BLOCKED` („Access to this website has been blocked" = vlastní blocklist nástroje, eldia.es). Domény leží v **19 různých sítích a 9 zemích** (T-Systems, Hetzner, VSHosting, OVH, Free, Orange PL, home.pl, Seeweb, Amazon, Umeå University…), **žádná u poskytovatel A**.
+Závěr (doloženo): fetcher claude.ai při nedostupném HTTPS **nezkouší HTTP** a výsledek hlásí jako „Site disallows automated access". Není to vlastnost poskytovatel A ani žádné sítě; je to vlastnost fetcheru × 4,7 % populace (§7). Pro majitele webu bez HTTPS je hláška nepravdivá.
+Důsledky: (1) do zprávy pro Anthropic druhý bod: při selhání HTTPS zkusit HTTP, nebo hlásit „robots.txt unreachable over HTTPS"; (2) do článku 1 samostatný odstavec s číslem 4,7 % a tabulkou per země, formulovaný výhradně o fetcheru claude.ai (chování fetcherů OpenAI/Perplexity/Google není změřeno — doplnit stejným vzorkem před publikací, jinak uvést jako netestováno); (3) do torumaty (P1) kontrola „HTTPS funguje?" jako první příčka s nálezem vysoké priority; (4) zadání §4 otázka 6 uzavřena: RFC 9309 chování správné, pojmenování zavádějící, a navíc chybí HTTP fallback.

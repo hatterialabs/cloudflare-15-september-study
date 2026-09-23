@@ -1,0 +1,205 @@
+{
+ "A2": {
+  "M_B_T2_celkem": 54,
+  "navraty": [
+   "autohotarek.cz",
+   "bluemoon-mcfc.co.uk",
+   "pokemoncentral.it",
+   "supersound.pl"
+  ],
+  "nove": [
+   [
+    "android.com.pl",
+    "pl",
+    "cf_proxied",
+    "cf_proxied",
+    "-",
+    "-"
+   ],
+   [
+    "bps.org.uk",
+    "uk",
+    "cf_proxied",
+    "cf_proxied",
+    "-",
+    "-"
+   ],
+   [
+    "klimatex.cz",
+    "cz",
+    "cf_proxied",
+    "cf_proxied",
+    "-",
+    "-"
+   ],
+   [
+    "masoprofit.cz",
+    "cz",
+    "no_cf",
+    "cf_proxied",
+    "-",
+    "-"
+   ],
+   [
+    "relayed.cz",
+    "cz",
+    "cf_dns_only",
+    "cf_proxied",
+    "-",
+    "-"
+   ],
+   [
+    "sportisimo.at",
+    "at",
+    "cf_proxied",
+    "cf_proxied",
+    "-",
+    "-"
+   ],
+   [
+    "sportisimo.cz",
+    "cz",
+    "cf_proxied",
+    "cf_proxied",
+    "-",
+    "-"
+   ],
+   [
+    "sportisimo.sk",
+    "sk",
+    "cf_proxied",
+    "cf_proxied",
+    "-",
+    "-"
+   ],
+   [
+    "sportisimopro.cz",
+    "cz",
+    "cf_proxied",
+    "cf_proxied",
+    "-",
+    "-"
+   ],
+   [
+    "topkody.cz",
+    "cz",
+    "cf_proxied",
+    "cf_proxied",
+    "-",
+    "-"
+   ],
+   [
+    "tostadora.it",
+    "it",
+    "cf_proxied",
+    "cf_proxied",
+    "-",
+    "-"
+   ],
+   [
+    "weltfussball.at",
+    "at",
+    "cf_proxied",
+    "cf_proxied",
+    "-",
+    "-"
+   ]
+  ]
+ },
+ "A6": {
+  "populace": 22846,
+  "cf_proxied@T0a": 6589,
+  "cf_proxied@T0a ∩ T1 souhrn": 6560,
+  "cf_proxied@T0a ∩ T2 souhrn": 6561,
+  "M_B T0a populace": 769,
+  "M_B T0a ∩ cf_proxied@T0a": 768,
+  "M_B T0a ∩ cf_proxied ∩ T1 (ramena Q8: ztracené+udržené)": 763,
+  "M_B T0a ∩ cf_proxied ∩ T2 (delta T0a→T2 \"A\")": 766
+ },
+ "A5": {
+  "ztracene": {
+   "n_par": 726,
+   "L3>L5 (P=pass,F=fail)": {
+    "P>P": 655,
+    "F>F": 62,
+    "F>P": 4,
+    "P>F": 5
+   },
+   "mcnemar": 0.0,
+   "L3 má výsledek, L5 chybí": 0,
+   "proč chybí L5": {}
+  },
+  "nikdy": {
+   "n_par": 5651,
+   "L3>L5 (P=pass,F=fail)": {
+    "P>P": 4680,
+    "F>F": 913,
+    "P>F": 40,
+    "F>P": 18
+   },
+   "mcnemar": 7.6,
+   "L3 má výsledek, L5 chybí": 1,
+   "proč chybí L5": {
+    "ReadTimeout": 1
+   }
+  },
+  "no_cf": {
+   "n_par": 12662,
+   "L3>L5 (P=pass,F=fail)": {
+    "P>P": 11642,
+    "F>F": 904,
+    "P>F": 91,
+    "F>P": 25
+   },
+   "mcnemar": 36.4,
+   "L3 má výsledek, L5 chybí": 5,
+   "proč chybí L5": {
+    "L3 ok": 1,
+    "ReadTimeout": 3,
+    "ConnectTimeout": 1
+   }
+  }
+ },
+ "D3": [
+  [
+   "autohotarek.cz",
+   "cz",
+   403,
+   403,
+   200,
+   200,
+   200,
+   200
+  ],
+  [
+   "bluemoon-mcfc.co.uk",
+   "uk",
+   403,
+   403,
+   403,
+   403,
+   200,
+   200
+  ],
+  [
+   "pokemoncentral.it",
+   "it",
+   402,
+   402,
+   200,
+   200,
+   200,
+   200
+  ],
+  [
+   "supersound.pl",
+   "pl",
+   403,
+   403,
+   403,
+   403,
+   200,
+   200
+  ]
+ ]
+}

@@ -1,0 +1,113 @@
+# REVEAL T1 — veličina 5 (Q5, H5): delta markeru M mezi „před" (14. 9.) a „po" (16. 9.)
+
+autor-křeslo: exekutor · datum: 2026-09-16 13:40 · status: reveal (verdikty držitele běhu) · běh: `cf-T1-2026-09-16-home-r2` (start 05:44 UTC, konec 10:53 UTC, měřidlo v6.1 `09954a4`, egress [IP odstraněna] poskytovatel C, 22 846 domén, 93 chyb) · vstupy: `delta-Q5-T0a-T1.md`, `noise-vs-T0a.md`, `report-v2.md`, `sidecar.prov.json`, `summary.json`; T0a `runs/cf-T0a-2026-09-14-home-r5`, šum `runs/cf-T0b-2026-09-14-home-r5`; prahy `rfc/2026-09-15-prahy-cf-T0.md` (c = 3, schváleno 15. 9. 12:41); pásma `bands/cf-T0/{exekutor,gemini,opus}.md` (commity 36ae19f 13. 9., e236bb6 a 7200241 14. 9. — všechny před startem T1)
+
+## 1. Pre-registrované čtení (řádky z `delta-Q5-T0a-T1.md`)
+
+```
+DiD (ITT, vše, pre-registrované čtení): -10.85 p.b. [95% CI -11.64, -10.16] · n cf_proxied 6560, no_cf 14533
+Šumové dno = hrubý obrat M mezi T0a a T0b: cf_proxied 0.32 % (n 6560), no_cf 0.00 % → šum = 0.32 p.b.
+Pravidlo (c = 3.0): dolní mez CI > 0: False; DiD > c·šum (0.96 p.b.): False → žádný skok nad šumem
+```
+Citlivosti (týž soubor): podmíněná (stejná třída, L2 odpověděla) −10,81 [−11,58; −10,04]; s Chrome fallbackem −10,67 [−11,42; −9,95]; jen M_B −11,05 [−11,81; −10,35].
+
+**H5 („skok 15. 9." = nárůst M u existujících zón za Cloudflare) podle pre-registrovaného pravidla: nedrží.** Pravidlo bylo jednostranné (nárůst). Naměřená hodnota leží na opačné straně a v absolutní hodnotě je 34× nad šumovým dnem; to je čtení **po expozici** a je tak označeno.
+
+## 2. Co se stalo (pozorování, ne pre-registrace)
+
+Marker M (= M_B „# BEGIN Cloudflare Managed content" ∨ M_C `Content-signal:`) u domén `cf_proxied` (třída z T0a, n 6 589):
+
+| země | n | M 14. 9. ráno (T0a) | M 14. 9. večer (T0b) | M 16. 9. (T1) |
+|---|---|---|---|---|
+| at | 393 | 19,3 % | 19,3 % | 2,8 % |
+| cz | 1 063 | 23,8 % | 23,7 % | 3,0 % |
+| de | 332 | 9,9 % | 10,2 % | 2,1 % |
+| es | 513 | 14,8 % | 15,0 % | 3,7 % |
+| fr | 529 | 10,4 % | 10,2 % | 2,3 % |
+| it | 781 | 7,3 % | 7,0 % | 1,8 % |
+| nl | 899 | 4,7 % | 4,7 % | 0,9 % |
+| pl | 630 | 19,7 % | 19,4 % | 6,7 % |
+| sk | 467 | 24,2 % | 24,2 % | 3,9 % |
+| uk | 982 | 6,1 % | 6,0 % | 0,9 % |
+| **vše** | **6 589** | **13,5 %** | **13,4 %** | **2,6 %** |
+
+Zdroj: SQLite `robots` + `domain_summary`, dotaz v LOG 16. 9.; per-země čísla nejsou v `delta-Q5-T0a-T1.md` (ten má jen celek), jsou pozorování nad zapečetěnými runy.
+
+- M_B (šablona Cloudflare v robots.txt): **769 domén 14. 9. → 39 domén 16. 9.** (`report-v2.md` obou runů, řádek „Konzistence markeru M_B"). Všech 769 mělo v šabloně blokaci tréninkových botů, 732 z nich už i `use=reference`.
+- Z 763 domén s M_B v T0a a přítomných v T1: 301 servíruje přesně původní soubor **bez prefixu Cloudflare** (origin robots.txt beze změny), 286 mělo 14. 9. jen šablonu bez vlastního obsahu a 16. 9. má vlastní obsah originu, 55 vrací 404, 36 vrací HTML (origin bez robots.txt), 23 je 403 z hrany, 11 prázdné→prázdné, 4 jiný obsah, zbytek chyby. M_C bez M_B (vlastní řádek `Content-signal:` mimo šablonu) je stabilní: 456 → 484.
+- Zbylých 39 zón s M_B: 30 je jeden polský vydavatel (dziennik*.pl, gazeta*.pl, express*.pl), ostatní po jedné. 38 z 39 mělo M_B i 14. 9.
+- **Časový průběh v T1:** ztráta je rovnoměrná přes celý běh (05–10 UTC: 48/143/158/130/142/104 ztracených proti 0/8/9/9/10/2 udržených) → změna nastala **před 05:44 UTC 16. 9.** a **po 22:00 UTC 14. 9.** (T0b marker ještě měl: obrat 21 domén).
+- **Živá kontrola 16. 9. 13:20 UTC** (curl, UA torumata-probe, 40 náhodných ztracených zón, seed 20260916): 36 origin robots.txt, 4 HTML, **0 se šablonou**, i s obejitím cache (`?x=`, cf-cache-status MISS u 25). 12 z 12 udržených zón šablonu stále má.
+- **Šumové dno** (`noise-vs-T0a.md`): hash robots.txt se změnil u 9,1 % domén (T0a→T0b 4,3 %), marker u 3,2 % (T0a→T0b 0,1 %), blokace tréninkového bota u 4,9 % (0,2 %). Třída Cloudflare 0,3 %, příčky 1,1–2,4 % (T0a→T0b 1,0–1,7 %), L4c 4,2 %. Vše mimo robots.txt je v šumu.
+
+**Čtení:** Mezi 14. 9. večer a 16. 9. ráno Cloudflare přestal vkládat spravovaný robots.txt u ~95 % zón, které ho 14. 9. měly (725 z 763 v naší populaci, ve všech deseti zemích stejně). Nejde o změnu měřidla (kontrola aditivity v5/v6.1: M 0 neshod na 300 doménách, `reviews/2026-09-16-aditivita-v5-v6.md`; živě potvrzeno curlem), ani o cache (obejito), ani o naši IP (šablona zmizela i pro UA Chrome, ClaudeBot, GPTBot). Veřejné vysvětlení jsem nenašel: changelog Bot Management má poslední záznam 1. 7. 2026 (ohlášení výchozích hodnot pro **nové** domény od 15. 9.), dokumentace managed robots.txt naposledy 3. 8. 2026 (opt-in; u Free zón bez vlastního souboru jen preambule), stavová stránka 13.–16. 9. bez incidentu k botům. Hypotézy (netestováno): (a) Cloudflare při nasazení změny 15. 9. přepnul managed robots.txt na přísný opt-in a zóny, které ho měly z jednoklikového „block AI bots"/výchozího nastavení, o něj přišly; (b) dočasný výpadek funkce; (c) záměrná změna, kterou Cloudflare zatím nezveřejnil. Rozliší **T2 (22. 9.)** a denní lehká sonda (§5).
+
+## 3. Verdikty pásem, bod 5 (všechna tři pásma commitnuta před T1; kotva = šumové dno 0,32 p.b.)
+
+| křeslo | pásmo bod 5 | naměřeno | verdikt | poznámka |
+|---|---|---|---|---|
+| exekutor (36ae19f) | 0,0–1,0 p.b. | −10,85 [−11,64; −10,16] | **MIMO** (opačný směr, 10× šířka pásma) | mechanismus „změna cílí na nové domény, existující zóny se přes noc nemění" — existující zóny se změnily, ale opačně, než kdokoli uvažoval |
+| Gemini (e236bb6) | 0–1,5 p.b., kotva 0 | −10,85 | **MIMO** | rituál omylu (přesuny mezi CDN) se nenaplnil: třída CF změněna u 0,3 % |
+| Opus (7200241) | medián +0,3; 50 % [0; +0,8]; 90 % [−0,5; +2,5]; P(DiD ≥ +5) = 8 % | −10,85 | **MIMO** (pod 90% intervalem) | jediný, kdo dal váhu scénáři „plošné překlopení existujících zón"; směr ale nahoru. Rituál (a) „T0a/T0b/T1 stejný script_commit" nesplněn (v5 vs v6.1) → pokryto kontrolou aditivity (M 0/300); rituál (b) „jiný podíl nedosažitelných" splněn: skipped_unreachable 8,5 % v obou |
+
+Nikdo ze tří nepředpověděl pokles; všechny tři mechanismy sdílely předpoklad, že existující zóny se 15. 9. nedotkne. Skóre kumulativně: exekutor 4 TREFA / 9 MIMO (`bands/kalibrace-exekutor.md`, korekce 10).
+
+## 4. Co z toho plyne pro článek a torumatu (návrh, ne verdikt)
+- Titulní nález studie se mění: ne „kolik zón 15. 9. začalo blokovat", ale **„čtvrtina českých zón za Cloudflare měla 14. 9. blokaci AI tréninku ze šablony Cloudflare; 16. 9. ji má 3 %, aniž by správci cokoli udělali."** Web, který se spoléhal na hranu, je dnes pro tréninkové boty otevřený a neví o tom. Obráceně: robots.txt webů, které blokaci nechtěly, se vrátil k původnímu.
+- Torumata (P2/P4): kontrola „blokace pochází ze šablony hrany, ne z vašeho souboru" dostává druhou půlku: „šablona může zmizet bez vašeho zásahu; sledujte robots.txt v čase". Modul denní sondy robots.txt jako produktová funkce.
+- Nepublikovat, dokud T2 (22. 9.) neřekne, zda stav trvá; do článku obě možnosti („dočasný výpadek" vs „trvalá změna").
+
+## 5. Další kroky
+1. Denní sonda M (`scripts/mprobe.py`, jen robots.txt, 769 zón s M_B v T0a + 300 náhodných `cf_proxied` bez M + 200 `no_cf`, UA torumata-probe, ~3 min) každý den 06:00 UTC do T2; výstup `runs/controls/mprobe/`. Rutinní CPU běh, bez ptaní.
+2. T2 22. 9. jako plné měření (naplánovat T1 způsobem, spouští uživatel nebo cron).
+3. Dotaz Cloudflare (komunita/podpora) — vlastník; text připraví exekutor po prvním dni sondy.
+4. Modelářům: tento reveal + delta + noise (bez cizích pásem už není třeba — pásma jsou po reveal veřejná v repu), úkol: reakce a hypotézy k mechanismu, návrh testů pro T2.
+
+## 6. Doplněk 16. 9. 18:00 po reakcích Gemini a Opuse (`packets/inbox/{gemini,opus}/reviews/2026-09-16-cf-T1-reakce-*.md`)
+
+Nové artefakty (sha v `MANIFEST.sha256`, oddíl „doplňky 16. 9."):
+- `M-by-cc.csv` — tabulka §2 per země, obě definice jmenovatele (A4, A5).
+- `M_B-T0a-to-T1.csv` — rozpad 769 domén s M_B v T0a po doménách (A4, A6).
+- `testy-T1-T4-T5.json` — test datacentra, test chování hrany, časové okno.
+- `obrat-T0a-T1-vs-sum-T0a-T0b.md` — obrat před→po vedle šumu téhož dne (A1, A2); `runs/cf-T0b-2026-09-14-home-r5/delta-T0a-T0b-sumove-dno.md` je v balíčku pro modeláře.
+- `runs/controls/live-2026-09-16/curl-2026-09-16T1549Z.jsonl` + `SOUHRN.json` — živá kontrola jako artefakt (A4, A14, A15); `runs/controls/sources-2026-09-16/` — snímky externích zdrojů s sha a časem stažení (A10).
+
+Opravy čtení §1–§2:
+- **A5 jmenovatel:** 6 589 = všechny `cf_proxied` podle T0a; 6 560 = z nich ty, které mají v T1 řádek `domain_summary` (29 domén skončilo v T1 chybou před souhrnem, `delta` skript pracuje s průnikem). M v T1 je 2,61 % na 6 589 a 2,62 % na 6 560 (`M-by-cc.csv`). **Třída `deadline`** = doména, u níž vypršel limit 300 s na celou doménu (`scripts/cfprobe.py` ř. 625, `DOMAIN_DEADLINE`), v T1 16 domén; není to třída Cloudflare, ale výsledek běhu; v ITT drží třídu z T0a. Doplní se do RFC §1 jako pátá hodnota `cf_class` (vedle `unreachable`).
+- **A6 jmenovatelé počtů:** 769 (M_B v T0a) a 39 (T1) jsou přes celou populaci 22 846; z 769 je 768 `cf_proxied` a 1 `no_cf`. M_C bez M_B 456 → 484 je také přes celou populaci. Tabulka §2 je jen `cf_proxied`.
+- **A7 / test T5 okno:** poslední časová značka s šablonou v T0b **2026-09-14 [IP odstraněna] UTC** (719 z 725 ztracených zón mělo šablonu ještě v T0b), první bez šablony v T1 **2026-09-16 [IP odstraněna] UTC**. Okno 34 h; mezi tím žádné měření neexistuje, tvar (naráz/postupně) z našich dat určit nelze. Původní „po 22:00 UTC" nahrazeno.
+- **A8 pořadí:** domény se v běhu zpracovávají v náhodném pořadí se seedem 20260914 (`scripts/cfprobe.py` ř. 593); hodinové koše tedy nekorelují se zemí.
+- **A9:** ve všech deseti zemích, s nejmenším relativním poklesem v pl (19,7 → 6,7 %), který vysvětluje skupina 29 zón jednoho vydavatele; po jejím odečtení ≈ 2 %.
+- **A3 / test T1 datacentra:** přípona `cf_ray` (L3): T0a ztracené zóny PRG 554 / FRA 155 / DUS 2, udržené PRG 35 / FRA 2; T1 ztracené PRG 709 / LHR 1, udržené PRG 37; živá kontrola 15:49 UTC šla přes FRA (83 odpovědí) i PRG (39) a u ztracených zón 0/40 se šablonou, u udržených 12/12. Šablona tedy chybí ze dvou datacenter Cloudflare a nezávisí na tom, jak se žadatel představí (UA Chrome, ClaudeBot, GPTBot: 30/30 bez šablony). **Nezávislost na naší zdrojové adrese/ASN ověřena není** (jeden egress, k8s nemáme) → žádost na vlastníka: tři ztracené zóny otevřít z mobilních dat a zapsat (Opus T6).
+- **A11:** definice šumu (hrubý obrat) byla commitnuta 16. 9. poté, co byl souhrn T0a→T0b jednou přečten 15. 9.; hodnota se opravou nezměnila; prahy (c = 3) uživatel schválil nad starší definicí. Na výsledek bez vlivu (34× nad dnem, opačný směr).
+- **A12:** H5 v tomto revealu znamená **nárůst** M (verze z `rfc/2026-09-15-prahy-cf-T0.md`); do RFC doplněn řádek, že Opusova verze „termín nezměnil robots.txt existujících zón" je opačná a od T1 se nepoužívá. Výsledek se hlásí se znaménkem: DiD −10,85 p.b.
+- **A13:** podmíněná citlivost n = 19 719. **A14:** obejití cache: v artefaktu MISS u 24 ze 40, ostatní expired/bypass/dynamic/hit. **A15:** živá kontrola je curl (jiná knihovna než httpx studie), pro přítomnost řetězce v těle nepodstatné, uvádí se. **A17:** přijato: rozhodující je 0/40 na ztracených zónách (horní mez ≈ 7 %), ne 0/300 aditivity.
+- **Gemini bod 1 (cesty):** vyřešeno artefakty výše. **Gemini hypotéza (d) „přechod na L4 blokaci" škrtnuta předčasně:** průchod `GPTBot` na `/robots.txt` neříká nic o stránkách; test T4 níže ukazuje opak.
+
+**Test T4 (Opus): zmizela jen deklarace, nebo se změnilo chování hrany?** Podíl ¬pass (odmítnutí na hraně) u domovské stránky, `cf_proxied` podle T0a; „ztracené" = zóny, které přišly o šablonu (n 725), „nikdy" = zóny bez šablony v T0a i T0b (n 5 793). Zdroj `testy-T1-T4-T5.json`.
+
+| příčka | ztracené T0a → T1 | nikdy T0a → T1 | DiD (p.b.) |
+|---|---|---|---|
+| L4a UA GPTBot (neověřený) | 73,0 % → **86,9 %** | 33,8 % → 34,2 % | **+13,5** |
+| L4b UA ClaudeBot (neověřený) | 74,1 % → **87,7 %** | 35,1 % → 35,5 % | **+13,3** |
+| L4g UA Googlebot (kontrola) | 21,8 % → 21,2 % | 23,6 % → 23,4 % | −0,4 |
+| L3 torumata-probe (kontrola) | 8,1 % → 8,6 % | 14,0 % → 15,6 % | −1,2 |
+
+Čtení (pozorování po expozici, bez pásma): u zón, které přišly o šablonu v robots.txt, hrana Cloudflare **odmítá neověřené AI UA častěji než před tím** (o 13–14 p.b.), zatímco kontrolní příčky a kontrolní zóny se nehnuly. Změna je specifická pro AI jména a pro zóny s (dřívější) AI blokací. Mez: L4a/L4b jsou naše napodobeniny UA z jedné domácí IP, ne ověření roboti (RFC §2). Pro hypotézy: posiluje variantu „záměrná změna: deklarace v robots.txt nahrazena vynucováním na hraně" (Opus H-A/H-C) proti „regresi" (H-B); regrese by nezvýšila blokaci. Šumové dno pro L4a/L4b T0a→T0b je 1,0–1,7 % změn per doména; DiD 13 p.b. je řádově nad ním. Bootstrap CI doplním v odpovědi modelářům, až bude v `cfstats.py` (pre-registrovat před T2 jako Q8).
+
+Test T3 (hlavičky udržených vs ztracených) zatím neproveden; hlavičky jsou v blobech, udělám před T2. Sonda `mprobe` běží od 16. 9. 2× denně (06:00 a 18:00 UTC).
+
+**Doplněk 17. 9. (T6, nezávislost na zdrojové adrese):** kontrola vlastníka ze sítě poskytovatel B (poskytovatel B, dva uzly) 17. 9. 14:45 UTC: tři ztracené zóny bez šablony, dvě udržené se šablonou, datacentrum PRG. `runs/controls/live-2026-09-17/SOUHRN.md`. Věta z A3 se tím uzavírá: nezávisí to na tom, jak se žadatel představí, ani na naší adrese/ASN; nezávislost na datacentru doložena pro PRG a FRA.
+
+## 7. Doplněk 18. 9. — testy A, B, C, T3 a uzavření Q8.1 (reakce Gemini a Opuse 17. 9.)
+Plný zápis: `q8-predbezne-T0a-T1.md` + `q8-predbezne-T0a-T1.json`. Shrnutí: (1) `pass` v tabulce T4 i zde je ze statusu a titulku na obou koncích, těla L4 nevstupují → Q8.1 uzavřeno; přísné čtení (403 ∨ challenge ∨ bloková stránka) dává +14,0 p.b. (2) Bootstrap CI DiD ztracené − nikdy: L4a +13,5 [+11,0; +16,0], L4b +13,3 [+10,8; +16,1], **L4c −36,9 [−40,3; −33,0]**, L4g −0,2 [−1,3; +0,9], L3 −1,0 [−2,5; +0,5]. (3) Udržené zóny beze změny (strop 92 %, ~8 nezávislých provozovatelů). (4) ads.txt: vzestup větší bez ads. (5) Rozpad: 403, ne 429. (6) T3: udržené zóny bez `nel`/`report-to`, s HSTS → profil placených zón. Z toho: změna hrany je vázaná na zóny, které ztratily šablonu, má tvar kategorií (trénink ↑, agent ↓, vyhledávání =), není omezená na monetizované weby. Zbytek do 6 589 vysvětlen (29 chyba běhu, 4 M_B jen v T0b).
+
+## 8. Doplněk 18. 9. 12:45 — veřejné vysvětlení (vlastník dodal zdroje)
+Cloudflare blog 15. 9. 2026: „Managed Robots.txt will be deprecated in favor of Bot Preference Sync. Customers who enabled Managed Robots.txt will migrate to the new system." Legacy Training Block → Disallow AI Training (trénovací crawlery blokovány na hraně, Accountable mixed-use povoleny pro search), Agent bez Disallow (Allow → Allow). To vysvětluje §2 (zmizení šablony) i §7 (trénink ↑, agent ↓, Googlebot =). Nový marker `# BEGIN Cloudflare Bot Preference Sync` se v T1 ani živě 18. 9. u ztracených zón **nevyskytuje** (0/60) → deklarační mezera, otevřené pro T2. Hypotéza H-A doložena, H-B padá. Zápis: `vyzkum/2026-09-18-cloudflare-vysvetleni.md`, snímky `runs/controls/sources-2026-09-18/`.
+
+## 9. Doplněk 18. 9. 16:30 — třetí kolo reakcí (Gemini, Opus) a testy K3, D4
+- **Opus §0.2 (přijato do čtení §7):** (a) test A je silnější na agentní ose: udržené L4c 86,5 → 83,8 % vs ztracené 69,3 → 26,9 % (na L4a strop, na L4c ne); (b) rameno M_C bez M_B (vlastní `Content-signal:`, 120 zón) se chová jako rameno nikdy (L4a 34,2 → 35,0 %) → hrana deklaraci v robots.txt nečte; správná formulace: pravidla se přesunula z jednoho nastavení zóny do jiného, robots.txt byl jejich výpis; (c) část uvolnění jména ChatGPT-User je plošná (nikdy 30,5 → 25,0 %, placebo no_cf beze změny), sedí na zrušení „Block AI Bots" u všech, kdo ho měli.
+- **Test K3 (Opus, zóny, které marker po 16. 9. získaly):** sonda 16. 9. 11:09 → 18. 9. 08:19: marker nově u 3 zón kohorty (autohotarek.cz, pokemoncentral.it, supersound.pl), žádná ho neztratila. Živě 18. 9.: u všech tří je blok **strukturně shodný se šablonou Cloudflare** (preambule „As a condition of accessing this website…", `# BEGIN` na ř. 26, `# END` na ř. 128, `Content-Signal: search=yes,ai-train=no,use=reference`), prependovaný před obsah originu (supersound.pl 273 ř.) nebo samostatný (2 zóny, 130 ř.). Čtení: nejde o ruční kopii správce (K3 Opuse), ale o tutéž šablonu vkládanou hranou → **nový mechanismus (Bot Preference Sync / potvrzená migrace) píše blok ve stejném formátu jako zrušený managed robots.txt**, s markerem `Cloudflare Managed content`, ne s markerem z příkladu v blogu 21. 8. Důsledek: (i) pre-registrovaný marker M_B zůstává správným měřidlem deklarace i po 15. 9.; (ii) 38 udržených zón jsou nejspíš zóny, jejichž správce migraci potvrdil (nebo podnikové), a přírůstek 38 → 41 za dva dny je tempo potvrzování; (iii) „deklarační mezera" se zavírá po jednotkách zón denně (D2 Opuse), předpověď pro T2: M_B v kohortě ~45–55 zón, ne stovky. Hypotéza D4 (jiný řetězec) tím padá; „cloudflare-jine" u 3 zón živé kontroly byly challenge stránky, ne marker.
+- **Gemini:** tabulka otevřených otázek A–C přijata; věta 2 přijata jako varianta (bez zakázaných slov). Obě věty 2 jdou Opusovi jako redaktorovi do článku po T2.
+- **Náhrada za test F (Opus: 10 zón z mobilních dat, 20 požadavků):** k rozhodnutí vlastníka, není nutná pro T2.
+- `cfstats.py delta` od teď hlásí rozpad: M_B, BPS, `Content-signal:` uvnitř bloku Cloudflare / mimo něj (T0a→T1 mezi cf_proxied: M_B 763 → 38, BPS 0 → 0, M_C v bloku 762 → 37, mimo blok 125 → 148). Žádost Opuse k reveal T2 splněna.

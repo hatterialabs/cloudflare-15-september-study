@@ -1,0 +1,770 @@
+domain,cc,cf_class_T0a,cf_class_T1,robots_status_T0a,robots_status_T1,content_signal_T0a,kategorie
+1000vecicomeserou.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+11teamsports.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+11teamsports.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+11teamsports.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+2promile.cz,cz,cf_proxied,deadline,200,,"search=yes,ai-train=no,use=reference",chybí v T1
+49s.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+7xxxbluefilm.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+9anime.or.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+9x.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+a2larm.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+abacus.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+academie-sciences.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+accushop.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+adajusa.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+adsport.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+aimac.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+airfleets.es,es,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+ajdnes.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+ajurshop.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+aliaxis.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+alko-garden.at,at,cf_proxied,cf_proxied,200,200,"search=yes, ai-train=no, use=reference",M_B udrženo
+alkohol.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+alldatasheet.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+alldatasheet.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+alldatasheet.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+almenrausch.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+amcchannels.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+americanwheels.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+androidforum.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+angela.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+angielskieespresso.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+anikoto.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+animesuge.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+animesuge.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+animixplay.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+aniwatch.co.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+anruf-info.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+antennevorarlberg.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+apteka-amica.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+archivtv.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+arena.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+armik.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+armik.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+arrse.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+artbottles.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+artunlimitedshop.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+asdecopas.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+ask-motorsport.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+asoto.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+astrencin.sk,sk,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+atlas.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+atletika.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+audiklub.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+austrian-standards.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+austriancharts.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+autickar.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+auto-mania.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+autodielygafa.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+autodily-jama.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+autofun.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+autohotarek.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+autoparts24.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+autotelexpro.nl,nl,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+autovega.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+autoxy.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+auvieuxcampeur.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+avitsmart.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+badmintonplanet.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+banknotes.cz,cz,cf_proxied,cf_proxied,200,503,"search=yes,ai-train=no,use=reference",T1 status 503 text=0 via=L3
+barbican.org.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+bcw-project.org.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+beatlottery.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+beds.ac.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+bellissima-brides.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+betafence.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+betsson.it,it,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+bgec.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+bhcase.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+bhcase.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+biala.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",prázdný→prázdný
+biblia.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+biggleswadeskiphire.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+bike-eshop.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+binkdate.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+bitmat.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+blocklist.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+bluemoon-mcfc.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+bohemians.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+bokt.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+bolistka.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+bonmoto.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+bosbrandeneuropa.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+boteghe.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+bps-koupelny.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+br-performance.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+bratislavak.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+brem-bau.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+breviar.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+bricodepot.es,es,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+britishmalayali.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+brno-airport.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+brucebetcasino.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+buco.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+burn-in.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+businessinfo.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+businessonline.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+butys.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+bystricak.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+campdavid-soccx-shop.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+campdavid-soccx.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+campdavid-soccx.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+campingshop.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+candytm.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+capitanstock.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+carpetsandmore.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+carrefour.pl,pl,cf_proxied,,200,,"search=yes,ai-train=no,use=reference",chybí v T1
+carta-natal.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+cartusia.fr,fr,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+case-battle.nl,nl,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+caves-gayrel.fr,fr,cf_proxied,,200,,"search=yes,ai-train=no,use=reference",chybí v T1
+centrum.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+cerverazapaterias.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",M_B udrženo
+ceskekormidlo.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+ceskezakony.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+ceskyhokej.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+chabur.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+checkcompany.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+childrenshobby.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+chipsaway.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+chojnice24.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+cinestar.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+citaconsular.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+civiltactix.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+cka.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+collectionstrust.org.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+coolbeauty.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+cottoncloud.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+coupemonde.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+crichdai.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+croapi.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+csicr.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+cukrarnauandela.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+culinarium.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+cultoro.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+cureparkinsons.org.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+cyleria.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+czakmusic.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+czechdesign.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+czechmafie.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+d-m-t.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+dajanarodriguez.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+dalkove-ovladace.cz,cz,cf_proxied,cf_proxied,200,526,"search=yes,ai-train=no,use=reference",T1 status 526 text=0 via=L3
+dama.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+daneprolidi.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+danieljanik.com.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+danovecentrum.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+das-laufhaus.at,at,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+davidsport.cz,cz,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+davidsport.sk,sk,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+dd27.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+decodoma.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+dedrankenmarkt.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+denikalarm.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+depau.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+dermabox.pl,pl,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+destination-biarritz.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+dfki.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+dicasablanca.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 jiný než ocas T0a
+dick.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+dietetykchmielarz.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+dimex-tapety.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+discomp.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+discopop.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+dodiri.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+doktor.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+doltak.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+domyou.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+domyuhajku.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+dostudni.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+doucma.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+doudous-perdus.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+dr-bily.at,at,cf_proxied,cf_proxied,200,,"search=yes,ai-train=no,use=reference",T1 status None text=0 via=L0
+dracisumperk.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+dyson.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+dziennikbaltycki.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+dzienniklodzki.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+dziennikpolski24.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+dziennikzachodni.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+e-herbapol.com.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+e-mince.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+eastfootball.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+eliskapourova.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+eliskavaea.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+elmark.com.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+energetycznyprojekt.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+energiasolare100.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 jiný než ocas T0a
+enerso.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+enhancer.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+enviweb.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+epi.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+epochtimes.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+eroguide.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+eski.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+esvit.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+esvoley.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+euractiv.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+euro-financie.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+eurobet.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+eurogirlsescort.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+euroking.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+europeanacademy.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+eweka.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+ewrc.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+expressbydgoski.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+expressilustrowany.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+eyof2023.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+fakturujzdarma.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+familienbett.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+fantasiastore.it,it,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+faunaportal.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+fazt.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+fcslovanliberec.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+feedit.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+felixwines.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+femalefirst.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+femina.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+fifoautoshop.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+figolock.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+film-game.cz,cz,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+film-game.sk,sk,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+filmovamista.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+filmtv.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+financnipatron.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+flora-online.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+flora-online.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+fnsea.fr,fr,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+fohringer.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+fowlersparts.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+foxestalk.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+francesoir.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+frandi.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+frankfurt.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+frantiskovylazne.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+freenews.fr,fr,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+freevideo.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+frenkart.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+frontiers.it,it,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+fuf.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+funbaby.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+fussballdaten.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+fussmattensysteme.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+fussmattensysteme.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+gablonzer.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+gafaauto.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+gameware.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+gardenway.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+garni-meteo.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+gazetakrakowska.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+gazetalubuska.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+gazetawroclawska.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+geekboy.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+gemmax.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+genesis-eshop.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+genesis-eshop.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+gengar.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+giftora.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+gk24.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+globusonline.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+gloswielkopolski.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+gol24.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+golf-mysteves.cz,cz,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+golfiq.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+gp24.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+gracechurch.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+gramodesky.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+grave-pictures.at,at,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+graz-airport.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+greenapple.sk,sk,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+greensaleshoogeveen.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+groovespin.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+groupon.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+groupon.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+groupon.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+groupon.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+gs24.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+gt2i.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+gymcompany.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+hansengrietjezeewolde.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+hartphp.com.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+hauzi.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+hc-havirov.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+hc-vsetin.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+hcdukla.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+hcmotor.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+hcocelari.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+hcsparta.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+hdtoday24.at,at,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+healthshield.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+hhentai.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+hianime.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+hianime.biz.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+hianime.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+hianimetv.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+hianimez.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+hispaniacolors.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+hiyori.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+hobbyexpert.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+hockeyslovakia.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+hodinyhodinky.sk,sk,cf_proxied,,200,,"search=yes,ai-train=no,use=reference",chybí v T1
+hokejbenatky.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+hokejprerov.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+homegallery.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+hortum.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+housepricesintheuk.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+hshsport.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+humanart.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+hysky.de,de,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+i.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+i60.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",prázdný→prázdný
+icecasino-win.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+ictpro.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+idu.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+ifeu.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+ilmanifesto.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+imeteo.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+interpreti.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+inwestycje-rzeszow.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+iom.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+ipanema.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+irozhlas.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+isportsystem.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+iwm.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+jalisco.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+javhd.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+jdemenato.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+jiznicechy.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+journeyman.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+kaeltetechnik-shop.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+kamnavylet.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+kanal1.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+karlovyvary.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+kashmiriafashion.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+kasvo.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+kavarnynazivo.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+kentfaith.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+kentfaith.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+kickassanime.com.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+kinkie.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+kinosvet.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+kisskh.or.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+klbkovlny.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+kleines-inserat.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+klsm.pl,pl,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+knifestock.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+knifestock.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+knives.pl,pl,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+koolesport.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+kopersky.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+kosicak.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+koty.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+kourimacek.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+kppk.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+krakowfilmfestival.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+krasnevune.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+kresy.org.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+kriesi.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+krknews.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+kubaszka.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+kup-kytici.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+kurierlubelski.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+kvetyvesny.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+kw-berlin.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+kyocera-avx.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+kytice-expres.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+lacommere43.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+lafuro.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+lanifityfashion.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+lapert.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+lapert.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+lavocedicesenatico.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+lavoro.gov.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+lazienkiabc.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+le-bourguignon.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+lenivakucharka.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+lepasmotor.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+leperle1973.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+levnelyze.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+lingea.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+lionshome.at,at,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+lionshome.it,it,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+lipovcan.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+livefoot.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+lockmaster.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+locurasegura.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+lopezyvazquez.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+lovecpokladu.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+lovekrakow.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+m-latky.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+mabib.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+macworld.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+mader.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+mageia.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+makeup.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+maloma.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mamaaja.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mangabuddy1.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+manualslib.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+mapa-turystyczna.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mapio.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 jiný než ocas T0a
+marine.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+martessport.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mass-shoes.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mc888.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+med-store.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mediaforge.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+medirex.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+meditravel.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+megamax24.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+menucka.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+meowc.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+mercatinoorologi.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+mesanalyses.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+mesoestetic.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+meteo60.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+mfcdn.nl,nl,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+mgm1.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+milicon.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+militaeraktuell.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mimikama.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mimilatky.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+mindok.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mirjan24.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+mister-pool.de,de,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+miuios.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mladamoda.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mmmm.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mobilprovas.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+modaes.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+modelbazar.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+modelovazeleznica.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+modnakiecka.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mojestypendium.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+mon-mar.com.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+money.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+monpiedceheros.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+motochemia.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+motofakty.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+motone.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+motor-talk.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+motora.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+motorguards.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+motorkari.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+moviesmod.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+mpsr.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mrcleaner.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+muj-antikvariat.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 jiný než ocas T0a
+mujrozhlas.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+multicar-cb.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+mundofitness.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+musee-orsay.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+muvy.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+muzeum1939.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mycomedica.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+myhauteloire.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+myloview.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+myradioonline.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+mzdovecentrum.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+nabbi.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+nabytok-mirjan24.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+nagoyasushi.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+nahuby.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+najdislevu.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+najnakup.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+nastartu.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+naszemiasto.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+naturhouse.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+nautilus99.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+navylet.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+nawycieczke.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+ncsc.gov.uk,uk,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+neoplay.es,es,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+newslubuski.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+nhm.ac.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+niebezpiecznik.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+nike.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+nitrak.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+niudalia.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+noblese.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+nostrofiglio.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+novynabytok.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+nowiny24.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+nowosci.com.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+nto.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+nurae.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+objednatvysetrenie.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+oebbtickets.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+okoun.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+olxtoto.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+ombres-blanches.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+ometv.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+onderdelenlijn.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+onesteploan.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+online-textil.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+online-textil.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+onlinefussballmanager.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+openingstijden.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+ordinace-hladikova.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+ordinace.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+orizzontescuola.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+oroboros.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+overymc.fr,fr,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+padel-wien.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+pageloft.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+pandoapartments.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+panelariadna.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+panszew.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+pantallazo.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+papirnictvipavlik.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+passasports.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+patakovo.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+pcadvisor.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+pcwelt.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+pegelalarm.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+pelisflix1.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",prázdný→prázdný
+pelisflixhd.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",prázdný→prázdný
+pgmerlin.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+pgs.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+phono.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+pickaweb.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+pidlitacka.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+pieds-nus-sur-la-terre.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+pinayflix.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+ping-pong.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+piratichomutov.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+pisnicky-akordy.cz,cz,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+planrijles.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+plasmaplace.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+plastrecykling.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+playsense.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+podcloud.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+pokemoncentral.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+pokewars.pl,pl,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+polmic.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+polska-org.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+polskienazwiska.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+pomorska.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+porada.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+poranny.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+portpolska.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+ppc.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+ppgames.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+pq.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+pragopolair.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+prat.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",prázdný→prázdný
+premierroofingscotland.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+presovak.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+pretekaj.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",prázdný→prázdný
+prijmeni.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+primainspirace.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+primat.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+prisma.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+profitonline.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+project-dark.co.uk,uk,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+pronto.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+psicologiafamiliare.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+psikrmivoradce.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+psoft.sk,sk,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+puyricard.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+racinglubes.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+radioviainternet.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+rae.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+realingo.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+recambioslacinta.es,es,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+redecanais.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+redops.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+refresher.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+refresher.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+regiodom.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+reimemaschine.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+repre.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+restonoble.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+retrogames.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+revolutionpermanente.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+rewoolution.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+rmmonline.co.uk,uk,cf_proxied,cf_proxied,200,,"search=yes,ai-train=no,use=reference",T1 status None text=0 via=L0
+rmo.nl,nl,cf_proxied,,200,,"search=yes,ai-train=no,use=reference",chybí v T1
+rophim.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+roumenovomaso.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+rouming.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+rozgryzamy.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",prázdný→prázdný
+rutorforum.at,at,cf_proxied,cf_proxied,200,529,"search=yes,ai-train=no,use=reference",T1 status 529 text=0 via=L3
+rymovac.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+safebet.at,at,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+salator.es,es,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+saneamientosdimasa.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+schattigebabykleertjes.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+scootering.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+sdppoliziadistato.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+serialyzadara.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+sexmagazin.at,at,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+sez-kes.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+sgarden.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+sien.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+sigmafotbal.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+signaly.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+sinartogel.nl,nl,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+single-bet-calculator-free.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+skialptatry.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+skiandbikes.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+sklepmartes.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+skpodcasty.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+skylink.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+skylink.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+slavia.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+slobodnyvysielac.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",prázdný→prázdný
+slon6.at,at,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+slroc.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+smallrigstore.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+sokroflix.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+soniaperonaci.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+sonymusic.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+sotoweb.cz,cz,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+sovs.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+spodiglyinitki.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+spolecenske-hry.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+sport-live.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+sportega.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+sporthockey.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+srq.es,es,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+stahlmanntool.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+stepfinance.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+streamzo.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+strefabiznesu.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+stretta-music.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+stretta-music.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+stroll-obuv.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+stronazdrowia.pl,pl,no_cf,no_cf,200,200,"search=yes,ai-train=no",M_B udrženo
+stuttgart.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+styroneo.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+subfactory.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",prázdný→prázdný
+subreg.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",prázdný→prázdný
+sundownadventureland.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+sunnyschool.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+suntech.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+sunwaytravel.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+supercostablanca.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+supersound.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+supinflatables.co.uk,uk,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+suuntocz.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+takoy.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+tdxflix.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+technimax.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+telefonspion.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+telemagazyn.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+tenislive.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+terahertz.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+termometropolitico.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+terracloud.de,de,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+thamhaplus.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+thecocktailist.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+theflowershoponline.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+tissuslolieshop.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+tjlokomotivapetrovice.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+tksternberk.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+tlumoceni-preklady.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+tomshw.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+top-narty.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+top4running.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+top4running.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+top4running.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+top4sport.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+topanimal.fr,fr,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+topbeauty.it,it,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+topgamingpc.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+topkalendare.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+transparency.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+trasparenzascuole.it,it,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+treasurybarometer.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+treinposities.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+trencinak.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+treninionline.it,it,cf_proxied,cf_proxied,200,503,"search=yes,ai-train=no,use=reference",T1 status 503 text=0 via=L3
+tresor-online.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+trezorynazbrane.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+trhknih.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+tripscan.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+trnavak.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+trovacd.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+tv-archiv.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+tvsud.fr,fr,cf_proxied,cf_proxied,200,400,"search=yes,ai-train=no,use=reference",T1 status 400 text=0 via=L3
+txp.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+ubiot.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+uby.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+ukcreams.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+ukspeaks.co.uk,uk,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+umbriaon.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+umfc-kirchschlag.at,at,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+uniformix.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+unionmusical.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+unison.org.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+upcars.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+upperhalf.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+urban-drinks.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+uvolnenyporod.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 status 200 text=0 via=L3
+uwolnijkolory.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+valigiablu.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+vapstore-cbd.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+varactu.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+varesefansbasket.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+vasalekaren.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+vel.pl,pl,cf_proxied,cf_proxied,200,500,"search=yes,ai-train=no,use=reference",T1 status 500 text=0 via=L3
+vezzi.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+vhs.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+vhsktn.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+viafarmaciaonline.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+vindecoder.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+vinosacra.es,es,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+vita.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+voceleonardo.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+volleynet.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+vsetkoprestrechu.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+vssr.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+vuibert.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+vysokeskoly.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+vystavakostek.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+walkhighlands.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+warcenter.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+weareplaystation.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+webwiki.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+webwiki.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+werkenbijerasmusmc.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+weserv.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+wetroomsdesign.co.uk,uk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+whiskyginrum.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+whocalledmeuk.co.uk,uk,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+wiener-staatsoper.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+wildcamping.co.uk,uk,cf_proxied,cf_proxied,200,403,"search=yes,ai-train=no,use=reference",T1 status 403 text=0 via=L0
+williamhill.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+winemark.sk,sk,cf_proxied,cf_proxied,200,429,"search=yes,ai-train=no,use=reference",T1 status 429 text=0 via=L0
+wineshop.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+wingaga-casinos.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+world4ufree.at,at,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+worldmarkt.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+wosp.org.pl,pl,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+wrestlinggames.de,de,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+wsip.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+wspolczesna.pl,pl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no",M_B udrženo
+wsrv.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+xarena.sk,sk,cf_proxied,,200,,"search=yes,ai-train=no,use=reference",chybí v T1
+xurl.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+yair.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+yanhh3d.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+yoys.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+za-ludi.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+zabawajudo.pl,pl,cf_proxied,cf_proxied,200,404,"search=yes,ai-train=no,use=reference",T1 status 404 text=0 via=L3
+zakonypreludi.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+zakonyprolidi.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+zapattu.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",prázdný→prázdný
+zatravnovacishop.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+zdopravy.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+zdrave-nohy.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+zelpage.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+zerophyto.fr,fr,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+ziajashop.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+zilinak.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+zinceuro.sk,sk,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+zivefirmy.cz,cz,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu
+zonalocale.it,it,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+zontesmotos.es,es,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T1 == T0a bez šablony
+zorgkaartnederland.nl,nl,cf_proxied,cf_proxied,200,200,"search=yes,ai-train=no,use=reference",T0a jen šablona → T1 obsah originu

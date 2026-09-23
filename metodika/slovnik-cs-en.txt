@@ -1,0 +1,31 @@
+# Slovník pro články torumata.com (závazný pro redakci)
+
+Pravidla: v článku se nepoužívají interní výrazy z repa (levý sloupec). Používá se výraz ze sloupce „v článku CS" a při prvním výskytu se vysvětlí jednou větou. Zákaz pomlček v textu (dlouhých i krátkých); rozsahy slovem „až". Spojovník uvnitř slova je v pořádku.
+
+| interní (repo) | v článku CS | v článku EN | vysvětlení při prvním výskytu |
+|---|---|---|---|
+| hrana | síť Cloudflare | Cloudflare's network | servery Cloudflare, přes které web běží; rozhodují, kdo se na web dostane |
+| deklarace (v robots.txt) | pravidla v souboru robots.txt | rules in the robots.txt file | soubor, ve kterém web říká robotům, co smějí |
+| vynucování na hraně | odmítání přímo v síti Cloudflare | refusal by Cloudflare's network | web sám nic nedělá, žádost zastaví Cloudflare |
+| neověřený žadatel | program, který si jméno robota jen nastaví | a program that merely sets a crawler's name | nejde o skutečného robota firmy OpenAI nebo Anthropic |
+| napodobené jméno / UA | jméno robota v hlavičce žádosti | the crawler name in the request header | |
+| tréninkový robot | robot sbírající data pro trénink AI | training crawler | např. GPTBot, ClaudeBot |
+| agent / agentní identita | asistent, který čte web na pokyn uživatele | user-directed assistant | např. ChatGPT-User |
+| vyhledávací identita AI firmy | vyhledávací robot AI firmy | AI company's search crawler | např. OAI-SearchBot; není to Google |
+| smíšený robot | robot, který slouží vyhledávání i trénování | mixed-use crawler | Googlebot, Bingbot |
+| spravovaný robots.txt (Cloudflare) | pravidla, která do robots.txt vkládal Cloudflare | the rules Cloudflare inserted into robots.txt | zrušeno 15. 9. 2026 |
+| šablona / marker M_B | blok pravidel od Cloudflare | the Cloudflare block | |
+| Bot Preference Sync | Bot Preference Sync | Bot Preference Sync | nová funkce Cloudflare, nepřekládat |
+| zóna | web (v účtu Cloudflare) | site (Cloudflare zone) | |
+| příčka / žebřík | druh návštěvníka / sada druhů návštěvníků | type of visitor / set of visitor types | prohlížeč, program s vlastním jménem, program se jménem robota |
+| rameno / kohorta | skupina webů, které … | the group of sites that … | |
+| placebo (no_cf) | srovnávací skupina webů mimo Cloudflare | comparison group of sites not behind Cloudflare | |
+| holdout | weby, na které jsme neposílali žádné jméno robota | sites we never sent a crawler name to | |
+| egress / domácí přípojka | domácí internetová přípojka | home internet connection | |
+| challenge | ověřovací stránka | verification page | stránka „chvilku strpení", která ověřuje, že jste člověk |
+| pass / ¬pass | prošel / odmítnut | let through / refused | |
+| šumové dno | běžný rozptyl mezi dvěma měřeními | normal variation between two measurements | |
+| pásmo (predikce) | předpověď zapsaná před měřením | prediction recorded before the measurement | |
+| DiD | rozdíl změn proti srovnávací skupině | change compared with the comparison group | |
+| cf_proxied | weby za Cloudflare | sites behind Cloudflare | |
+| HTTP-only web | web bez zabezpečeného připojení (https) | site without a secure connection (https) | |

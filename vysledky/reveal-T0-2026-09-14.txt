@@ -1,0 +1,91 @@
+# REVEAL „před" — cf-T0a-2026-09-14-home-r5 (+ T0b jako druhé čtení)
+
+autor-křeslo: exekutor (držitel běhu) · datum: 2026-09-15 12:50 · status: verdikty nad vlastním pásmem; hypotézy H1–H7 dle `rfc/2026-09-15-prahy-cf-T0.md` (schváleno uživatelem před reveal, commit c3ee23f)
+artefakty: `runs/cf-T0a-2026-09-14-home-r5/{summary.json,report.md,report-v2.md}`, `runs/cf-T0b-2026-09-14-home-r5/{summary.json,report-v2.md,noise-vs-T0a.md,delta-T0a-T0b-sumove-dno.md}`; výpočet reveal: `scripts/cfstats.py` (commit 6ddf271+), surový výpis v LOGu 15. 9. 12:45
+měřidlo: v5 (script_sha 369b949f…), egress domácí poskytovatel C, 14. 9. 2026 12:41–17:17 (T0a) a 17:18–21:52 (T0b)
+
+Čtení: každé číslo = podíl [95% Wilson], rozdíly ramen = bootstrap 95% CI přes domény. „vše" = tier 1 (22 846 domén, 10 zemí), „cz" = 4 970 domén .cz. T0b uvedeno jako nezávislé druhé čtení téhož dne.
+
+## 1. Pre-registrované veličiny (Q1–Q7)
+
+| Q | veličina · jmenovatel | vše T0a | vše T0b | cz T0a | cz T0b |
+|---|---|---|---|---|---|
+| Q1 | `cf_proxied` / všechny domény | 28,8 % [28,3–29,4] | 28,8 % | 21,4 % [20,3–22,6] | 21,4 % |
+| Q1' | `cf_proxied` / dosažitelné | 33,2 % [32,5–33,8] | 33,2 % | 23,9 % [22,6–25,1] | 24,0 % |
+| Q2 | robots blokuje ≥1 z 9 tréninkových tokenů / robots 200 · vše | 15,4 % [14,8–15,9] | 15,4 % | 14,8 % [13,7–16,0] | 14,9 % |
+| Q2 | … `cf_proxied` / `no_cf` | 22,4 % / 11,8 % · rozdíl [+9,4; +11,8] | 22,3 / 11,9 | 34,4 % / 8,3 % · rozdíl [+22,9; +29,4] | 34,2 / 8,3 |
+| Q2b | `User-agent: *` + `Disallow: /` | 9,8 % | 9,8 % | 3,6 % | 3,7 % |
+| Q3 | M_B (Cloudflare managed) / `cf_proxied` robots 200 | 13,4 % [12,5–14,3] | 13,3 % | 23,7 % [21,2–26,5] | 23,6 % |
+| Q3b | M_C `Content-signal:` / `cf_proxied` · / `no_cf` (placebo) | 15,5 % · 3,1 % | 15,4 · 3,1 | 26,2 % · 8,6 % | 26,0 · 8,8 |
+| Q4 | ¬pass UA GPTBot / L0 pass · `cf_proxied` / `no_cf` | 32,6 % [31,5–33,8] / 17,9 % | 32,6 / 18,0 | 39,3 % [36,3–42,4] / 15,3 % | 38,9 / 15,7 |
+| Q4' | ¬pass UA Googlebot · `cf_proxied` / `no_cf` | 16,7 % / 8,0 % | 16,6 / 8,2 | 14,9 % / 5,2 % | 14,5 / 5,6 |
+| Q4 AI | ¬L4 ∧ L3 ∧ L4' · `cf_proxied` / `no_cf` | 17,1 % / 11,5 % | 16,9 / 11,5 | 26,0 % / 10,8 % | 25,5 / 10,9 |
+| Q4 AI(obálka) | ¬L4 ∧ L3 · `cf_proxied` | 28,0 % | 28,0 | 36,6 % | 36,2 |
+| Q6 | platný ads.txt / L0 pass · `cf_proxied` / `no_cf` | 18,1 % / 17,4 % · rozdíl [−0,5; +1,9] | 18,0 / 17,5 | 18,8 % / 13,8 % · rozdíl [+2,3; +7,6] | 18,8 / 13,9 |
+| Q7a | ¬pass L3 (torumata-probe) · `cf_proxied` / `no_cf` | 5,1 % / 4,0 % · rozdíl [+0,4; +1,7] | 4,9 / 4,1 | 3,4 % / 1,4 % · rozdíl [+0,8; +3,2] | 2,8 / 1,5 |
+| Q7b | pass L3 · `cf_proxied` | 94,9 % [94,3–95,4] | 95,1 | 96,6 % [95,3–97,5] | 97,2 |
+| Q7 L2 | L0 pass ∧ ¬L2 (knihovna s UA Chrome) · `cf_proxied` / `no_cf` | 6,4 % / 1,2 % | 5,8 / 1,2 | 4,1 % / 0,3 % | 3,3 / 0,5 |
+| Q7 L3r | ¬pass python-requests · `cf_proxied` | 21,4 % | 21,3 | 19,2 % | 18,5 |
+| Q7 L1 | ¬pass headless Chrome (HeadlessChrome UA) · `cf_proxied` | 16,3 % | 16,3 | 14,1 % | 14,5 |
+| n | L0 pass: `cf_proxied` / `no_cf` (vše) | 5 926 / 12 023 | 5 933 / 11 935 | | |
+
+Reprodukovatelnost T0a↔T0b: žádná veličina se neliší o víc než 0,6 p.b.; šumové dno per doména viz `noise-vs-T0a.md`.
+
+## 2. Hypotézy H1–H7 (kritéria a prahy: `rfc/2026-09-15-prahy-cf-T0.md`)
+
+| H | kritérium | vše (tier 1) | cz |
+|---|---|---|---|
+| H1 Cloudflare před ≥ 1/10 domén | dolní mez CI Q1 ≥ 10 % | **drží** (28,3 %) | **drží** (20,3 %) |
+| H2 za CF blokují tréninkové boty častěji | CI rozdílu > 0 | **drží** (+9,4 až +11,8 p.b.) | **drží** (+22,9 až +29,4 p.b.) |
+| H3 blokace za CF jde převážně ze šablony CF | M_B mezi `cf_proxied` ∧ blokuje, dolní mez > 50 % | **drží** 59,8 % [57,1–62,4] | **drží** 69,0 % [63,8–73,7] |
+| H4 odmítnutí „GPTBot" je převážně obecná obrana, ne jméno | AI/¬L4 < 0,5 (horní mez) | **hraniční** poměr 0,52 (≈[0,48–0,57]) | **nedrží** poměr 0,66 (≈[0,55–0,79]) |
+| H5 skok 15. 9. | DiD T0→T1 | čeká na T1 (16. 9.) | čeká |
+| H6 za CF častěji programatická reklama | CI rozdílu ads.txt > 0 | **nedrží** [−0,5; +1,9] | **drží** [+2,3; +7,6] |
+| H7a program bez masky za CF neprojde častěji | CI rozdílu ¬L3 > 0 | **drží**, ale malé: +0,4 až +1,7 p.b. | **drží** +0,8 až +3,2 p.b. |
+| H7b většina domén za CF program bez masky nepustí | horní mez pass L3 < 50 % | **nedrží** (94,9 %) | **nedrží** (96,6 %) |
+
+Formulace dle redakčních pravidel Opuse (§4): „prohlížeč Chrome řízený programem", „program, který se představí jako GPTBot", „nese otisk", „z N nejnavštěvovanějších domén podle Tranco".
+
+## 3. Verdikty nad pásmem exekutora (`bands/cf-T0/exekutor.md`, commit 36ae19f 13. 9. 21:16; populace pásma = 4 970 .cz → skóruje se rozsah cz, T0a)
+
+| # | veličina | pásmo (korigované) | naměřeno cz T0a | verdikt | vzdálenost / poznámka |
+|---|---|---|---|---|---|
+| 1 | Q1 `cf_proxied` / všechny | 14–24 % | 21,4 % [20,3–22,6] | **TREFA** | uvnitř; při jmenovateli „dosažitelné" 23,9 % = na horní hraně |
+| 2 | Q2 blokuje tréninkový token / robots 200 | 7–15 % | 14,8 % [13,7–16,0] | **TREFA (hraniční)** | 0,2 p.b. pod horní hranou, CI hranu překrývá |
+| 3 | Q3 M_B ∨ M_C / `cf_proxied` | 2–7 % | 23,7 % (M_B), 26,2 % (M_C) | **MIMO, hluboko dole** | podcenil 3,4×. Mechanismus „opt-in, správce do dashboardu nechodí" neplatí: otisk nese čtvrtina zón. Hypotéza k T1: Cloudflare zapíná Bot Preference Sync plošně / nabízí ho při onboardingu; ověřit z dokumentace a z podílu M_B mezi novými zónami |
+| 4a | ¬L4 GPTBot / L0 pass · `cf_proxied` | 20–40 % | 39,3 % [36,3–42,4] | **TREFA (hraniční nahoře)** | těžiště „posunuté dolů" kvůli driftu 3 bylo špatně: realita na horní hraně |
+| 4b | ¬L4 · `no_cf` | 3–10 % | 15,3 % [14,1–16,6] | **MIMO nahoře** | podlaha mimo Cloudflare je 1,5× nad horní hranou: obyčejný hosting blokuje jméno GPTBot častěji, než jsem čekal |
+| 4c | ¬L4' Googlebot UA · `cf_proxied` | 15–35 % | 14,9 % [12,9–17,3] | **MIMO dole (hraniční)** | anti-impersonace je slabší, než jsem předpokládal |
+| 4d | AI složka ¬L4 ∧ L3 · `cf_proxied` | 3–10 p.b. | 36,6 % | **MIMO, hluboko dole** | největší minutí: předpokládal jsem, že blokace GPTBot-UA je z většiny obecná obrana proti automatům; ve skutečnosti je z většiny **cílená na jméno** (i v přísnější definici ¬L4 ∧ L3 ∧ L4' 26,0 %) |
+| 5 | delta T0→T1 | 0,0–1,0 p.b. | — | čeká na T1 | |
+| 6 | ads.txt / `cf_proxied` L0 pass | 15–30 % | 18,8 % [16,5–21,3] | **TREFA** | HTML čtení mělo být o 5–15 p.b. výš: je 18,4 % = stejné → sekundární MIMO |
+| 7a | pass L3 · `cf_proxied` | 55–75 % | 96,6 % [95,3–97,5] | **MIMO, hluboko nahoře** | přecenil blokaci poctivé knihovny 5×; `no_cf` 85–95 % vs 98,6 % → MIMO nahoře (menší) |
+| 7b | L0 ∧ ¬L2 · `cf_proxied` | 12–40 % (surové 12–25) | 4,1 % [3,0–5,5] | **MIMO, hluboko dole** | korekce driftu 4 (×1,6 nahoru) šla špatným směrem; `no_cf` 1–5 % vs 0,3 % → MIMO dole |
+
+Mechanismus 7 („L2 ≥ L4 ≥ L3": lež o identitě padá nejčastěji) byl **vyvrácen**: pořadí je L4 (39 %) ≫ L3r python-requests (19 %) ≫ L2 (4 %) ≈ L3 (3 %). Hrana v populaci nerozhoduje podle TLS otisku, ale podle **jména v UA**: jmenovaný AI bot a známý knihovní UA padají, neznámý poctivý UA i maskovaný klient procházejí. medium.com (kontrola) byl netypický a já z něj importoval mechanismus do populace, přesně drift 3 — přestože jsem korekci na drift 3 v pásmu deklaroval. Korekce byla příliš malá.
+
+Bilance: 4 TREFA (2 hraniční), 8 MIMO (4 hluboko), 1 čeká. Směr minutí: **přeceňuji obecnou (otiskovou) obranu, podceňuji jmennou blokaci a adopci vendorových šablon**. Zapsáno do `bands/kalibrace-exekutor.md`.
+
+## 4. Co z toho plyne (pozorování, ne verdikt; věty dle Opus §3)
+
+- Přes Cloudflare jde 28,8 % z 22 846 nejnavštěvovanějších domén deseti zemí podle Tranco (Česko 21,4 %). H1 drží všude.
+- Alespoň jednomu z devíti tréninkových tokenů zakazuje celý web 15,4 % domén s robots.txt; za Cloudflare 22,4 %, mimo něj 11,8 %. V Česku je rozdíl větší: 34,4 % proti 8,3 %.
+- Otisk spravovaného robots.txt od Cloudflare nese 13,4 % domén za Cloudflare (Česko 23,7 %) a mezi těmi, které tréninkové boty blokují, je to 59,8 % (Česko 69,0 %): většina těchto zákazů pochází ze šablony Cloudflare, ne z ručně psaných pravidel. H3 drží.
+- Program, který se představí jako GPTBot, odmítne 32,6 % domén za Cloudflare, které načte prohlížeč Chrome řízený programem (mimo Cloudflare 17,9 %). Pravidlo mířené na jméno AI robota (týž program s neutrální identifikací i s UA Googlebot projde) vidíme u 17,1 % domén za Cloudflare a 11,5 % mimo něj. H4 na tier 1 hraniční, v Česku nedrží: většina odmítnutí míří na jméno.
+- Poctivý jednoduchý program projde na 94,9 % domén za Cloudflare (Česko 96,6 %). Obava, že Cloudflare odřízne agenty běžící u uživatelů doma, se v hlavě evropského webu nepotvrdila (H7b nedrží); rozdíl proti webům mimo Cloudflare existuje, ale je 1 až 2 p.b. (H7a drží). Co padá, je jméno: UA `python-requests` neprojde u 21 % domén za Cloudflare, UA GPTBot u 33 %.
+- Programatická monetizace (platný ads.txt) se za Cloudflare a mimo něj na tier 1 neliší (H6 nedrží), v Česku ano (18,8 % proti 13,8 %).
+- Otisk `Content-signal:` má i 3,1 % domén mimo Cloudflare (Česko 8,6 %): syntaxe se šíří i bez Cloudflare (kopie, pluginy). M_B a M_C se proto v článku uvádějí zvlášť.
+
+Nepublikovat bez: T1 (H5), rozpadu nepozorovatelných robots.txt per rameno (report-v2 §1), a poznámky o jednom egressu.
+
+## 5. Dodatek 16. 9. — pre-registrovaná čtení, která v §1–§3 chyběla (Opus reakce §2.4a, §3 N9)
+Q3 dle obálky = M_B ∨ M_C nad **všemi** `cf_proxied` (robots ≠ 200 ⇒ M = 0); H3 s týmž M mezi `cf_proxied` ∧ blokuje ≥1 tréninkový token:
+
+| run | rozsah | Q3 pre-reg (M_B ∨ M_C / všechny cf_proxied) | H3 (M_B ∨ M_C mezi cf_proxied ∧ blokuje) |
+|---|---|---|---|
+| T0a | vše | 13.5 % [12.7–14.3] (889/6589) | 63.7 % [61.0–66.2] (818/1285) |
+| T0a | cz | 23.8 % [21.3–26.5] (253/1063) | 70.5 % [65.4–75.1] (234/332) |
+| T0b | vše | 13.4 % [12.6–14.2] (883/6588) | 63.4 % [60.7–66.0] (814/1284) |
+| T0b | cz | 23.7 % [21.2–26.4] (252/1063) | 70.5 % [65.4–75.1] (234/332) |
+
+Verdikt pásma exekutora bod 3 (2–7 %) proti pre-registrovanému čtení Q3: zůstává **MIMO, hluboko dole** (obě čtení). H3 drží i s M_B ∨ M_C (dolní mez > 50 % ve všech řádcích). Ostatní verdikty §3 se nemění.

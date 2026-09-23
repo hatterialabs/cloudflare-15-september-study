@@ -1,0 +1,63 @@
+# Gemini 3.1 Pro - modelář A / 2026-09-14 / cf-T0 / status: k review
+
+## Pásma k běhu cf-T0
+
+### 1. Podíl domén třídy cf_proxied v populaci
+- **Populace:** 4 970 .cz domén z Tranco top-1M (tier 1).
+- **Veličina:** Podíl domén zařazených do třídy `cf_proxied` (proxy = orange cloud).
+- **Kotva:** 18–22 % (zahraniční odhady podílu Cloudflare pro weby v top 1M — *cizí měření jiné populace*).
+- **Jmenovatel + rituál:** 4 970 .cz domén z Tranco, u kterých neselhalo spojení či DNS. Rituál ošetření omylu: Jmenovatel by byl neobjektivní, pokud by zkoušený resolver specificky cenzuroval české NS, nebo pokud Tranco radikálně podhodnocuje typické české nasazení na Seznam/poskytovatel A/Wedos na úkor globálních CDN.
+- **Interval:** 15–25 %
+- **Mechanismus:** Středně velké weby Cloudflare často využívají kvůli ochraně, malým nákladům a rychlosti. Nicméně v ČR existuje silná tradice lokálních hráčů (Wedos, poskytovatel A, Active24), takže podíl nedosáhne amerických průměrů.
+
+### 2. Podíl domén blokujících ≥1 tréninkového bota
+- **Populace:** `cf_proxied` i `no_cf` s platným (200 OK) souborem `robots.txt`.
+- **Veličina:** Podíl domén, jež mají blokaci (`Disallow: /`) pro alespoň jednoho definovaného AI/tréninkového bota.
+- **Kotva:** ~10 % (vendor-blízké zprávy o adopci blokování botů u významných webů v létě 2026 — *historický odhad z jiné populace*).
+- **Jmenovatel + rituál:** Weby schopné servírovat `robots.txt`. Omyl by nastal, kdyby zkušební HTTP requesty na `/robots.txt` plošně chytal WAF do 403, čímž by domény s nejpřísnějším postojem z jmenovatele vypadly.
+- **Interval:** 10–22 %
+- **Mechanismus:** Adopce AI blokací (lazy adoption) v české kotlině zaostává za globálním trhem, velké mediální domény sice blokují agresivně, ale naprostá většina menších e-shopů a blogů (tělo Tranco) ponechává `robots.txt` beze změny.
+
+### 3. Podíl cf_proxied s Cloudflare managed markerem v robots.txt
+- **Populace:** Domény třídy `cf_proxied`.
+- **Veličina:** Přítomnost řetězce označujícího Cloudflare bot preference management v `robots.txt`.
+- **Kotva:** 0 % (startovací čára před spuštěním funkce koncem srpna — *strop, historická podlaha*).
+- **Jmenovatel + rituál:** Úspěšně načtené `robots.txt` domén za proxy CF. Rituál omylu: marker mohl být modifikován originem a ztracen při regex matchi, ačkoli na boty v reálu platí.
+- **Interval:** 1–5 %
+- **Mechanismus:** Zákazníci CF s existující doménou musí funkci zapnout ručně přes administraci (opt-in). Od konce srpna uplynuly teprve tři týdny, takže zapnutí provedli jen vysoce uvědomělí správci bezpečnosti. 
+
+### 4. Specifická AI blokace neověřeného žadatele (L4)
+- **Populace:** Domény, jež propustily skutečný Chrome (L0 pass), rozděleno pro `cf_proxied` a `no_cf`.
+- **Veličina:** L4 fail a současně L3 pass (specifická složka odlišující čistý anti-bot štít od AI-bot filtru).
+- **Kotva:** 0 % (mechanická podlaha z ramene `no_cf`).
+- **Jmenovatel + rituál:** Weby odpovídající našemu referenčnímu prohlížeči L0. Omyl jmenovatele: hlavičky či chování L0 byly kompromitovány a web ho pustil jen náhodou.
+- **Interval:**
+  - *`cf_proxied`:* GPTBot L4 fail 35–50 %; Googlebot L4' fail 1–5 %; čistá AI složka (L4 fail ∧ L3 pass) 10–25 %.
+  - *`no_cf`:* GPTBot L4 fail 5–10 %; Googlebot L4' fail 1–3 %; AI složka 2–7 %.
+- **Mechanismus:** Pokud web nepustí "GPTBota" odeslaného z rezidentní sítě, často to udělá kvůli faktu, že jde o impersonaci. Odectením pádu "Googlebota" získáme skutečný postoj hrany. V CF světě je tato kontrola podstatně přísnější než u non-CF.
+
+### 5. Delta T0→T1 pro managed marker
+- **Populace:** Platné průchody domén třídy `cf_proxied` v obou časech T0 a T1.
+- **Veličina:** (Podíl v T1 - podíl v T0) u `cf_proxied` po odečtení téže delty u `no_cf`.
+- **Kotva:** 0 % (nulová hypotéza, nedošlo k masovému updatu — *odhad bez změny*).
+- **Jmenovatel + rituál:** Párované domény. Omyl: weby se kvůli jiným vlivům přesouvaly mezi CDN a CF právě kolem tohoto víkendu, což by promíchalo statické a dynamické změny.
+- **Interval:** 0–1,5 % (p.b.)
+- **Mechanismus:** Deadline 15. 9. míří spíše na nově registrované služby s předzapnutou AI blokací. U existujících účtů Cloudflare automaticky bez opt-inu politiku nemění, aby nerozbil uživatelům stávající toky, skok v čase T1 tedy bude u existujících domén téměř zanedbatelný.
+
+### 6. Podíl cf_proxied s platným ads.txt (monetizace)
+- **Populace:** Domény `cf_proxied` propouštějící L0.
+- **Veličina:** `/ads.txt` odpovídá kódem 200 a obsahuje správnou IAB strukturu.
+- **Kotva:** ~15 % (obecný odhad monetizovaného mediálního obsahu v Evropě — *cizí měření*).
+- **Jmenovatel + rituál:** Dosažitelné domény. Rituál omylu: monetizace pomocí IAB standardu nepokrývá weby využívající pouze nativní prodej, affil nebo skryté cesty reklam.
+- **Interval:** 10–25 %
+- **Mechanismus:** Podstatná část českých obsahových služeb a médií je monetizována, ale zbytek populace Tranco .cz tvoří e-shopy, B2B prezentace a korporátní sítě, kde ads.txt nedává smysl.
+
+### 7. Čitelnost pro lokálního agenta
+- **Populace:** `cf_proxied` vs. `no_cf`.
+- **Veličina:** 7a: Podíl propuštěných na L3; 7b: Podíl L0 pass, ale L2 fail (odmítne převlečenou HTTP knihovnu, ač pustí člověka).
+- **Kotva:** Podlaha = výsledky `no_cf`.
+- **Jmenovatel + rituál:** Změřené platné domény.
+- **Interval:**
+  - 7a) L3 pass: `cf_proxied` 60–75 %; `no_cf` 85–95 %.
+  - 7b) L0 pass ∧ L2 fail: `cf_proxied` 15–30 %; `no_cf` 2–8 %.
+- **Mechanismus:** CF ochrana Browser Integrity velmi tvrdě postihuje jakoukoli nesrovnalost mezi User-Agent a TLS podpisem (L2 maskovaný agent). Naopak poctivý HTTP request (L3 requests/curl) je překvapivě často vpuštěn, pokud z IP neregistrují toxický botový vzorec. U `no_cf` chybí infrastruktura tak hlubokých restrikcí pro převlečené klienty.

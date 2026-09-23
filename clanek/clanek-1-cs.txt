@@ -1,0 +1,105 @@
+# Co se 15. září stalo s AI roboty na evropském webu
+
+## Shrnutí pro každého
+
+Patnáctého září 2026 zrušila společnost Cloudflare jednu ze svých funkcí. Cloudflare je firma, přes jejíž servery běží velká část webů, a její servery rozhodují, kdo se na ně dostane. Do toho dne uměla webům vkládat do souboru robots.txt hotová pravidla proti robotům, kteří sbírají texty pro trénování umělé inteligence. Soubor robots.txt je místo, kde web říká robotům, co si smějí přečíst.
+
+Změřili jsme, co se stalo, na 22 846 nejnavštěvovanějších webech deseti evropských zemí. Čtrnáctého září mělo tato pravidla 769 webů. Šestnáctého září už jen 39. Majitelé těch webů přitom neudělali nic a většina z nich o změně neví.
+
+Neznamená to, že se weby pro umělou inteligenci otevřely. Volbu, kterou měly uloženou, převedl Cloudflare do jiného nastavení a to se projevuje přímo v jeho síti. Robota, který sbírá data pro trénování, dnes tyto weby odmítají častěji než předtím. Zmizel tedy zápis, ne zákaz.
+
+Jedna věc se ale obrátila. Asistent, který čte stránku na pokyn člověka, třeba když se ChatGPT zeptáte na konkrétní web, dnes projde mnohem častěji než v půlce září.
+
+Co s tím má dělat majitel webu? Podívat se, co má v souboru robots.txt dnes. Pokud tam zákaz chtěl mít, ať si ho tam napíše sám. Pokud ho tam mít nechtěl a nevěděl o něm, teď ho tam nemá.
+
+---
+
+## Co se stalo
+
+Patnáctého září 2026 změnila společnost Cloudflare nastavení, které se týká robotů umělé inteligence. Měřili jsme evropský web dva dny před tou změnou, den po ní a pak ještě jednou o týden později. Výsledek má tři části. Z webů zmizela viditelná pravidla, v síti Cloudflare se změnilo, koho tyto weby pustí, a nové pravidlo zatím nikde napsané není.
+
+Měřili jsme 22 846 nejnavštěvovanějších domén deseti evropských zemí podle žebříčku Tranco. Přes síť Cloudflare jich šlo 28,8 %, v Česku 21,4 %. Sítí Cloudflare myslíme servery, přes které web běží.
+
+## Pravidla v souboru robots.txt zmizela
+
+Cloudflare uměl do souboru robots.txt vkládat hotový blok pravidel, který osmi jmenovaným robotům zakazoval sbírat obsah pro trénování. Čtrnáctého září ráno ho mělo 769 webů z naší populace, šestnáctého září 39. Dvacátého druhého září 54, z toho 38 webů blok nikdy neztratilo a u 4 se vrátil.
+
+Zbylých 12 webů ho předtím nikdy nemělo. Vedle potvrzování převodu tedy běží i nové zapínání, zatím u jednotek webů, a čtyři z těch dvanácti navíc patří jednomu provozovateli.
+
+Aby bylo jasné, že nejde o běžné kolísání, srovnáváme to s weby mimo Cloudflare. Proti nim je rozdíl 10,8 procentního bodu dolů, s rozpětím 10,0 až 11,6. Běžný rozptyl mezi dvěma měřeními téhož dne je přitom 0,3 procentního bodu.
+
+## V síti Cloudflare se změnilo, koho weby pustí
+
+U webů, kterým blok pravidel zmizel, jsme posílali obyčejný požadavek na úvodní stránku a měnili jen jméno, kterým se návštěvník představí.
+
+Program, který se představí jménem GPTBot, odmítlo čtrnáctého září 73,0 % těchto webů, dvacátého druhého září 86,6 %. Pod jménem ClaudeBot to bylo nejdřív 74,1 % a potom 87,5 %. Naopak pod jménem ChatGPT-User, což je asistent, který čte stránku na pokyn uživatele, odmítlo požadavek nejdřív 69,3 % webů a po změně jen 27,4 %. Jméno Googlebot zůstalo beze změny, odmítlo ho 21,8 % webů a po změně 21,3 %.
+
+U srovnávací skupiny webů za Cloudflare, které blok pravidel nikdy neměly, se nezměnilo nad rámec běžného rozptylu mezi dvěma měřeními: jméno GPTBot u nich neprošlo v 33,7 % případů před změnou a v 34,6 % po ní.
+
+Většinu odmítnutí, 520 z 629, tvoří rovnou zamítnutý požadavek. Ověřovací stránka, na které má návštěvník prokázat, že je člověk, se objevila u 102 webů.
+
+Měříme ale program, který si jméno robota jen nastaví v hlavičce požadavku. Skuteční roboti firem OpenAI nebo Anthropic se prokazují adresou a podpisem a jak s nimi Cloudflare zachází, se zvenčí změřit nedá. Chování sítě Cloudflare jsme ověřili i ze dvou dalších sítí jiných poskytovatelů, výsledek se shodoval web po webu.
+
+## Zákaz dnes nikde nestojí napsaný
+
+Cloudflare podle svého blogu nahradil zrušenou funkci novou, jmenuje se Bot Preference Sync a přání netrénovat má v souboru robots.txt zveřejňovat. K dvacátému druhému září ji tam neměl ani jeden web z naší populace.
+
+Starý blok pravidel se vrací, ale pomalu, za šest dní přibyl u 16 webů. U těch čtyř, kterým se vrátil, se chování sítě nezměnilo, trénovací roboty odmítala už předtím. Zápis tedy dobíhá za skutečným nastavením, ne naopak.
+
+## Co k tomu říká Cloudflare
+
+Podle Cloudflare, tedy podle firemního blogu z 15. září, byla funkce vkládající pravidla do souboru robots.txt zrušena ve prospěch nové. Zákazníkům, kteří měli zapnuté blokování trénování, se uložená volba převedla do nastavení s názvem Disallow AI Training. To podle téhož textu zastavuje roboty sbírající data pro trénování, vyhledávací roboty nechává projít a pro asistenty žádnou volbu zakázat zatím nenabízí. Odpovídá to našemu měření ve všech třech směrech.
+
+Blog také říká, že zákazník nemusí dělat nic. To je z pohledu majitele webu nejdůležitější věta celé změny.
+
+## Vlastní jméno projde, cizí ne
+
+K měření jsme přidali vlastní jméno torumata-ai-train, které nikdo nezná a které o sobě říká, že sbírá data pro trénování. Odmítlo ho 9,2 % webů, kterým zmizel blok pravidel, a náš neutrální program bez takového jména 9,1 % týchž webů. Porovnáno web po webu se obě jména lišila jen u devíti webů ze 726. Napodobené jméno GPTBot přitom neprošlo v 86,6 % případů a výchozí jméno běžné programátorské knihovny python-requests v 28,1 %.
+
+Odmítání tedy nemíří na to, co program dělá, ani na to, co o sobě tvrdí. Míří na konkrétní jména, která síť Cloudflare zná.
+
+## Druhé měření, nezávisle na nás
+
+Změnu z 15. září neměřil jen náš tým. Firma SeenSure prodává hlídání toho, zda se roboti umělé inteligence dostanou na web, takže jde o nástroj konkurenční tomu, co stavíme my. Šestnáctého září zveřejnila měření 1 046 webů, z nichž 746 běží za Cloudflare, převážně čerstvě registrovaných domén z logů vydaných certifikátů.
+
+Jejich čísla ukazují týž obrazec jako naše. U webů za Cloudflare stouplo mezi 14. a 16. zářím odmítání trénovacích robotů, u jména GPTBot z 26,8 % na 31,0 %. Prudce naopak kleslo odmítání asistentů a vyhledávacích robotů firem s umělou inteligencí, u jména ChatGPT-User z 24,7 % na 3,2 % a u jména OAI-SearchBot z 24,9 % na 3,2 %. U webů mimo Cloudflare se nezměnilo nic.
+
+Rozdíl ve velikosti dává smysl. My měříme weby, které blokování měly zapnuté a Cloudflare je převedl na nové nastavení, oni převážně nové domény s novými výchozími hodnotami. Srovnávat se tedy dá směr, ne velikost. Jejich odmítnutí je navíc jakákoli odpověď se stavovým kódem 400 a výš, tedy zamítnutí i ověřovací stránka dohromady. Oni navíc neměřili soubor robots.txt, my zase vyhledávací roboty AI firem.
+
+Jejich stránka prošla čtyřmi opravami, které sami vyznačili a datovali. V jednom shrnujícím odstavci označuje čísla za celý vzorek jako čísla za weby za Cloudflare, takže citujeme tabulku s výslovným rozdělením.
+
+## Co to znamená pro majitele webu
+
+Za prvé. Pokud jste blokování trénování zapnuli jedním kliknutím u Cloudflare, v souboru robots.txt ho dnes nejspíš nemáte. Funguje dál, ale nikdo se o něm z vašeho webu nedozví. Jestli chcete, aby vaše přání bylo vidět, napište si pravidlo do souboru sami.
+
+Za druhé. Asistenti, kteří čtou stránky na pokyn člověka, se dnes na vaše stránky dostanou podstatně častěji než v půlce září. Pokud chcete, aby vás přes ně lidé našli, je to dobrá zpráva. Pokud ne, změnilo se vám nastavení bez vašeho zásahu.
+
+Za třetí. Pokud si sami pouštíte program, který čte weby, nepředstavujte se jménem cizího robota ani výchozím jménem knihovny. Vlastní jméno projde skoro všude.
+
+Zkontrolovat si to jde ručně za pár minut. My na to stavíme nástroj torumata, který měří všechny tři brány najednou.
+
+---
+
+### Weby bez zabezpečeného připojení jsou pro jednoho asistenta neviditelné
+
+Z 21 821 dosažitelných domén naší populace jich 4,7 % běží jen přes nezabezpečené připojení, tedy bez https. U 20 takových domén jsme vyzkoušeli, co udělá nástroj, kterým si stránky načítá claude.ai. U 19 z nich vrátil hlášku, že web zakazuje automatický přístup. Není to pravda. Ty weby nic nezakazují, jen nemají https, a nástroj to podle všeho přes nezabezpečené připojení nezkusí. Je to ale závěr z dvaceti pokusů, ne z celé populace. Testovali jsme pouze claude.ai. Chování nástrojů OpenAI, Perplexity a Googlu jsme neměřili.
+
+### Třetí brána, o které majitel webu neví
+
+Mezi webem a umělou inteligencí nestojí jen soubor robots.txt a síť Cloudflare. Třetí branou je automatická ochrana hostingu, která blokuje adresy se špatnou pověstí. Jedna z adres, ze kterých načítá stránky Claude, je uvedená v oficiálním seznamu firmy Anthropic a zároveň se šestnáctého září objevila v databázi hlášení o zneužití s mírou důvěry 92 %. Část těch hlášení přitom netvrdí útok. Hlásí tu adresu za to, že patří robotu umělé inteligence. U hostingu, kde jsme to doložili, platí blokace pro všechny jeho zákazníky. Jak časté je to jinde, neměříme. Majitel webu to nevidí a nemá to jak ovlivnit. Hosting, u kterého jsme to doložili, nejmenujeme.
+
+---
+
+## Jak jsme měřili a co měření neumí
+
+Měřili jsme čtyřikrát: čtrnáctého září dvakrát, aby bylo vidět, jak se čísla hýbou sama od sebe, pak šestnáctého a dvacátého druhého září. Každý web dostal stejnou sadu požadavků: prohlížeč řízený programem, program s vlastním jménem a program se jménem známého robota. Vše z domácí internetové přípojky v Česku. Chování sítě Cloudflare jsme navíc ověřili ze dvou dalších sítí jiných poskytovatelů, z datacentra a z mobilní sítě, na 1 000 webech; výsledek se shodoval web po webu.
+
+Před každým měřením jsme si zapsali předpověď a teprve potom měření pustili. U změny z 15. září se spletli všichni tři, kdo předpovědi psali, autora tohoto textu nevyjímaje. Nikdo nečekal, že zákazů ubude. U měření z 22. září se předpovědi potvrdily. Píšeme to sem proto, že jinak nemá čtenář jak poznat, které věty vznikly až po datech.
+
+Co měření neumí. Neumí říct, jak Cloudflare zachází se skutečnými roboty firem OpenAI a Anthropic, protože ti se prokazují adresou a podpisem. Neumí odlišit, zda odmítnutí rozhodla síť Cloudflare, nebo web sám. A žebříček Tranco je žebříček návštěvnosti, ne seznam všech webů.
+
+---
+
+## Zdroje a data
+
+Všechna čísla v tomto článku pocházejí z měření, jejichž výstupy, předpovědi zapsané před měřením, skripty a snímky citovaných stránek jsou veřejně k dispozici v repozitáři https://github.com/hatterialabs/cloudflare-15-september-study (soubor ZDROJE.txt mapuje každé tvrzení na konkrétní soubor). Metodika: metodika/rfc-cloudflare-pred-a-po.txt tamtéž.

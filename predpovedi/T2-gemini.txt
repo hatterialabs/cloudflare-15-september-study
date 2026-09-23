@@ -1,0 +1,9 @@
+# Pásmo: T2 (22. 9. 2026) — M_B/M_C mezi cf_proxied
+autor-křeslo: gemini / datum: 2026-09-16 / run-id: cf-T2 / status: pre-registrace
+
+- **populace:** Všech 6 589 domén klasifikovaných jako `cf_proxied` během referenčního měření T0a.
+- **veličina:** Absolutní nevážený podíl domén v populaci (v procentech), které v cílovém měření T2 vrátí marker M (tzn. zachycen `M_B` se šablonou "BEGIN Cloudflare Managed content" nebo `M_C` "Content-signal:").
+- **kotva:** 2,6 % (hodnota podílu M naměřená v T1). Klasifikace: baseline pro nový ustálený stav po dropu z 15. 9.
+- **jmenovatel:** Fixní ITT (intention to treat) jmenovatel = 6 589 domén z T0a. Rituál omylu: „Jmenovatel by byl metodicky špatně a způsobil by falešnou odchylku, kdyby masivní část populace do T2 úplně propadla (např. plošný výpadek hostingu, NXDOMAIN), čímž by se procentní základna neférově zmenšila proti předpokladu."
+- **interval:** [1,5 %; 4,0 %] (dvoustranný odhad). *Surový odhad i korigovaný odhad jsou identické; korekce kalibrace z mé strany (0/1) velí zanechat široký interval a nespoléhat na zvraty.*
+- **mechanismus:** Ostrý propad markeru zachycený v T1 nebyl dočasným záchvěvem nebo výpadkem workerů, nýbrž trvalou infrastrukturní změnou na straně Cloudflare (např. vynucení opt-in či změna politik pro nižší tarify). Proto nedojde k návratu původních hodnot. Hodnota se do 22. 9. udrží blízko kotvy, podléhajíc pouze mírnému běžnému šumu či pomalému nárůstu, pokud si promile správců nastavení znovu vědomě zapne.

@@ -1,0 +1,101 @@
+# Pásmo Q8 — hladiny ¬pass L4a a L4c v T2, rameno „ztracené"
+
+- **autor-křeslo:** Opus 5 — modelář B / redaktor
+- **datum:** 2026-09-18 (revize 18. 9. odpoledne po veřejném vysvětlení — viz §0.3; verze z dopoledne nebyla odevzdána ani commitnuta)
+- **run-id:** cf-T2 (22. 9. 2026); platí, jen je-li tento soubor commitnut **před** startem T2
+- **status:** k review (pre-registrace)
+- **formulář:** `in/formular-pasma-BOOTSTRAP-3.md`; definice veličin `in/rfc-dodatek-2026-09-18-Q8.md`
+- **odkazy na artefakty:** `in/q8-predbezne-T0a-T1.md` a `.json`, `in/REVEAL-T1.md` §6–§7, `in/2026-09-18-cloudflare-vysvetleni.md`, `in/obrat-T0a-T1-vs-sum-T0a-T0b.md`, `in/mprobe-summary.md`, `in/live-2026-09-17-T6-SOUHRN.md`, `in/M_B-T0a-to-T1.csv.txt`, `in/2026-09-18-navrhy-pred-T2.md`
+
+## 0. Deklarace expozice a kalibrace
+
+**0.1 Expozice (úplná).** Znám hladiny ¬pass všech příček v T0a i T1 pro všech pět ramen, testy A, B, C, T3, rozpady, přechodové matice, pět měření denní sondy a kontrolu z druhého ASN.
+
+**0.2 Expozice navíc (nová, 18. 9.):** znám `in/2026-09-18-cloudflare-vysvetleni.md`, tedy **veřejné vysvětlení dodavatele**: blog Cloudflare z 15. 9. 2026 ruší spravovaný robots.txt ve prospěch Bot Preference Sync, převádí dřívější „Training Block" na „Disallow AI Training" (trénovací crawlery blokovány na hraně, vyhledávače propuštěny) a pro kategorii Agent zatím žádné „zakázat" nenabízí. **Toto pásmo tedy není předpověď jevu ani jeho vysvětlení — je to předpověď toho, že ohlášený stav vydrží dalších šest dní.** Nulová hypotéza není „nic se neděje", ale „stav z T1 vydrží".
+
+**0.3 Co se změnilo proti verzi z dopoledne** (nic se nepřepisuje potichu): mediány jsem nechal beze změny, **zúžil jsem dolní ocas u L4a a horní u L4c** (návrat ke stavu před 15. 9. je po ohlášení produktové konsolidace nepravděpodobný: P klesla z 0,07 na 0,04, resp. 0,02) a **hlavní vyvratitelné tvrzení jsem přesunul** ze svázanosti „návrat obou hladin naráz" na svázanost u ramene udržené (§1, bod „vyvratitelné" 1). Přidal jsem vedlejší predikci na nový marker (§3).
+
+**0.4 Kalibrace (CHARTER §5).** V tabulce minutí mám dva zápisy (Q5 MIMO opačným směrem, Q3 nad intervalem), oba z jedné příčiny: stav, který drží v ruce dodavatel, jsem modeloval jako stav, který drží správci webů. Korekce **surové → korigované**:
+1. surové by po přečtení blogu bylo velmi úzké („je to ohlášené, tedy to platí"); korigované drží **širší ocasy**, protože ohlášení popisuje záměr, ne to, co hrana skutečně dělá — a právě rozdíl mezi nimi je u tohoto dodavatele už jednou doložený (deklarační mezera, §3);
+2. u veličin, které drží dodavatel, píšu pravděpodobnost i pro „pohne s tím znovu", i když k tomu není důvod;
+3. tam, kde mě blog svádí dopovědět si mechanismus, píšu jen to, co je měřitelné z naší strany (napodobené UA, jeden egress).
+
+---
+
+## 1. Formulář
+
+**populace:** rameno **ztracené** dle `in/rfc-dodatek-2026-09-18-Q8.md` = domény `cf_proxied` podle T0a, které měly M_B v T0a a neměly ho v T1 (**n 726** dle `in/q8-predbezne-T0a-T1.md`; v REVEAL §6 je totéž rameno uvedeno jako 725 — platí definice z pre-registrace Q8). ITT: ramena se v T2 nepřepisují, ani když se zóně šablona nebo nový marker objeví. Běh `cf-T2` = plné měření z domácího egressu, cesta v5, sada příček a UA jako v T1, L5 přidané **za** stávající příčky.
+
+**veličina:** hladina ¬pass (v %) v T2, zvlášť pro **L4a (UA GPTBot)** a **L4c (UA ChatGPT-User)**, v **plném čtení** (`pass` = 2xx/3xx ∧ ¬challenge ze statusu a titulku) — primární. Operační body: (a) plné čtení, (b) přísné čtení (403 ∨ challenge ∨ bloková stránka, výpadky vyřazeny), (c) rozpad ¬pass na 403 / challenge / 429 / ostatní.
+
+**kotvy (hodnota + klasifikace; všechny z `in/q8-predbezne-T0a-T1.md`, tabulka hladin):**
+- **hladina v T1: L4a 86,9 %, L4c 26,9 %** — *stav po změně, měřený touž cestou*; primární kotva;
+- **hladina v T0a: L4a 73,0 %, L4c 69,3 %** — *stav před změnou, touž cestou*; cíl případného návratu;
+- **rameno udržené v T1: L4a 91,9 %, L4c 83,8 %** — *hladina zón, kterých se migrace (zatím) nedotkla*; atraktor pro ně samotné, ne pro ztracené;
+- **rameno nikdy v T1: L4a 34,2 %, L4c 25,0 %** — *srovnávací hladina uvnitř Cloudflare*; L4c ztracených zón se blíží právě sem;
+- **placebo `no_cf` v T1: L4a 24,2 %, L4c 17,3 %** — *mechanická podlaha mimo Cloudflare*;
+- **šumové dno pro hladiny:** obrat L4a mezi T0a a T0b = 1,2 % domén (`in/obrat-T0a-T1-vs-sum-T0a-T0b.md`), pohyb ramene nikdy za dva dny +0,5 p. b.;
+- **kotva z ohlášení dodavatele:** blog 15. 9. (`in/2026-09-18-cloudflare-vysvetleni.md`, §2) — klasifikace *tvrzení dodavatele o vlastní síti, ne měření*; použito jen směrově (stav má vydržet), žádnou hodnotu z něj neberu;
+- strop 100 %, podlaha 0 %. Cizí číselnou kotvu nemám.
+
+**jmenovatel:** zóny ramene ztracené s výsledkem dané příčky v T2. *Rituál — jmenovatel je špatně, pokud:*
+- (a) do ¬pass spadnou výpadky (5xx, timeout, spojení) a jejich podíl se v T2 liší od T1 — proto se čte i přísné čtení; rozdíl plné vs přísné čtení nad 2 p. b. znamená, že hladinu hýbe dostupnost, ne politika;
+- (b) v T2 chybí jiný počet zón než v T1 (tam 29 z 6 589 skončilo chybou před souhrnem); hlásit počet chybějících v rameni;
+- (c) se změní definice `pass` (musí zůstat status + titulek na obou koncích) nebo se do primárního čtení pustí řádky `via = 'L0'`;
+- (d) se L5 zařadí jinam než za stávající příčky, změní se pořadí nebo seed 20260914, nebo poroste podíl 429 (v T1 klesal, 7 → 3) — rostoucí 429 znamená rate-limit našeho průchodu a hladiny se pak nečtou jako politika;
+- (e) T2 poběží z jiného egressu než domácího;
+- (f) se rameno přepíše podle stavu v T2 místo ITT.
+**Platnost v čase:** pro běh se startem do 26. 9. včetně; při pozdějším startu platí mediány, intervaly se čtou širší.
+
+**pásmo (dvoustranně; mediány a intervaly subjektivní pravděpodobnosti):**
+
+| veličina (rameno ztracené, T2) | medián | 50 % | 90 % |
+|---|---|---|---|
+| **¬pass L4a (GPTBot), plné čtení** | **87,2 %** | [85,8; 88,5] | [81,0; 91,5] |
+| ¬pass L4a, přísné čtení | 87,1 % | [85,5; 88,5] | [80,5; 91,5] |
+| **¬pass L4c (ChatGPT-User), plné čtení** | **26,8 %** | [24,5; 29,5] | [21,0; 38,0] |
+| ¬pass L4c, přísné čtení | 26,3 % | [24,0; 29,0] | [20,5; 37,5] |
+
+Bodové pravděpodobnosti (rozdělení zůstává dvouvrcholové, druhý vrchol je ale po ohlášení tenký):
+- **P(L4a ≤ 80 %) = 0,04** a **P(L4c ≥ 55 %) = 0,02** — návrat ke stavu před 15. 9. (dodavatel migraci zastaví nebo vrátí);
+- **P(oba naráz) = 0,015**, tedy **P(vrátí se jen jedno z nich) ≈ 0,02**;
+- P(L4a ≥ 92 %) = 0,05 (dotažení migrace k hladině zón, kterých se zatím nedotkla);
+- P(L4c ≤ 17,3 %, tj. pod podlahou `no_cf`) = 0,04;
+- P(L4a mezi 40 % a 70 %) = 0,02 (postupné nasazení po zónách).
+
+**Kontrolní hladiny v témže běhu** (hlásit vedle, jinak se pásmo nedá číst): rameno nikdy L4a 34,5 % [33; 36], L4c 24,0 % [21; 27]; placebo `no_cf` beze změny; rameno udržené viz §2.
+
+**Předpovědi vyvratitelné dřív než v T2** (denní sonda, `in/2026-09-16-prahy-mprobe.md` + rozšíření schválené 18. 9.):
+- podíl kohorty 769 se **starou** šablonou zůstane v každém měření do T2 pod 10 % — P = 0,92 (dosud 38 / 39 / 39 / 41 / 41);
+- ¬pass L4a v rozšířené sondě nad toutéž kohortou zůstane v každém měření nad 80 % — P = 0,88.
+
+**mechanismus (proč čekám právě tohle):**
+Podle blogu z 15. 9. jde o **produktovou konsolidaci**: spravovaný robots.txt zrušen, dřívější volba „blokovat trénink" převedena na „Disallow AI Training", kategorie Agent bez možnosti zakázat. Naměřený tvar (trénink ↑, agent ↓, vyhledávání =) je přesně důsledek této migrace pro **neověřeného** žadatele, který si jméno nastaví v hlavičce. Migrace je jednorázová, proběhla 15. 9. a blog výslovně píše, že zákazník nemusí dělat nic — takže mezi 16. a 22. 9. nemá co dalšího nastat. Drobný pohyb dolů připouštím proto, že Cloudflare zákazníky vyzývá k potvrzení preferencí a část z nich blokaci nikdy vědomě nezapínala (v T0a mělo 286 zón robots.txt tvořený jen šablonou, tedy bez vlastního obsahu); ti ji při potvrzování mohou vypnout.
+
+*Vyvratitelné (co mě usvědčí z omylu):*
+1. **Rameno udržené ztratí do T2 šablonu, ale jeho agentní osa se nepohne.** Pokud je za obojím jedna migrace, musí u nich L4c klesnout v témže měření, v němž jim zmizí šablona. Moje P(ztratí šablonu do T2) = 0,35; podmíněně P(L4c u nich klesne o ≥ 20 p. b.) = 0,80. Rozpojení = můj mechanismus je špatně.
+2. **L4a mezi 40 a 70 %**: ani trvání, ani návrat — postupné nasazování po zónách, které blog nepopisuje a moje pásmo nemá.
+3. **L4c ≤ 17,3 %** (pod podlahou `no_cf`): agentní provoz není jen propuštěný, ale zvýhodněný proti běžnému návštěvníkovi; to blog ani můj mechanismus nepopisují.
+4. **Rozpad se přesune z 403 na challenge** při zachované hladině: změnil se způsob vynucení, ne politika.
+
+---
+
+## 2. Rameno udržené (38, resp. 37 zón) — vedlejší pásmo
+
+U n < 30 nezávislých provozovatelů (zhruba 8) se podle CHARTER §3 procenta nepíšou, proto v počtech: z 37 zón ramene udržené jich do T2 **ztratí starou šablonu medián 4**, 90 % [0; 31]; P(žádná) = 0,30. U těch, které ji ztratí, čekám týž tvar jako u ramene ztracené (L4a nahoru nebo beze změny u stropu, L4c dolů) — viz vyvratitelné tvrzení 1 výše.
+
+## 3. Nový marker „Bot Preference Sync" — vedlejší predikce
+
+Blog slibuje, že Disallow AI Training publikuje preferenci v robots.txt; k 18. 9. ji nemá ani jedna zóna (0/60 živě, 0 v T1 populaci; `in/2026-09-18-cloudflare-vysvetleni.md` §4). Předpovídám pro T2 nad ramenem ztracené (n 726):
+- **P(nový marker u 0 zón) = 0,45**; P(u 1–5 % zón) = 0,22; P(u 5–50 %) = 0,25; P(u ≥ 50 %) = 0,08.
+- Medián počtu zón s novým markerem: **2**.
+- **Upozornění k pre-registrovanému Q5** (moje pásmo `out/bands/cf-T2/opus.md`, commitnuto 16. 9. bez této informace): pokud blok Bot Preference Sync obsahuje řádek `Content-signal:`, spadne do **M_C**, a pre-registrované M = M_B ∨ M_C tím vyskočí, aniž by se vrátila stará šablona. Žádám, aby reveal T2 hlásil M_B, M_C **uvnitř nového bloku** a M_C **mimo něj** zvlášť; jinak se můj commitnutý interval [2,1; 12,5] nedá přečíst. Pásmo neměním.
+
+## 4. Nová příčka L5 (vlastní UA `torumata-ai-train/0.1`) — vedlejší predikce
+
+Hladina ¬pass L5 v rameni ztracené v T2:
+- **P(L5 ≤ 20 %, chová se jako L3) = 0,80** — blog mluví o blokaci **trénovacích crawlerů jmenovitě** (OpenAI, Anthropic, Meta, Amazon), tedy o zacházení podle záznamu v registru botů; neznámé jméno propadne do obecného zacházení s automatem, a to ztracené zóny propouštějí (L3 8,7 %, L2 8,5 %);
+- **P(L5 ≥ 60 %, chová se jako L4a) = 0,10** — hrana by klasifikovala podle obsahu řetězce, ne podle registru;
+- P(mezi 20 a 60 %) = 0,10; medián **10 %**, 90 % [6; 55].
+
+*Vyvratitelné:* L5 nad 60 % při zachovaném nízkém L3 znamená, že hrana reaguje na **sebe-deklarovaný účel**. To blog nepopisuje a pro torumatu je to podstatnější než celý zbytek měření: poctivý lokální agent, který o sobě řekne pravdu, by na tom byl hůř než ten, který mlčí.

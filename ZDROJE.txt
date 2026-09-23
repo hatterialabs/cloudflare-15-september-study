@@ -1,0 +1,24 @@
+ZDROJE.txt: mapování tvrzení v článku „Co se 15. září stalo s AI roboty na evropském webu" na soubory v tomto repozitáři
+(čísla odpovídají poznámkám v redakční verzi článku; publikovaná verze čísla poznámek neobsahuje)
+
+ 1. Populace 22 846 domén, 10 zemí, Tranco ............... data/populace-eu-tier1-2026-09-13.csv; metodika/rfc-cloudflare-pred-a-po.txt (§3)
+ 2. Podíl webů za Cloudflare 28,8 %, Česko 21,4 % ......... vysledky/reveal-T0-2026-09-14.txt (§1, řádek Q1)
+ 3. 769 webů s blokem 14. 9., 39 dne 16. 9. .............. vysledky/reveal-T1-2026-09-16.txt (§2, §6 A6)
+ 3a. Osm robotů se zákazem v bloku Cloudflare ............ data/robots-blok-cloudflare-jmena.json (klíče pocet_jmen_s_Disallow, jmena_s_Disallow)
+ 4. 54 webů 22. 9.: 38 udržených, 4 návraty, 12 nových .... vysledky/reveal-T2-2026-09-22.txt (§8 A2); data/audit-T2-vypocty.json (A2); data/blok-cloudflare-nove-weby-T2.csv
+ 5. Rozdíl proti srovnávací skupině 10,76 p. b. [10,01; 11,55], rozptyl 0,32 p. b. ... vysledky/delta-Q5-T0a-T2.txt; 16. 9.: vysledky/delta-Q5-T0a-T1.txt; rozptyl: vysledky/sumove-dno-T0a-T0b.txt
+ 6. Odmítnutí GPTBot 73,0 → 86,6 %, ClaudeBot 74,1 → 87,5 %, ChatGPT-User 69,3 → 27,4 %, Googlebot 21,8 → 21,3 %, srovnávací skupina 33,7 → 34,6 % ... vysledky/hrana-Q8-T2.txt (tabulka Q8a); data/hrana-Q8-T2.json
+ 7. Rozpad odmítnutí GPTBot (520 × 403, 102 ověřovacích stránek) ... vysledky/hrana-Q8-T2.txt (řádek Rozpad ¬pass L4a ztracené)
+ 8. Nový blok Bot Preference Sync u nuly webů ............. vysledky/delta-Q5-T0a-T2.txt (řádek Rozpad markeru, BPS)
+ 9. Čtyři weby s vráceným blokem beze změny chování sítě .. vysledky/reveal-T2-2026-09-22.txt (§8 D3); data/audit-T2-vypocty.json (D3)
+10. Blog Cloudflare 15. 9. 2026 ............................ zdroje/cloudflare-blogy-vysvetleni-2026-09-18.txt; zdroje/snimky-2026-09-18/ (HTML + otisky v STAZENO.txt)
+11. Vlastní jméno 9,2 %, neutrální 9,1 %, rozdíl u 9 z 726, GPTBot 86,6 %, python-requests 28,1 % ... vysledky/reveal-T2-2026-09-22.txt (§4, §8 A5); data/audit-T2-vypocty.json (A5); data/reveal-T2-vypocty.json
+12. Měření SeenSure ....................................... zdroje/seensure-research-september-15.txt; zdroje/snimky-2026-09-22/ (snímek 22. 9. 2026)
+13. 4,7 % webů bez https z 21 821, 19 z 20 u claude.ai ..... vysledky/http-only-claude-fetch-2026-09-16.txt; data/http-only-weby-2026-09-16.json.gz
+14. Adresa ze seznamu Anthropicu s mírou důvěry 92 % ....... zdroje/abuseipdb-snimek-2026-09-16.txt; mechanismus: zdroje/hosting-reputacni-blokace-shrnuti.txt
+15. Předpovědi zapsané před měřením ........................ predpovedi/ (T0-*.txt, T2-*.txt); verdikty: vysledky/reveal-T1-2026-09-16.txt (§3), vysledky/reveal-T2-2026-09-22.txt (§2, §3)
+16. Ověření ze dvou dalších sítí, 1 000 webů .............. vysledky/replikace-dve-dalsi-site-2026-09-23.txt; data/replikace-sit-A-2026-09-23.txt; data/replikace-sit-B-2026-09-23.txt; data/replikace-ocekavani-z-T2.json
+
+Doplňkové: vysledky/report-T0a|T0b|T1|T2 (plné reporty běhů), vysledky/denni-sonda-souhrn.txt (sonda 2× denně od 16. 9.), data/marker-podle-zemi-T0a-T1.csv, data/blok-cloudflare-T0a-T1-po-domenach.csv, data/hrana-Q8-predbezne-T0a-T1.json, metodika/prahy-hypotez-T0.txt, metodika/slovnik-cs-en.txt, skripty/ (měřidlo cfprobe.py, statistiky cfstats.py, sonda mprobe.py, kontrola aditivity, replikace z jiné sítě).
+
+Redakce zveřejněné kopie: jména poskytovatelů připojení a hostingu nahrazena označením „poskytovatel A/B/C", IP adresy vlastníka odstraněny, osobní údaje odstraněny; veřejné adresy AI služeb (např. 34.162.191.81) ponechány. Interní odkazy na soubory ve formátu .md v textech odpovídají souborům .txt v tomto repozitáři (stejný název).

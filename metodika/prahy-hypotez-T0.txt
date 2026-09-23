@@ -1,0 +1,25 @@
+# Redakční prahy pro hypotézy H1–H7 (studie Cloudflare před/po)
+
+autor-křeslo: uživatel (rozhodnutí) · zapsal exekutor · datum: 2026-09-15 12:41 · status: **schváleno** · platí pro reveal T0 i pro T1+
+zdroj kritérií: `reviews/2026-09-14-cf-rfc-opus.md` §3 (návrh Opus), přijato v `reviews/2026-09-14-cf-rfc-opus-odpoved.md`
+
+| hypotéza | kritérium | práh | schválil |
+|---|---|---|---|
+| H1 (Q1) | dolní mez 95% CI podílu `cf_proxied` ≥ práh → drží; horní mez < práh → nedrží | **10 %** | uživatel 15. 9. |
+| H2 (Q2) | 95% CI rozdílu `cf_proxied` − `no_cf` (robots 200) > 0 drží / obsahuje 0 nedrží / < 0 opak | bez prahu | — |
+| H3 (Q3) | mezi `cf_proxied` s blokací ≥1 tréninkového tokenu: podíl s M_B, dolní mez CI > práh drží; horní mez < práh nedrží | **50 %** | uživatel 15. 9. |
+| H4 (Q4) | v `cf_proxied` (L0 pass): AI složka < ½ podílu ¬pass L4 (horní mez poměru < 0,5 drží; dolní > 0,5 nedrží) | 0,5 | Opus (kritérium) |
+| H5 (Q5) | skok ⇔ dolní mez 95% CI DiD > 0 ∧ DiD > c·|šumové dno| | **c = 3** | uživatel 15. 9. |
+| H6 (Q6) | 95% CI rozdílu ads.txt `cf_proxied` − `no_cf` (L0 pass) > 0 drží / obsahuje 0 nedrží | bez prahu | — |
+| H7a (Q7) | 95% CI rozdílu ¬pass L3 `cf_proxied` − `no_cf` (L0 pass) > 0 drží / obsahuje 0 nedrží | bez prahu | — |
+| H7b (Q7) | horní mez CI pass L3 v `cf_proxied` < 50 % drží; dolní mez > 50 % nedrží | 50 % | Opus (kritérium) |
+
+Poznámka k pořadí: kritéria H1–H7 vznikla 14. 9. 23:42 (po doběhnutí T0a/T0b, ale před tím, než kdokoli četl vrstvy 3–4 reportů); prahy schváleny 15. 9. 12:41, reveal T0 následuje po tomto commitu. Pásma (predikce hodnot) všech tří modelářů byla commitnuta dřív a nemění se.
+
+## Doplněk 16. 9. (Opus reakce §4)
+| hypotéza | kritérium | práh | původ |
+|---|---|---|---|
+| H4 (Q4) | AI složka / ¬pass L4 v `cf_proxied` (L0 pass) | **½** | Opus audit §3 (redakční práh, převzat beze změny) |
+| Q7 doplňková věta | smí se použít jen když │¬pass L2 − ¬pass L3│ ≤ 5 p.b. v `cf_proxied` | **5 p.b.** | Opus audit §3 (redakční) |
+| H7b | „většina" ⇒ 50 % | 50 % | definiční, ne volba |
+Poznámka k expozici: uživatel schválil 10 % / 50 % / c = 3 dne 15. 9. 12:41 před reveal; do té doby viděl z T0 jen vrstvu 1 (kvalita měřidla), žádnou míru H1–H7. Exekutor míry H1–H7 před schválením prahů neviděl také (reveal spuštěn až po commitu c3ee23f). Šumové dno pro H5 je definováno jako hrubý obrat (Opus reakce §2.2), ne čistý DiD.

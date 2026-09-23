@@ -1,0 +1,352 @@
+Zdroj: https://seensure.com/research/september-15 (snímek 22. 9. 2026 18:19 UTC, sha v runs/controls/sources-2026-09-22/STAZENO.txt). Prostý text ze stránky, bez úprav.
+
+What Cloudflare’s 15 September change did to AI crawler access — 1,046 sites, measured before and after
+Skip to content
+SeenSure
+How it works
+Pricing
+Research
+Crawler guide
+Log in
+Start free
+Original research · 16 September 2026
+What Cloudflare’s 15 September change actually did to AI crawler access
+We measured AI crawler access to 1,046 websites before and after the change, across eight crawler identities, with a non-Cloudflare control group and a search-crawler control inside every host. This is what moved.
+The short version
+Where the hosts came from.
+ 894 were sampled from Certificate Transparency logs of newly issued certificates; 152 came from a European agency directory. That is a population of mostly young domains, and it is not a random sample of the web. An earlier version of this page, and of our own posts, described the whole set as agency sites. That was wrong, and the correction is below.
+1,046 websites
+, each fetched by 
+ten identities
+ — eight AI crawlers, an ordinary browser, and the same browser again.
+746 sit behind Cloudflare, 300 do not.
+ The 300 are the point: if access changes in both groups, the cause was not Cloudflare, and without them there would be no way to know that.
+The three search crawlers stay in the set as a control inside every host
+, precisely because Cloudflare says they are unaffected. Training and agent crawlers move while search does not ⇒ Cloudflare did what it announced. Search moves too ⇒ that is the headline.
+Baseline, taken 2026-09-02: 
+sites behind Cloudflare already refused AI crawlers roughly four to twelve times more often than sites that are not
+ — 25.2% versus 5.5% for the most-refused identity — before anything changed.
+Refusals concentrate on Cloudflare-fronted sites far beyond their share of the sample.
+ Those sites are 71.3% of the hosts and 94.6% of the refusals. 
+We cannot say who decided
+ — see below, it is the most important limit on this page.
+885
+ access changes between the before-run and the after-run. We checked 1,046 sites before and after 15 September: 639 behind Cloudflare, 255 not, with a repeated browser fetch as an instrument control. On the Cloudflare side, refusal rose for both training crawlers — ClaudeBot 19.9% to 22.8%, GPTBot 18.9% to 22.0% — and fell hard for all three search crawlers and all three agent crawlers, 12.7 to 13.9 points each (largest: OAI-SearchBot 16.9% to 3.0%; smallest of the six: Perplexity-User 14.9% to 2.2%). The non-Cloudflare control stayed flat, and so did the repeated-browser check, on both sides of the split. Every one of these eight moves clears the drift we measured between the 10th and the 14th. Cloudflare's own scope for this change was training and agent crawlers, with search crawlers expected to hold flat. Search moved the most of any category. And agent moved the opposite way a tightening default would predict. A single before-and-after can't say why — only that whatever changed here changed unevenly, and in both directions at once. We're running this again in December to see if it holds.
+Why this is being published before the answer is known
+A before/after study is only worth anything if the “before” was recorded before. That is not a claim a reader can check after the fact, and a measurement produced entirely after an event is exactly as trustworthy as the people who produced it — which, for a company nobody has heard of, is not very.
+So the method, the host list construction, the controls and the full baseline are here now, dated, while we genuinely do not know what the answer will be. If the result turns out to be dull, this page will say so with the same numbers. Fixing a method after seeing the data is the failure this ordering exists to make impossible.
+How it is measured
+Each host is fetched by the same ten identities in a fixed order, 300 ms apart, six hosts in flight at a time, recording status code, response length, a hash of the body, the 
+server
+ header and whether a 
+cf-ray
+ was present. Every host experiences an identical sequence on every run.
+The order brackets the crawlers between two identical browser requests
+ — an ordinary browser first, then the eight AI crawlers, then that same browser again at the end. The closing fetch is the noise floor: it spans the whole sequence, so a host that changed halfway through is caught rather than blamed on whichever crawler happened to be asking at the time.
+The method is pinned by a version number and 
+the comparison tool refuses to compare two runs whose method versions differ
+, because a delta produced by our own change to the instrument would look exactly like a delta produced by the open web.
+The runs are spaced deliberately, and we missed a planned date.
+ An anchor on 2 September, a drift run on 10 September, the before-run on 14 September, the after-run on 16 September. The before-run was planned for 13 September, so that the drift control and the measurement would both span three days. We missed that window and the run happened on the 14th, so ordinary drift is now measured over 
+four days
+, 10 → 14, against a 
+two-day measurement
+, 14 → 16. The control is the longer interval, which is the conservative direction: ordinary drift gets more time to accumulate than the change does, so a change has to clear a higher bar to count. The twelve days from the anchor are no substitute: comparing a twelve-day drift rate against a two-day change assumes drift accumulates linearly in time, which is the precise assumption a control group is there to avoid making.
+The baseline, 2026-09-02
+Refusal rate per identity, as a share of the hosts that answered an ordinary browser normally (1,028 of 1,046). 
+A refusal is an HTTP status of 400 or above.
+ A host that never answered at all is not counted as refusing anyone — the same rule that already decides whether a host is reachable in the first place.
+Identity
+Kind
+All sites
+Behind Cloudflare
+735
+Not behind Cloudflare
+293
+ClaudeBot
+Training
+19.6%
+25.2%
+5.5%
+GPTBot
+Training
+19.2%
+24.2%
+6.5%
+OAI-SearchBot
+Search
+17.0%
+22.6%
+3.1%
+ChatGPT-User
+Agent
+16.6%
+22.3%
+2.4%
+PerplexityBot
+Search
+16.1%
+21.4%
+3.1%
+Claude-SearchBot
+Search
+15.4%
+20.4%
+2.7%
+Claude-User
+Agent
+14.8%
+20.0%
+1.7%
+Perplexity-User
+Agent
+14.8%
+20.0%
+1.7%
+An ordinary browser
+Control
+0.0%
+0.0%
+0.0%
+The gap between the last two columns is the finding in this table.
+ Before Cloudflare changed anything, an AI crawler was already several times more likely to be refused by a site behind Cloudflare than by one that is not. An ordinary browser was refused by neither, anywhere, which is what makes the comparison meaningful rather than a measure of how many sites were simply down.
+Corrected 7 September.
+ These figures were first published counting a network error — a crawler getting no answer at all — as a refusal, which contradicts the definition stated above and used everywhere else on this page. One host in the control group is the entire difference. Each column moved by at most 0.3 points; GPTBot’s non-Cloudflare rate went from 6.8% to 6.5%, and nothing about the finding changed. The earlier numbers were wrong in the same direction as the mistake this page exists to warn about: reading a failure to connect as a decision somebody made. Checking it also caught an older error that had nothing to do with the definition: the summary above said “four to ten times” and never matched this table at either end. It is computed from the table now, like every other figure here.
+Corrected 9 September: the headline is carried by the newer domains
+We originally described these 1,046 hosts as agency sites. 
+Most of them are not.
+ 894 were sampled from Certificate Transparency logs of newly issued certificates and 152 came from a European agency directory. Split by where each host came from, the same comparison gives:
+all 1,046
+the 152 agency hosts
+the 894 sampled from CT logs
+ClaudeBot
+25.2% / 5.5% — 4.6×
+10.3% / 4.5% — 2.3×
+27.8% / 5.6% — 5.0×
+Claude-User
+20.0% / 1.7% — 11.8×
+6.5% / 2.3% — 2.8×
+22.3% / 1.6% — 13.9×
+GPTBot
+24.2% / 6.5% — 3.7×
+9.3% / 6.8% — 1.4×
+26.8% / 6.5% — 4.1×
+A repeated browser (control)
+0.0% / 0.0%
+0.0% / 0.0%
+0.0% / 0.0%
+Read the control row first.
+ The repeated browser is refused 0.0% in every cell, so the instrument is not what differs between those columns — the sample is. The gap between Cloudflare and non-Cloudflare hosts is real in all three, and on the agency subset it is 1.4× to 2.8× rather than four to twelve times. Newly registered domains are the population a CDN challenges hardest, because that is where the abuse is, so this is the direction you would expect once you know what is in the sample.
+Where does your own site stand?
+Every number here was produced the way the checker on this site works: fetch a page as an ordinary browser, fetch it again as each AI crawler, and compare what comes back. The two are not identical — this study repeats the browser fetch as a noise floor, and the checker tests more crawlers than the eight used here — but the question is the same one. If you want to know which identities your own site serves today and which it refuses, 
+you can run a check here
+. No account, one field.
+It cannot tell you what changed.
+ Nothing can do that retrospectively, which is the whole reason this page exists.
+We are naming no sites, here or on 16 September. Most of these owners have not been told, and a monitoring company that publishes other people’s configuration before telling them is not one anybody should trust with their own.
+What we will not claim, and why
+These are refusal rates, not blocking rates, and we cannot tell you who decided.
+ 1,357 of 1,436 HTTP refusals (94.5%) carried a 
+cf-ray
+. 
+That header proves Cloudflare was in the path. It does not prove Cloudflare made the decision.
+ A site’s own origin can return 403 and have that answer proxied back through Cloudflare, and from outside it is indistinguishable from a refusal Cloudflare issued itself. Nothing measurable from here separates Cloudflare’s own bot handling from a rule a customer wrote in their WAF.
+What survives that objection is the concentration.
+ Cloudflare-fronted hosts are 
+71.3%
+ of this sample but account for 
+94.6%
+ of the refusals, and 
+not one
+ of the 78 refusals from the non-Cloudflare control group carried a 
+cf-ray
+ at all. Where refusals happen is measurable from outside. Who chose them is not, and a monitoring product that blurred that line would be doing the thing it sells against.
+This paragraph is here because an outside reader was right and we were wrong. An earlier draft said 94.5% of refusals “came from a CDN, not from the site”. That is not what the header shows, the objection came from someone who has measured this at far greater scale than we have, and the correction makes the finding narrower and the page better.
+We lead on status codes, not on body changes.
+ 361 of 1,026 hosts (35.2%) returned 
+different bodies to two identical browser requests in the same run
+. Those pages rewrite themselves between fetches, so a body difference on them says nothing about crawlers. Counting only the 2,616 cases where a crawler 
+was let in
+ and still got a different body — a refused crawler gets a challenge page, and calling that “different content” would report the refusal finding twice — excluding the dynamic hosts leaves 345, a cut of 
+86.8%
+. What remains is flat across all eight crawlers, 
+6.9% to 8.0%
+, which is the signature of content that changes on its own, not of anything crawler-specific. An earlier draft of this study would have reported that raw figure as “sites serve crawlers different content”. It would have been wrong, and the control is the only reason we know.
+The announced scope is narrow, and that cuts against the drama.
+ Of 3,535 hosts considered, 2,090 were reachable, 746 sat behind Cloudflare, and 52 were running ad tags. Both at once: 
+15
+. If the change stays inside the scope Cloudflare announced, it touches about 
+0.7%
+ of these sites. Either it is far narrower than the reaction suggests, or it will not stay inside its stated scope — and only the controls can tell those apart. That number is measured on this particular sample, which is mostly domains that had a TLS certificate issued recently — not a cross-section of the web, and not the client sites an agency looks after. New domains are unusually likely to be behind a CDN and unusually unlikely to be running ad tags, and both of those push this number down. Read it as a floor for this sample rather than an estimate for anything else.
+What changed
+Before-run 2026-09-14, after-run 2026-09-16, same method version, same hosts.
+Identity
+Kind
+Before
+After
+ClaudeBot
+Training
+19.9%
+22.8%
+GPTBot
+Training
+18.9%
+22.0%
+PerplexityBot
+Search
+16.0%
+3.2%
+OAI-SearchBot
+Search
+16.9%
+3.0%
+ChatGPT-User
+Agent
+16.4%
+2.8%
+Claude-SearchBot
+Search
+15.4%
+2.4%
+Perplexity-User
+Agent
+14.9%
+2.2%
+Claude-User
+Agent
+14.7%
+1.5%
+An ordinary browser
+Control
+0.0%
+0.0%
+Inside the Certificate Transparency sample: behind Cloudflare or not
+Of the hosts sampled from Certificate Transparency logs, 
+639
+ sit behind Cloudflare and 
+255
+ do not. Both sides are equally new domains, so a change that opens on the Cloudflare side alone cannot be put down to newness. Drift is 10 September → 14 September; the change is 14 September → 16 September. Those intervals differ in length because we missed the window planned for 13 September, and nothing here is rescaled to hide that.
+Identity
+Behind Cloudflare 
+639
+Not behind Cloudflare 
+255
+Before
+After
+Drift
+Change
+Before
+After
+Drift
+Change
+GPTBot
+26.8%
+31.0%
++0.6
++4.2
+6.3%
+6.7%
+-0.8
++0.4
+ClaudeBot
+28.1%
+32.7%
+-0.3
++4.6
+6.8%
+5.8%
++0.1
+-1.0
+ChatGPT-User
+24.7%
+3.2%
+-0.2
+-21.5
+2.1%
+2.1%
+0.0
+0.0
+Claude-User
+22.6%
+1.8%
+0.0
+-20.8
+1.7%
+1.7%
+-0.4
+0.0
+Perplexity-User
+22.6%
+2.3%
+0.0
+-20.3
+1.7%
+1.7%
+-0.4
+0.0
+OAI-SearchBot
+24.9%
+3.2%
+-0.2
+-21.7
+3.0%
+2.5%
+-0.3
+-0.5
+Claude-SearchBot
+22.9%
+2.3%
+0.0
+-20.6
+3.0%
+2.5%
++0.1
+-0.5
+PerplexityBot
+23.6%
+3.4%
+-0.2
+-20.2
+2.5%
+2.9%
+-0.4
++0.4
+A repeated browser (control)
+0.2%
+0.2%
+-0.1
+0.0
+0.0%
+0.0%
+-0.4
+0.0
+Refusal rate as a share of hosts that answered an ordinary browser in that run; drift and change in percentage points. A change counts only where it is larger than that identity’s own drift on the same side.
+We checked 1,046 sites before and after 15 September: 639 behind Cloudflare, 255 not, with a repeated browser fetch as an instrument control. On the Cloudflare side, refusal rose for both training crawlers — ClaudeBot 19.9% to 22.8%, GPTBot 18.9% to 22.0% — and fell hard for all three search crawlers and all three agent crawlers, 12.7 to 13.9 points each (largest: OAI-SearchBot 16.9% to 3.0%; smallest of the six: Perplexity-User 14.9% to 2.2%). The non-Cloudflare control stayed flat, and so did the repeated-browser check, on both sides of the split. Every one of these eight moves clears the drift we measured between the 10th and the 14th. Cloudflare's own scope for this change was training and agent crawlers, with search crawlers expected to hold flat. Search moved the most of any category. And agent moved the opposite way a tightening default would predict. A single before-and-after can't say why — only that whatever changed here changed unevenly, and in both directions at once. We're running this again in December to see if it holds.
+Why we are the ones doing this
+SeenSure monitors whether AI crawlers can actually reach a website, and tells the owner when that changes. This measurement is the same thing our customers get, run across a thousand sites at once. If you want the answer for your own sites rather than for a sample, 
+check one now
+ — it takes a few seconds and needs no account.
+Method, host-list construction and the verification that every run must pass before it can be compared are in the open: 
+tools/capture-baseline.cjs
+. A run that fails its own verification cannot be published by us at all — the tool refuses to compare it, which is how a measurement made off a dropped connection stops becoming a finding about Cloudflare.
+SeenSure
+We watch your websites and tell you the moment AI stops being able to read them.
+Product
+How it works
+Pricing
+Free instant check
+Our own crawler log
+Start free
+Learn
+Research: 1,046 sites
+Earlier study: 624 sites
+AI crawler guide
+What is llms.txt?
+Cloudflare Sept 2026
+Company
+Contact
+Privacy
+Terms
+About our checker
+© 2026 SeenSure
+Built for people who look after other people's websites.

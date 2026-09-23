@@ -1,0 +1,4 @@
+Data, výsledky a texty v tomto repozitáři: CC BY 4.0 (uveďte zdroj: Hatteria labs s.r.o., torumata.com, studie Cloudflare 15. 9. 2026).
+Skripty ve složce skripty/: MIT.
+Snímky cizích webových stránek ve složkách zdroje/snimky-*: pouze pro doložení citací; autorská práva náleží původním autorům.
+(Návrh licence; potvrdí vlastník před zveřejněním.)

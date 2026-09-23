@@ -1,0 +1,40 @@
+# Veřejné vysvětlení nálezu T1: Cloudflare 15. 9. 2026 zrušil managed robots.txt ve prospěch Bot Preference Sync
+
+autor-křeslo: exekutor · datum: 2026-09-18 12:45 · status: doloženo veřejnými zdroji (snímky s sha v `runs/controls/sources-2026-09-18/STAZENO.txt`) · navazuje na `runs/cf-T1-2026-09-16-home-r2/REVEAL-T1.md` §2 hypotézy (a)–(c) a Opus H-A/H-B/H-C · zdroje dodal vlastník 18. 9. 12:37
+
+## 1. Zdroje
+1. **Blog 21. 8. 2026 „Say it once: introducing Bot Preference Sync"** (Jin-Hee Lee), https://blog.cloudflare.com/bot-preference-sync/ — snímek `blog_cloudflare_com_bot-preference-sync.html`.
+2. **Blog 15. 9. 2026 „Accountable mixed-use AI crawlers"**, https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/ — snímek `blog_cloudflare_com_accountable-mixed-use-ai-crawlers.html`.
+3. Dokumentace managed robots.txt (3. 8. 2026) a changelog Bot Management (1. 7. 2026) — snímky z 16. 9. (`sources-2026-09-16/`), o zrušení funkce mlčí.
+
+## 2. Doslovné pasáže (zdroj 2, 15. 9.)
+> „What changes on September 15? We are making the following changes to Bot Management and AI Crawl Control: Block and Block on pages with ads now apply to mixed-use crawlers, including Applebot, Bingbot, and Googlebot, so either setting impacts search as well as training. To stop training and keep search, use Disallow AI Training. “Block AI Bots” will be deprecated in favor of the more granular Search, Training, and Agent controls. **Managed Robots.txt will be deprecated in favor of Bot Preference Sync. Customers who enabled Managed Robots.txt will migrate to the new system.** Disallow AI Training will become part of the recommended configuration for certain new domains. Existing customers will have their preferences migrated to the new controls as described below. What you need to do: Nothing, in almost every case. Your current settings carry over on their own."
+
+> „Previous Training selections of Block or Block on pages with ads will migrate to Disallow AI Training." (tabulka Legacy → New: Training Block → Disallow AI Training; Agent Allow → Allow, Block → Block; Search beze změny)
+
+> „Disallow AI Training: Bot Preference Sync publishes the applicable no-training preference in robots.txt. Accountable mixed-use crawlers remain allowed for search. Every other training crawler is blocked, including the training-only crawlers run by Amazon, Anthropic, Meta, and OpenAI — blocking those does not affect search."
+
+> „Agents do not create the same search-discoverability tradeoff as mixed-use crawlers, and the Internet does not yet have a well-established directive for expressing Disallow preferences to agents. For now, we're not including a Disallow setting for Agents."
+
+Zdroj 1 (21. 8.): nový blok v robots.txt má jiný marker: „# BEGIN Cloudflare Bot Preference Sync … # END Cloudflare Bot Preference Sync", je prependován před existující soubor; „For existing customers who are using the legacy managed robots.txt feature, we'll prompt you to review and confirm your preferences to transition to the new Bot Preference Sync upon its upcoming launch."
+
+## 3. Co to vysvětluje z našich měření (T0a 14. 9. → T1 16. 9.)
+| pozorování (REVEAL-T1) | vysvětlení ze zdrojů |
+|---|---|
+| šablona „Cloudflare Managed content" zmizela u 725 z 763 zón (13,5 % → 2,6 % cf_proxied) | managed robots.txt zrušen 15. 9. („deprecated in favor of Bot Preference Sync"), migrace existujících zákazníků |
+| hrana u týchž zón: UA GPTBot/ClaudeBot ¬pass 73 → 87 % | legacy Training Block/„Block AI Bots" → **Disallow AI Training** = trénovací crawlery (OpenAI, Anthropic, Meta, Amazon) blokovány na hraně |
+| hrana: UA ChatGPT-User ¬pass 69 → 27 % | legacy „Block AI Bots" zrušen ve prospěch granulárních kategorií; pro Agent není Disallow a migrace Agent Allow → Allow; agent tedy u většiny zón puštěn |
+| Googlebot beze změny | Accountable mixed-use crawlers zůstávají povoleny pro search |
+| 38 zón šablonu udrželo (Polska Press, Groupon; bez `nel`, s HSTS) | zóny s explicitní/podnikovou konfigurací, které migrace (zatím) nezasáhla, nebo migrují jinak (neověřeno) |
+| ads.txt neomezuje vzestup | Disallow AI Training není „on pages with ads" varianta („cannot be expressed in robots.txt") |
+
+## 4. Co zdroje NEvysvětlují (otevřené, měří T2 a sonda)
+- **Deklarační mezera:** Disallow AI Training má podle blogu „publish the applicable no-training preference in robots.txt" přes Bot Preference Sync. V T1 (16. 9.) ani živě 18. 9. (0/60 ztracených zón, 0 v celé T1 populaci) **žádná zóna nový marker „Bot Preference Sync" nemá**. Migrované zóny tedy 16.–18. 9. blokují trénink na hraně, ale v robots.txt už nic nedeklarují. Buď se zápis do robots.txt teprve rozjede (postupné nasazení), nebo čeká na potvrzení zákazníka („we'll prompt you to review and confirm"). Rozliší T2 (22. 9.) a sonda (od 18. 9. detekuje i marker BPS).
+- Proč 38 zón šablonu udrželo.
+- Chování vůči **ověřeným** robotům (my měříme napodobené UA).
+
+## 5. Důsledky pro studii
+- Hypotéza Opus **H-A (záměrná změna dosahu funkce při nasazení 15. 9.) je doložena** veřejným zdrojem; H-B (regrese) padá; H-C (stažení z vnějších důvodů) je součástí H-A (produktová konsolidace). Pásma pro T2 zůstávají v platnosti (commitnuta 16. 9., bez této informace); do reveal T2 se to uvede jako expozice po commitu pásem.
+- Měřidlo: `cfstats.py` od 18. 9. hlásí citlivost M_B ∨ BPS ∨ M_C (nový marker), pre-registrované Q5 zůstává na M_B ∨ M_C; `mprobe.py` rozlišuje kind `BPS`.
+- Článek: titulek je „Cloudflare 15. 9. přepnul existující zóny z deklarace v robots.txt na vynucování na hraně podle kategorií; deklarace zatím chybí". Číslo 4,7 % HTTP-only a nález o reputaci zůstávají samostatné.
+- Dotaz na komunitě (960421) zůstává relevantní: ptá se přesně na deklarační mezeru; do vlákna doplnit odkaz na blog 15. 9. a otázku, kdy Bot Preference Sync začne u migrovaných zón psát do robots.txt.

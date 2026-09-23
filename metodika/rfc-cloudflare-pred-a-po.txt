@@ -1,0 +1,248 @@
+# RFC: Měření českého webu PŘED a PO změně výchozích pravidel Cloudflare pro AI crawlery (TORUMATA P2)
+
+autor-křeslo: exekutor · datum: 2026-09-13 · status: **návrh** (definice schvaluje uživatel PŘED daty)
+artefakty: draft sondy `cfprobe.py` (scratchpad, necommitnuto do reveal pásem) · kontrolní běh na 4 doménách (níže)
+
+---
+
+## 0. Co Cloudflare skutečně mění (ověřeno v primárních zdrojích 2026-09-13)
+
+| tvrzení | zdroj |
+|---|---|
+| Od 15. 9. 2026 pro **nové domény** onboardované na Cloudflare: boty kategorie Training a Agent **blokovány na stránkách s reklamou**, Search zůstává povolen. | blog.cloudflare.com/content-independence-day-ai-options/ ; developers.cloudflare.com/bots/changelog (2026-07-01) |
+| Existující zákazníci: výzva k revizi nastavení v Security → Settings; mohou opt-out. Zda a kdy se výchozí stav překlopí existujícím Free zónám, dokumentace **neříká**. | tamtéž |
+| Smíšené boty (Googlebot, Applebot, BingBot = Search+Training) se posuzují podle nejpřísnější kategorie. | tamtéž |
+| Detekce reklamy = „Cloudflare automated detection", technika nezveřejněna. | developers.cloudflare.com/bots/additional-configurations/block-ai-bots/ |
+| Mechanismus vynucení (403 / challenge / jiné) **nezveřejněn**. Vynucení se týká botů identifikovaných Cloudflare (BotBase, ověřené boty přes IP list / rDNS / Web Bot Auth). | tamtéž; developers.cloudflare.com/bots/concepts/bot/verified-bots/ |
+| Managed robots.txt (Bot Preference Sync, od 21. 8. 2026): předřazuje blok mezi `# BEGIN Cloudflare Managed content` a `# END Cloudflare Managed Content`, řádek `Content-signal: search=yes, ai-train=no, use=reference`, Disallow pro Amazonbot, Applebot-Extended, Bytespider, CCBot, ClaudeBot, Google-Extended, GPTBot, meta-externalagent. Dostupné na všech plánech, **zapíná se ručně**. | developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/ |
+
+**Premisa, kterou musíme změřit před stavbou (CHARTER §3, drift 3 exekutora):** změna 15. 9. cílí primárně na *nové* domény a na existující až po *opt-in* v dashboardu. Pro populaci **existujících** českých webů tedy může být skok 15. 9. **nulový**. Design proto nesmí sázet na skok; měří longitudinálně a oba výsledky jsou publikovatelné:
+- skok existuje → „X % českých webů za Cloudflare přestalo být čitelných pro AI přes noc",
+- skok neexistuje → „Cloudflare deadline pro český web nic nezměnil; co se mění, je robots.txt, pomalu" (věta typu „říkáme i to, co se nám nehodí").
+
+## 1. Jak poznáme, že web používá Cloudflare (definice, fixovat před daty)
+
+Tři nezávislé signály, každý s jinou slepou skvrnou, kombinace do tří tříd:
+
+| signál | jak | co znamená | slepá skvrna |
+|---|---|---|---|
+| **IP** | A/AAAA domény ∈ oficiální rozsahy `cloudflare.com/ips-v4`, `/ips-v6` (snapshot uložen, sha256 v sidecaru) | provoz jde přes hranu Cloudflare (proxy = „orange cloud") | web za jiným CDN, které samo sedí na CF (vzácné); Cloudflare Pages/Workers jsou v rozsazích, tj. pozitivní správně |
+| **HTTP hlavičky** | `cf-ray` přítomen, nebo `server: cloudflare`; doplňkově `cf-cache-status`, `cf-mitigated` | totéž, druhá nezávislá cesta | origin může hlavičky přepsat (vzácné); `server: cloudflare` bez `cf-ray` = podezřelé, logovat zvlášť |
+| **DNS NS** | NS záznamy končí na `ns.cloudflare.com` | doména má DNS u Cloudflare; **samo o sobě nic o proxy** | CF přes CNAME setup (Business+) nemá CF NS; DNS-only zóny nemají hranu |
+
+**Klasifikace (fix):**
+- `cf_proxied` = IP ∈ rozsahy **nebo** `cf-ray` přítomen (obě cesty se logují zvlášť; neshoda cest = řádek do forenziky, ne tichý override)
+- `cf_dns_only` = NS Cloudflare ∧ ¬cf_proxied → hrana nezasahuje, **pravidla 15. 9. se netýkají**
+- `no_cf` = nic z výše uvedeného → **placebo rameno** (změna k nim nedosáhne)
+
+Pozitivní/negativní kontrola měřidla (běh 2026-09-13, egress [IP odstraněna]):
+
+| doména | třída | IP∈CF | cf-ray | NS CF |
+|---|---|---|---|---|
+| cloudflare.com | cf_proxied | ano | ano | ne (CNAME setup: potvrzuje, že NS sám nestačí) |
+| medium.com | cf_proxied | ano | ano | ano |
+| seznam.cz | no_cf | ne | ne (server: envoy) | ne |
+| torumata.com | no_cf | ne | ne | ne  |
+
+## 2. Co se dá měřit zvenčí a co ne
+
+**Nedá se měřit zvenčí:** skutečná politika hrany vůči *ověřenému* GPTBotu/ClaudeBotu. Ověření jde přes IP list / rDNS / Web Bot Auth; my nejsme ověřený bot. Požadavek s UA `GPTBot` z naší IP je pro Cloudflare *neověřený žadatel vydávající se za bota* a zachází s ním jinak než s pravým. **Důkaz z kontroly:** medium.com vrátilo 403 i pro UA `Googlebot` z naší IP, přestože Googlebota nikdo neblokuje.
+
+**Dá se měřit (pozorovatelné veličiny):**
+
+| veličina | definice | proč |
+|---|---|---|
+| **V1 robots postoj** | pro každý bot ze seznamu (GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Claude-User, anthropic-ai, Google-Extended, PerplexityBot, CCBot, Bytespider, Amazonbot, Applebot-Extended, meta-externalagent, …) stav ∈ {blocked = `Disallow: /`, partial, allowed, unaddressed}; agregáty: „blokuje ≥1 AI bota", „blokuje ≥1 tréninkového bota" | jediný kanál, kde Cloudflare (Bot Preference Sync) zapisuje nastavení *viditelně*; nezávisí na ověření |
+| **V2 CF managed marker** | přítomen řetězec `BEGIN Cloudflare Managed content` v robots.txt; přítomen řádek `Content-signal:` | přímý otisk zapnutí Cloudflare AI voleb; **hlavní ukazatel „po"** |
+| **V3 CF třída** | dle §1 | jmenovatel pro vše ostatní |
+| **V4 monetizace** | `/ads.txt` vrací 200 a obsahuje ≥1 platný řádek (IAB standard) **nebo** HTML homepage obsahuje signaturu (adsbygoogle, doubleclick, sklik/ssp.seznam, adform, GAM) | blokace 15. 9. je scoped na „stránky s reklamou"; bez této osy nelze říct, koho se týká. HTML detektor podhodnocuje (seznam.cz: false), ads.txt je definičně čistší |
+| **V5 zacházení s neověřeným žadatelem** | status homepage pro UA ∈ {browser, GPTBot, ClaudeBot, ChatGPT-User, Googlebot, vlastní `torumata-probe`} | NE politika vůči ověřenému botu. Googlebot UA = kontrola: 403 i pro něj ⇒ anti-impersonace, ne AI politika. Vlastní UA = kontrola vůči obecnému bot-fightu |
+| **V6 sběr pro statistiku** (rozšířeno 2026-09-13 na žádost uživatele) | uloží se celé: `robots.txt`, `ads.txt`, `llms.txt`, `llms-full.txt`, `ai.txt`, `sitemap.xml` (do 1 MB), `.well-known/security.txt`; HTML L0 (po JS) i L2 (bez JS); JSON-LD přítomen; JS-závislost = text L0 / text L2 | materiál pro více článků („stav evropského webu pro éru AI": adopce llms.txt, sitemapy, structured data) bez nového crawlu; každá odvozená veličina se před publikací pre-registruje zvlášť |
+
+## 2b. V7 — čitelnost pro lokálního agenta (žebřík automatizace) — návrh uživatele 2026-09-13
+
+**Otázka:** Weby a Cloudflare mají politiku vůči *pojmenovaným, registrovaným* botům (GPTBot, ClaudeBot…, ověřeným přes IP/podpis). Lokální agent (uživatel si pouští model na vlastním HW, aby data nesdílel s třetí stranou; Ollama + web-search, Open WebUI, browser-use agenti) **nemá jméno, není v registru, přichází z domácí IP** a robots.txt ho oslovit neumí jinak než `*`. Jak s ním hrana zachází? Hypotéza uživatele: weby počítají jen s registrovanými boty a lokální agenty blokují jako vedlejší škodu.
+
+**Nález z kontrol, který otázku činí měřitelnou** (2026-09-13, egress [IP odstraněna] = domácí IP poskytovatel C, tj. IP reputace vyloučena; medium.com = cf_proxied):
+
+| příčka | co to je v praxi | nástroj sondy | medium.com | cloudflare.com |
+|---|---|---|---|---|
+| L0 skutečný prohlížeč | člověk; browser-use agent přes plný Chrome | Chrome `--headless=new`, běžný UA, bez `navigator.webdriver` | **200** | 200 |
+| L1 headless prohlížeč | Playwright/Puppeteer agent „z krabice" | Chromium headless, UA `HeadlessChrome` | **403** Attention Required | 200 |
+| L2 HTTP knihovna s UA prohlížeče | typický lokální agent s „maskovaným" UA (UA říká Chrome, TLS otisk říká Python) | httpx / curl + Chrome UA | **403** challenge | 200 |
+| L3 HTTP knihovna s poctivým UA | lokální agent bez masky | `python-requests/2.32`, `curl/8`, `torumata-probe/0.1` | **403** | 200 |
+| L4 jmenovaný AI bot, neověřený | někdo se vydává za GPTBot/ClaudeBot | UA GPTBot / ClaudeBot / ChatGPT-User | **403** | 200 |
+| L4' jmenovaný search bot, neověřený | kontrola anti-impersonace | UA Googlebot | **403** | 200 |
+
+Hrana rozhoduje podle **TLS otisku a chování**, ne podle hlavičky UA: L2 padá, přestože UA tvrdí Chrome. To znamená dvě věci: (a) dosavadní „browser" rameno sondy (httpx + Chrome UA) **nebylo** kontrola člověka, byl to L2 = lokální agent v masce; kontrola člověka musí být skutečný Chrome (L0); (b) V5 z §2 se sjednocuje do V7: příčky L3/L4/L4' jsou její speciální případy.
+
+**Definice V7 (fix):** pro doménu d a příčku Lk: `pass(d,Lk)` = finální status 2xx/3xx **a** žádný `cf-mitigated: challenge` **a** titulek ≠ „Attention Required" / „Just a moment". `agent_floor(d)` = nejnižší k, od kterého web nepustí (L0 pass, L1 fail ⇒ floor 1). Agregát: rozdělení `agent_floor` v `cf_proxied` vs `no_cf`; „čitelný pro lokálního agenta" = pass na L3.
+
+**Co jiného to může vyrábět (permutační myšlení):** (1) obecný anti-bot bez vztahu k AI → proto L3 s neutrálním UA a L4' Googlebot; (2) rate-limit našeho průchodu → náhodné pořadí příček per doména, ≤1 req/s/doména, opakování na podvzorku v jiném pořadí; (3) headless detekce vs TLS otisk → L1 a L2 jsou dvě různé osy, čte se každá zvlášť; (4) druhý egress (jiná domácí/VPS IP) ověří, že se nálezy nedrží naší adresy.
+
+**Náklady:** L0 vyžaduje skutečný Chrome per doména (~3–5 s, 6 paralelně ⇒ 5 000 domén ≈ 1 h). L1–L4' jsou HTTP, zanedbatelné. Pokud T0 nestihne L0 na všech, L0 běží na náhodném podvzorku 1 000 domén (seed zapsán) a zbytek doplní T1.
+
+**Pásmo navíc (§5 bod 7):** podíl `cf_proxied` domén s pass(L3) vs podíl `no_cf` domén s pass(L3); a podíl domén, kde L0 pass ∧ L2 fail („čitelné pro člověka, nečitelné pro lokálního agenta v masce"). Kotva: žádná známá; mechanická podlaha = no_cf rameno.
+
+**Publikovatelná věta, pokud hypotéza drží:** „Politika českého webu vůči AI má jména (GPTBot, ClaudeBot). Agent, který jméno nemá, protože běží na vašem počítači, je zablokovaný dřív, než se politika vůbec uplatní." Pokud nedrží (většina cf_proxied pustí L3), je to stejně dobrá věta opačným směrem.
+
+## 3. Populace (fixováno 2026-09-13 večer po rozhodnutí uživatele)
+
+Zdroj: Tranco top-1M, list **46VQX** (2026-09-13). Radar Cloudflare zamítnut jako jmenovatel (per zemi jen top 100, měří návštěvnost z [IP odstraněna], a jmenovatel by definoval měřený objekt); Tranco ho obsahuje jako jeden z pěti zdrojů. Radar zůstává jako kotva (vendorův pohled na vlastní síť) a volitelné rameno C (CZ top 100), pokud uživatel založí API token.
+
+**Tier 1 = `population/eu-tier1-2026-09-13.txt`, 22 846 domén** (formát `rank,doména,cc,stratum`, otisk v `population/SHA256SUMS`):
+
+| cc | výběr | n |
+|---|---|---|
+| cz | celý ccTLD subset | 4 970 |
+| sk | celý ccTLD subset | 1 876 |
+| de, uk, fr, pl, it, es, at, nl | top 1 000 dle ranku + 1 000 náhodných ze zbytku ccTLD subsetu (seed 20260914) | 8 × 2 000 |
+
+Definice „web země" = ccTLD. Přiznaná slepá skvrna: německé weby na .com, britské na .com; ccTLD je reprodukovatelná a stejná pro všechny země, proto se drží. Stratum `top1000` vs `random1000` se hlásí zvlášť (hlava vs tělo).
+
+**Tier 2 (po 15. 9., bez „před"):** zbytek ccTLD subsetů (celkem ~170 k domén v Tranco pro sledované země) — longitudinálně T1→T3; „před" pro ně neexistuje, což je přiznaná mez. **Ocas ČR** (malé weby mimo Tranco): zdroj dodá uživatel, samostatné rameno.
+
+Filtry: doména se zkouší na `https://{d}/`; `unresolved` = DNS bez A/AAAA (zůstává ve jmenovateli); `skipped_unreachable` = dvě selhání spojení za sebou, zbylé příčky se nezkouší (zůstává ve jmenovateli); redirect se následuje, finální host se loguje, párování mezi průchody je na vstupní doméně.
+
+## 4. Design před/po
+
+- **T0 „před": 14. 9. 2026**, celý průchod, dvakrát v témže dni (T0a ráno, T0b večer) → **šumové dno** měřidla (kolik domén změní V1–V5 bez jakékoli změny politiky). Bez šumového dna nelze číst deltu.
+- **T1: 16. 9.** (den po), **T2: 22. 9.**, **T3: 15. 10.** — párově per doména.
+- **Placebo rameno:** `no_cf` domény. Změna k nim nedosáhne; jejich delta T0→T1 = podklad (robots.txt se mění i sám od sebe). Efekt Cloudflare = delta(cf_proxied) − delta(no_cf), stejný dvouramenný design jako párový test 8k→32k (HANDOFF §2 bod 10).
+- **Dvě nezávislé cesty** (CHARTER §3): DNS přes dva resolvery (systémový + [IP odstraněna] nebo [IP odstraněna]); HTTP z tohoto stroje ([IP odstraněna]) a z **druhého egressu** (jiná síť/VPS, zajistí uživatel) alespoň na podvzorku 300 domén. Neshoda cest = forenzika, ne průměr.
+- **Permutační myšlení „co jiného vyrobí blokaci":** rate-limit (→ náhodné pořadí, ≤1 req/s/doména, ≤6 req/doména, retry po 60 s), IP reputace (→ druhý egress), anti-impersonace (→ Googlebot UA kontrola), geo (→ druhý egress mimo CZ jako citlivostní test).
+- **Provenance:** sidecar per průchod: verze skriptu + git commit, Tranco ID + sha, CF IP list sha, egress IP, resolver, UA řetězce, začátek/konec; surové `robots.txt`, `ads.txt` a hlavičky uložené se sha256. Číslo bez artefaktu neexistuje.
+
+
+**Změna měřidla 2026-09-14 (v5):** každý HTTP požadavek (příčky L2–L4g, robots, ads, extra) používá vlastního klienta bez cookies a s vlastním TLS spojením, tj. definice „nezávislý návštěvník". Verze v4 (run r4, 15 050 domén) přenášela cookies mezi příčkami téže domény; rozdíl v4/v5 je měřitelný z r4 vs r5 na týchž doménách. Verze měřidla je v sidecaru (`script_commit`).
+
+
+**Dodatek po review Gemini (2026-09-14, `reviews/2026-09-14-cf-rfc-gemini.md`, odpověď `reviews/2026-09-14-cf-rfc-gemini-odpoved.md`), platí od T1:** (1) vlajka `reachable` a veličina 1 se dvěma jmenovateli; (2) publikační formulace „weby v národní TLD z Tranco top-1M"; (3) podkontrola L0g = Chrome s GUI přes Xvfb na 300 doménách, práh 2 p.b.; (4) primární delta jen pro domény se stejným finálním hostem a stejnou CF třídou v obou průchodech, změny třídy = „migrace" zvlášť; (5) veličina „L4 fail ∧ L3 pass" = horní mez cílené blokace nejmenovaných botů, ne „AI politika".
+
+
+**Dodatek po auditu Opus (2026-09-15, `reviews/2026-09-14-cf-rfc-opus.md`, odpověď `reviews/2026-09-14-cf-rfc-opus-odpoved.md`), platí od T1:** 30 nálezů, všechny přijaty (N19 ověřen jako splněný, N26 splněn před reveal). Klíčové změny: (a) neměnná ID **Q1–Q7** pro pre-registrované veličiny vs V1–V7 pro sbírané signály; (b) třída `unreachable` mimo obě ramena a vlajka `reachable`; (c) `cf-ray` z první odpovědi téže registrované domény (`cf_ray_first`) jako primární třída, T0 přepočteno z blobů; (d) `pass` s uzavřeným seznamem signatur blokových stránek všech známých WAF + obsahové kritérium, T0 přepočteno, obě čtení hlášena; (e) robots/ads/extra s Chrome fallbackem a stavem `unobservable`; (f) Q5 = DiD v p. b., ITT z T0a, pravidlo „skok ⇔ dolní mez 95% CI > 0 ∧ DiD > c·|šum|", c schvaluje uživatel; (g) formulace: „prohlížeč Chrome řízený programem", „program, který se představí jako GPTBot", „nese otisk", „programaticky monetizované", „z N nejnavštěvovanějších domén .cz podle Tranco"; (h) k8s = T1-k8s a T2-k8s, Q5 jen doma; (i) skutečný počet požadavků 16–19 GET/doména (oprava §6).
+
+| Q | veličina (pre-registrovaná) | signály V |
+|---|---|---|
+| Q1 | podíl `cf_proxied` | V3 |
+| Q2 | robots.txt blokuje ≥1 z 9 tréninkových tokenů (jmenovatel robots 200 text) | V1 |
+| Q3 | Cloudflare managed marker M_B mezi `cf_proxied` (M_C zvlášť) | V2 |
+| Q4 | ¬pass UA GPTBot / UA Googlebot mezi L0 pass; AI := ¬L4 ∧ L3 ∧ L4' | V7 (L4a, L4g, L3) |
+| Q5 | DiD markeru T0a→T1, `cf_proxied` − `no_cf`, ITT | V2, V3 |
+| Q6 | platný ads.txt mezi `cf_proxied` ∧ L0 pass | V4 |
+| Q7 | H7a: ¬pass L3 rozdíl ramen; H7b: většinovost pass L3 v `cf_proxied`; L0 ∧ ¬L2 | V7 (L3, L2, L0) |
+
+
+**Dodatek 16. 9. (po reakcích Opuse a Gemini, `reviews/2026-09-16-cf-reakce-odpoved-exekutora.md`):**
+- **Pravidlo skórování pásem:** pásma commitnutá před T0 se na každém běhu (včetně T1-k8s) skórují výhradně čtením `cfstats.py` z commitu de597d2 a definicemi zapsanými v pásmu (obálka: Q3 = M_B ∨ M_C nad všemi `cf_proxied`, robots ≠ 200 ⇒ M = 0; AI složka = L4 fail ∧ L3 pass; jmenovatele dle obálky). Kde se čtení liší, verdikt uvádí obě se vzdáleností (CHARTER §4). Čtení zavedená po 15. 9. (pass2, AI trojice, M_B zvlášť, `reachable`, `cf_class2`, `cf_ray_first`) jsou pro skórování pásem jen citlivost.
+- **Q5:** pre-registrované čtení jen z cesty v5 (robots `via` ∈ {L3, L2}); Chrome fallback (v6, `via = L0`) = citlivost. Šumové dno = hrubý obrat M per rameno mezi T0a a T0b (max), čistý DiD jen kontrola směru; čtyři kombinace CI × práh; bootstrap per rameno, 1000 replikací, seed 7. T0 neukládal mezilehlé odpovědi → třída pro Q5 z finální odpovědi na obou koncích.
+- **Uzavřené seznamy (z kódu):** tréninkové tokeny (9): GPTBot, ClaudeBot, anthropic-ai, CCBot, Google-Extended, Bytespider, Applebot-Extended, meta-externalagent, Amazonbot. AI tokeny (20): + ChatGPT-User, OAI-SearchBot, Claude-User, PerplexityBot, Perplexity-User, Meta-ExternalFetcher, cohere-ai, Diffbot, DuckAssistBot, YouBot, MistralAI-User. `ADS_LINE_RE` = `^\s*[A-Za-z0-9.\-]+\.[a-z]{2,}\s*,\s*[^,\s]+\s*,\s*(DIRECT|RESELLER)\b` (i, m). `AD_SIGS` (6): adsbygoogle|pagead2.googlesyndication; doubleclick.net; sklik|ssp.seznam.cz|ssp.imedia.cz; adform.net; googletagservices|securepubads; prebid.
+- **Egress:** doma IPv4 (poskytovatel C, bez IPv6) shodně pro T0a, T0b, T1; k8s: rodina IP, ASN a třída RES/DC do sidecaru před během.
+- Úkoly před T2: PSL snapshot pro registrovanou doménu; `ts` u robots/extra; egress IP i na konci běhu; jazykové varianty signatur; metadata Tranco 46VQX se sha.
+
+## 4b. Ukládání výstupů (otázka uživatele 2026-09-13: vytěžit maximum, porovnávat, opakovat; revize: „proč ne celé do databáze?")
+
+**Rozhodnutí: jedna SQLite databáze je zdroj pravdy, včetně surových blobů. Git drží jen textové exporty, na které se odkazují verdikty.** Původní trojvrstvý návrh (blob sklad + jsonl + odvozená DB) byl zděděný z ctxaudit, kde artefakty byly gigabajtové dumpy; tady jsou to malé HTML a hlavičky a rozdělení by jen přidalo vlastní formát.
+
+```
+/mnt/backup/hatteria_labs/cfstudy/cfstudy.sqlite   (mimo git, WAL, ~350 MB/průchod, 260 GB volno)
+  runs         run_id PK, kind (T0a|T0b|T1…), started, finished, script_commit, population_sha, cf_ips_sha,
+               egress_ip, egress_asn, resolvers, chrome_version, httpx_version, python_version, seed, ua_json,
+               n_domains, n_errors, sealed_at   ← sidecar JE řádek této tabulky
+  population   pop_id, domain, rank_tranco, source, added_run   ← pevný jmenovatel; nikdy se nemaže
+  dns          run_id, domain, ns_json, a_json, aaaa_json, ns_cf, ip_cf, resolver
+  fetch        run_id, domain, rung (L0|L1|L2|L3|L4|L4g|robots|ads), url_final, status, cf_mitigated, cf_ray,
+               server, title, elapsed_ms, error, headers_sha, body_sha, ts   ← 1 řádek = 1 HTTP odpověď
+  blobs        sha256 PK, bytes_zstd BLOB, size_raw, mime, first_seen_run   ← content-addressed, dedup napříč průchody
+  robots       run_id, domain, body_sha, cf_managed, content_signal, stances_json, star_blocked, ai_blocked_n
+  derived      run_id, domain, extractor, extractor_commit, key, value   ← pozdější extraktory (schema.org, hreflang,
+               JS-závislost = len(text L0) − len(text L2), llms.txt…) píší sem, nikdy do fetch/blobs
+  summary      run_id, cf_class, metric, value, n, computed_by_commit   ← agregáty pro pásma, generované, ne ruční
+```
+
+**Proč SQLite, ne Postgres:** jeden stroj, jeden zapisovatel, jednotky GB, žádná služba k provozu; Python ji má vestavěnou. Postgres až kdyby data měla číst aplikace torumata (pak export, ne migrace zdroje pravdy).
+
+**Co zůstává v gitu (text, diffovatelný, citovatelný bez nástroje):**
+- `population/tranco-cz-2026-09-13.txt` + sha (jmenovatel musí být čitelný i bez DB),
+- `runs/<run_id>/sidecar.prov.json` (export řádku `runs`) a `runs/<run_id>/summary.json` (export tabulky `summary`) + `MANIFEST.sha256` — to jsou cesty, na které se v pásmech a verdiktech odkazuje,
+- `runs/<run_id>/results.jsonl` jako export (1 řádek = doména, parsované veličiny + sha blobů), ~10 MB/průchod — komprimovaně v gitu ano; kdyby rostl, zůstane jen v DB a v gitu jen sha exportu.
+Guard: verdikt smí citovat jen cestu v gitu; DB je zdroj, export je důkaz. Neshoda sha exportu s DB = karanténa runu.
+
+**Write-once a provenance uvnitř DB:** `runs.sealed_at` se nastaví po dokončení; triggery odmítnou UPDATE/DELETE v `fetch`, `blobs`, `robots`, `dns` pro zapečetěný run (SQLite triggery s `RAISE(ABORT)`). Nový průchod = nový run_id, nikdy přepis. Změna skriptu = nová hodnota `script_commit` = nové měřidlo → přeběh T0.
+
+**Záloha:** po každém zapečetění `VACUUM INTO cfstudy-<run_id>.sqlite` (konzistentní snímek) do téhož adresáře + kopie na /home. Jediný soubor = jediný bod selhání; snímky to řeší.
+
+**DuckDB jako analytická vrstva (otázka uživatele 2026-09-13: „není na analytiku lepší DuckDB?"):** ano, ale ne jako zapisovací sklad. Rozdělení rolí podle toho, v čem je který nástroj dobrý:
+- **SQLite = zápis a pečeť.** Během průchodu tisíce malých transakčních INSERTů z paralelních workerů, triggery pro write-once, bloby. DuckDB tohle neumí dobře (jeden zapisovatel, žádné triggery, není stavěné na řádkové zápisy za běhu).
+- **DuckDB = čtení a analytika.** Sloupcové agregace, joiny přes průchody, diffy, Superset (tým už DuckDB 1.3.2 v data-orchestratoru a Supersetu provozuje). Ověřeno na stroji (DuckDB 1.5.5): `ATTACH 'cfstudy.sqlite' (TYPE sqlite)` čte SQLite přímo bez kopie; `COPY … TO 'fetch.parquet'` funguje.
+- **Parquet per zapečetěný run** = přirozeně neměnný, sloupcový, s otiskem v MANIFESTu: `runs/<run_id>/{fetch,dns,robots,derived,summary}.parquet` v blob adresáři (mimo git, sha v gitu). DuckDB i Superset je čtou přímo, bez SQLite. Bloby (HTML) do Parquetu nejdou, zůstávají v SQLite; extraktory čtou SQLite, píší `derived` → nový Parquet.
+Tok: crawl → SQLite (pečeť) → export Parquet (jednou, sha do MANIFEST) → DuckDB/Superset dotazy a `cfdiff.py` nad Parquety. Kdyby se export a SQLite rozešly, platí SQLite (zdroj), Parquet jde do karantény.
+
+**Diffy a opakování:** `cfdiff.py T0a T1` = jeden SQL join přes (domain, rung) mezi dvěma run_id; šumové dno = `cfdiff.py T0a T0b`. Dotazy typu „které domény za CF pustí člověka a ne knihovnu" jsou jeden SELECT nad `fetch`. Vytěžení zpětně: nový extraktor čte `blobs` a zapisuje do `derived` s vlastním commitem.
+
+## 5. Pre-registrace (pásma) — veličiny, na které se píší
+
+Formulář CHARTER §2 pro každou z nich; kotvy s klasifikací:
+
+1. podíl `cf_proxied` v rameni A (kotva: žádná česká; zahraniční odhady podílu CF na webu = *cizí měření jiné populace*, ne strop)
+2. podíl domén s V1 „blokuje ≥1 tréninkového bota" (kotva: technologychecker.io report září 2026 nad Cloudflare sítí = *vendor-blízké měření jiné populace*, klasifikace „nejlepší známá", ne strop)
+3. podíl V2 managed marker mezi `cf_proxied`
+4. podíl 403/challenge pro UA GPTBot mezi `cf_proxied` vs `no_cf`, **a** totéž pro UA Googlebot (rozdíl = AI-specifická složka)
+5. **delta T0→T1** V2 mezi `cf_proxied` minus delta mezi `no_cf` (hlavní otázka: byl skok?) — pásmo nad šumovým dnem T0a/T0b
+6. podíl V4 monetizovaných mezi `cf_proxied` (jmenovatel pro „koho se to týká")
+
+**Commit-reveal a časová tíseň:** T0 musí proběhnout 14. 9. Pásma exekutora a uživatele na veličiny 1–4 a 6 se commitnou **dnes**, před commitem skriptu. Gemini a Opus dostanou obálky dnes; jejich pásma na 5 (delta) jsou platná, pokud jsou commitnutá před T1 (16. 9.) — to stíhají i s transportem. Exekutor deklaruje expozici: viděl 4 kontrolní domény (§1), žádnou z populace.
+
+## 6. Etika a zátěž
+
+16–19 GET na doménu (9 UA příček na /, robots.txt, ads.txt, 5 extra souborů, fallbacky, 2 Chrome) — opraveno po auditu Opus N20, žádné procházení obsahu, žádné obcházení challenge. UA sonda s cizími bot UA je *měření hrany*, ne sběr obsahu; přesto **rozhodnutí uživatele**, zda rameno s cizími UA běží, nebo se měří jen vlastní UA `torumata-probe/0.1 (+https://torumata.com/probe)` — bez cizích UA ale nelze oddělit anti-impersonaci od AI politiky.
+
+## 7. Rozhodnutí uživatele (2026-09-13 večer) — FIXOVÁNO
+1. Populace: rameno A (CZ celé) + tier 1 EU (viz §3); ocas ČR později; tier 2 EU po 15. 9.
+2. Cizí UA: ano, co nejkomplexněji (L4a GPTBot, L4b ClaudeBot, L4c ChatGPT-User, L4g Googlebot; L3 torumata-probe, L3r python-requests).
+3. L0 skutečný Chrome: na všech doménách.
+4. Druhý egress: identický běh téhož skriptu z VPS (samostatná DB, run-id s příponou `-vps`), tatáž populace → párové srovnání per doména.
+5. Maximum dat pro výzkum a publikace: V6 rozšířeno (robots, llms.txt, sitemapy… celé do DB).
+6. Rozpočet: jen CPU a linka. Změřeno: 32 jader, 62 GB RAM (30 GB volných), linka 55 MB/s down / 40 MB/s up, DNS ~26 dotazů/s sériově, TTFB na CZ hosty 50–100 ms.
+
+### Změřená propustnost měřidla (benchmarky 2026-09-13, throwaway DB, míry nečteny)
+| konfigurace | domén | čas | pozn. |
+|---|---|---|---|
+| 8 HTTP / 3 Chrome, delay 0,7 | 20 | 65 s | bez extra souborů |
+| 24 / 8, delay 0,5 | 60 | 66 s | bez extra souborů, 0 timeoutů, load 3,4 |
+| 32 / 16, delay 0,5 | 80 (.at) | 125 s | s 5 extra soubory; medián 22 s/doména, průměr 24 s, čistých požadavků 9,6 s; ocas ebay.at 86 s |
+
+Odhad pro tier 1 (22 846 domén) při 48 HTTP / 16 Chrome, delay 0,4, skip po 2 selháních spojení: **≈ 3–4 h na průchod** (propustnost ≈ workers / průměrná doba domény ≈ 48 / 22 s ≈ 2 domény/s; kapacita Chrome 16 / 7 s ≈ 2,3/s). T0a + T0b téhož dne ≈ 7–8 h: start T0a 14. 9. ráno, T0b odpoledne. Odhad stojí na 80 doménách; skutečná doba se zapíše do sidecaru.
+
+## 7b. Původní seznam rozhodnutí (historie)
+
+- [ ] rameno B (zdroj ocasu), nebo jen „top 5 000"
+- [ ] definice V4 monetizace: ads.txt ∨ HTML (navrhuji obojí logovat, primární čtení ads.txt)
+- [ ] UA sonda s cizími bot UA: ano / jen vlastní UA (doporučení exekutora: ano, jako příčky L4/L4' žebříku V7)
+- [ ] V7 L0 (skutečný Chrome): všech 4 970 domén, nebo podvzorek 1 000 se seedem
+- [ ] druhý egress: kde
+- [ ] rozpočet: 5 000 domén × 6 req × 5 průchodů ≈ 150 k požadavků, CPU, žádné API tokeny
+
+Po schválení: pásma → commit skriptu → T0a/T0b 14. 9.
+
+**Dodatek 16. 9. (po REVEAL T1):** (a) H5 se čte jedním směrem: „skok" = **nárůst** M u `cf_proxied` proti `no_cf` (verze z `rfc/2026-09-15-prahy-cf-T0.md`); formulace v auditu Opuse („termín nezměnil robots.txt existujících zón") je opačná a od T1 se nepoužívá; výsledek Q5 se vždy hlásí se znaménkem. (b) `cf_class` má pátou hodnotu `deadline` = vypršel limit 300 s na doménu (`DOMAIN_DEADLINE`), výsledek běhu, ne třída Cloudflare; v ITT drží třídu z T0a. (c) Nová veličina k pre-registraci před T2: **Q8** = DiD ¬pass L4a/L4b T1→T2 uvnitř `cf_proxied` (zóny, které ztratily šablonu, vs zóny bez šablony), bootstrap per rameno, seed 7; motivace `runs/cf-T1-2026-09-16-home-r2/REVEAL-T1.md` §6 test T4.
+
+**Dodatek 18. 9. — pre-registrace Q8 (chování hrany), platí pro T2 (22. 9.) a dál; zapracovány připomínky Gemini a Opuse ze 17. 9.:**
+- **Q8a (primární): DiD ¬pass T0a → T2** = přetrvání efektu; H0: efekt zmizel (návrat k hladinám T0a). **Q8b: DiD T1 → T2** = další pohyb; H0: beze změny od T1. U obou se hlásí hladiny ¬pass v T0a, T1, T2 per rameno, ne jen rozdíly.
+- **Ramena** (ITT, fixovaná ze stavu T0a/T0b/T1, v T2 se nepřepisují; návrat šablony se hlásí jako samostatná vrstva): ztracené (M_B v T0a, ne v T1; n 726), udržené (M_B v T0a i T1; n 37, hlásit i variantu jedna zóna na provozovatele, u n < 30 jen počty), M_C bez M_B (n 120), nikdy (bez M_B v T0a i T0b a bez M_C; n 5 673), placebo `no_cf` v obou. DiD se počítá proti rameni nikdy; placebo je kontrola změn mimo Cloudflare (reputace naší IP, blocklisty hostingů).
+- **`pass`** = 2xx/3xx ∧ ¬challenge ze statusu a titulku (`fetch.pass`) na všech koncích; **přísné čtení** = 403 ∨ challenge ∨ bloková stránka (`block_sig`), výpadky (5xx, timeout, spojení, `skipped_unreachable`) vyřazeny; `pass2` jen jako citlivost. Rozpad ¬pass se hlásí vždy (403 / challenge / 429 / 5xx / timeout-spojení / jiné 4xx); rostoucí 429 = rate-limit našeho průchodu, ne politika, a věta pro článek se nepíše.
+- **Příčky:** primární **L4a (GPTBot)**; L4b potvrzující; povinně v téže tabulce L4c (ChatGPT-User), L4g (Googlebot), L3, L2, L0. Agregát „≥1 ze dvou" se nezavádí. Jdou-li L4a a L4b proti sobě, je to samostatný nález.
+- **Formy:** (a) rozdíl v p.b. (primární), (b) DiD v log-šancích, (c) přechodová matice per rameno (pass→fail, fail→pass, …) s McNemarem; bootstrap jednotka doména, převzorkování uvnitř ramene, 1000 replikací, seed 7. Stratifikace podle mezivýsledku (rameno ztracené je definované stavem v T1) se u Q8a uvádí výslovně.
+- **Interakce (sekundární):** ads.txt platný v T0a × rameno; země.
+- **Podmínky platnosti:** domácí egress, cesta v5, stejná sada příček a UA jako v T1 (nové příčky jen za stávající), pořadí se seedem 20260914, `via = 'L0'` mimo primární čtení. Změna kterékoli položky ⇒ Q8 se hlásí jen jako popis.
+- Implementace: `scripts/cfstats.py q8` (commit před T2 = pre-registrace agregací); kontrola: nad T0a → T1 musí reprodukovat `runs/cf-T1-2026-09-16-home-r2/q8-predbezne-T0a-T1.json`.
+
+**Dodatek 18. 9. (zátěž, RFC §6):** denní sonda `scripts/mprobe.py` od 18. 9. posílá kromě robots.txt i jeden GET domovské stránky s UA GPTBot na 1 069 zón 2× denně (kohorta 769 + kontrola 300), schváleno uživatelem 18. 9.; T2 přidává příčku L5 (vlastní UA `torumata-ai-train/0.1`) za stávající sadu, +1 požadavek na doménu.
+
+**Dodatek 18. 9. b (veřejné vysvětlení, měřidlo):** Cloudflare 15. 9. zrušil managed robots.txt ve prospěch Bot Preference Sync (`vyzkum/2026-09-18-cloudflare-vysvetleni.md`). Nový marker `# BEGIN Cloudflare Bot Preference Sync` (V2b, signál BPS). Q5 zůstává pre-registrováno na M = M_B ∨ M_C; `cfstats.py delta` od commitu 18. 9. hlásí navíc citlivost M_B ∨ BPS ∨ M_C (T0a→T1: BPS 0 domén, hodnota shodná). Pro T2 se hlásí obě; pro článek se deklarace čte jako M_B ∨ BPS. Pásma cf-T2 byla commitnuta 16. 9. před touto informací; v reveal T2 se to uvede jako expozice po commitu.
+
+**Dodatek 23. 9. (T3, schváleno uživatelem 23. 9. 08:56):**
+- **L6 = UA OAI-SearchBot** (`scripts/cfprobe.py` v6.3), zařazena za L5; hlásí se **jen průřezově** mezi rameny (ztracené / udržené / M_C bez M_B / nikdy / no_cf) v T3 a dál; nevstupuje do Q5, Q8 ani do žádného DiD proti T0a/T1 (nemá „před"). **Pre-registrovaná veličina Q9** = poměr ¬pass L6 v rameni ztracené k ¬pass L6 v rameni nikdy (a totéž pro udržené); pásma píší Opus a Gemini nezávisle před T3; 429 zvlášť; kontrola aditivity v6.2 vs v6.3 před T3. Claude-SearchBot a PerplexityBot se nepřidávají.
+- **Holdout** (`population/holdout-T3-2026-09-23.txt`, 250 `cf_proxied` z ramene nikdy + 250 `no_cf`, seed 20260923): v T3 dostávají jen L0, L1, L2, L3, L3r (žádné napodobené ani vlastní AI jméno). Účel: odlišit stárnutí naší adresy od chování webů (placebo no_cf T1→T2 +0,3–0,5 p.b. na všech příčkách). V DiD Q8 jsou tyto domény vyřazeny jako chybějící (ITT poznámka v reveal T3). Kontrast: ¬pass L3 holdout vs ¬pass L3 zbytek téže třídy, T2→T3.
+- **Šumové dno pro delty s A ≠ T0a:** vždy dvojice téhož dne (T0a, T0b), `cfstats.py delta --noise-a` (oprava Opus T2 A1); T2→T3 v `T3.sh`.
+- **§6 zátěž, skutečný stav od T3:** na doménu a běh až 19 požadavků (L0, L1, L2, L3, L3r, L4a, L4b, L4c, L4g, L5, L6, robots, ads, 5× extra), u holdoutu 13; sonda 2× denně 1 069 robots.txt + 1 069 domovských stránek s UA GPTBot. Napodobená cizí jména: 5 (GPTBot, ClaudeBot, ChatGPT-User, Googlebot, OAI-SearchBot), z jedné domácí adresy, ≤ 1 požadavek na jméno a doménu za běh; `abuse@torumata.com` v UA vlastních jmen. T3 = 15. 10., T4 podle rozhodnutí vlastníka.

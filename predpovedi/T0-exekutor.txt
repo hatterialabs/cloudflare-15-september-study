@@ -1,0 +1,75 @@
+# Pásmo exekutora — běh cf-T0 (T0a/T0b 14. 9. 2026) a delta T0→T1
+
+autor-křeslo: exekutor (Claude Code) · datum: 2026-09-13 · run-id: cf-T0 (+ delta cf-T0→cf-T1) · status: **pre-registrace, commitnuto před spouštěcím kódem**
+definice: `rfc/2026-09-13-cloudflare-pred-po.md` §1–§3 (CF třídy, V1–V7, populace rameno A)
+
+**Deklarace expozice:** viděl jsem 4 kontrolní domény (cloudflare.com, medium.com, seznam.cz, torumata.com), žádnou z populace. Nečetl jsem žádné cizí pásmo. Kotvy jsou zahraniční veřejné odhady z paměti modelu, klasifikované níže; žádná není strop.
+
+**Kalibrační korekce (BOOTSTRAP §4), aplikované při psaní:** drift 4 (interakce/průniky: horní hranu ×~2) se týká položky 7b. Drift 3 (import mechanismu do populace, která ho vylučuje) hlídám u 4 a 7: mechanismus „Cloudflare blokuje automatizaci" jsem viděl na medium.com (velký americký publisher s placeným Bot Managementem); populace top .cz je z většiny Free/Pro zóny, kde je bot-fight opt-in. Proto těžiště u 4 a 7 posouvám **dolů** proti dojmu z kontrol. Drift 5 („počitatelné před změřeným"): kotvy z globálních studií jsou jiná populace, nekotvím na nich těsně.
+
+---
+
+## 1. Podíl `cf_proxied` v rameni A (4 970 domén Tranco .cz)
+- populace: všech 4 970 domén ze `population/tranco-cz-2026-09-13.txt`, jmenovatel včetně `unreachable` (nezodpovězené DNS = no_cf jen pokud NS/IP nedosažitelné → logují se jako `unresolved`, ale do jmenovatele patří)
+- veličina: podíl domén s třídou `cf_proxied` dle RFC §1 (IP ∈ CF rozsahy ∨ cf-ray)
+- kotva: globální podíl webů za Cloudflare ~20 % (W3Techs, z paměti, neověřeno) — klasifikace: *cizí měření jiné populace*, ne strop
+- jmenovatel: 4 970 domén; co by muselo platit, aby byl špatně: Tranco .cz filtr chytá i domény, které neodpovídají / parkují (parkované domény často sedí na CF → nadhodnocení); a .cz subset Tranco obsahuje mezinárodní značky (google.cz) s vlastní infrastrukturou (podhodnocení). Obě strany se logují (unreachable, redirect na jinou TLD).
+- pásmo: **14–24 %** (surové = korigované; žádný drift se netýká)
+- mechanismus: český hosting je silně lokální (poskytovatel A, Wedos, Active24, Seznam), Cloudflare je u nás doplněk pro e-shopy a startupy, ne výchozí; ale top-5 000 je nadprůměrně „moderní" oproti dlouhému ocasu, takže víc než odhad pro celou .cz zónu.
+
+## 2. Podíl domén, jejichž robots.txt blokuje ≥1 tréninkového bota (V1)
+- populace: domény s robots.txt status 200 a ne-HTML obsahem (**jmenovatel = jen ty**; podíl domén bez robots.txt se hlásí zvlášť)
+- veličina: existuje skupina `User-agent:` pro některý z {GPTBot, ClaudeBot, anthropic-ai, CCBot, Google-Extended, Bytespider, Applebot-Extended, meta-externalagent, Amazonbot} se stavem `blocked` (`Disallow: /`)
+- kotva: globální studie 2025 udávají 5–15 % webů, u top zpravodajských webů 50–70 % (z paměti, neověřeno) — *cizí populace*, ne strop
+- jmenovatel: co by muselo platit, aby byl špatně: robots.txt vrácený jako 200 HTML (SPA fallback) se musí vyloučit — dělá to filtr content-type; kdyby filtr propouštěl HTML, jmenovatel by narostl o nuly a podíl klesl
+- pásmo: **7–15 %**
+- mechanismus: blokace tréninkových botů je v ČR záležitost médií a několika velkých e-shopů; většina top-5 000 robots.txt nikdy neaktualizovala od doby před LLM. Media segment (~5–8 % populace) blokuje většinově, zbytek skoro vůbec.
+
+## 3. Podíl V2 managed marker mezi `cf_proxied`
+- populace: domény třídy `cf_proxied` s robots.txt 200
+- veličina: robots.txt obsahuje `BEGIN Cloudflare Managed content` **nebo** řádek `Content-signal:`
+- kotva: žádná
+- jmenovatel: co by muselo platit, aby byl špatně: Cloudflare vrací managed robots.txt i doménám bez vlastního souboru (pak status 200 a jmenovatel je správně); kdyby ho vracel jen při existujícím souboru, jmenovatel by přišel o domény bez robots.txt — proto se počítá ze všech `cf_proxied` s 200
+- pásmo: **2–7 %**
+- mechanismus: funkce je opt-in v dashboardu, existuje od 2025 (managed) resp. srpna 2026 (Preference Sync); český správce Free zóny do Security → Settings nechodí.
+
+## 4. Zacházení hrany s neověřeným „GPTBot" (V7 příčka L4) a kontrola Googlebot (L4')
+- populace: domény s L0 pass (člověk projde) — jinak nelze mluvit o blokaci automatizace; zvlášť pro `cf_proxied` a `no_cf`
+- veličina: podíl domén, kde L4 (UA GPTBot) **nepass** dle definice RFC §2b; totéž pro L4' (UA Googlebot); AI-specifická složka = L4 fail ∧ L4' pass
+- kotva: medium.com (kontrola) = 403 pro obojí — *jednotlivý bod, ne míra*
+- jmenovatel: co by muselo platit, aby byl špatně: L0 pass zjišťuje Chrome, který má jiný TLS otisk než httpx; doména může pustit Chrome, ale blokovat *všechno* z httpx včetně L2/L3 → pak L4 fail není o GPTBotu, ale o knihovně. Proto se AI-specifická složka počítá jako L4 fail ∧ **L3 pass** (ne jen L4'), obě čtení se skórují.
+- pásma (surové → korigované; korekce drift 3 = těžiště dolů, protože bot-fight je na Free opt-in):
+  - L4 fail mezi `cf_proxied`: **20–40 %**
+  - L4 fail mezi `no_cf`: **3–10 %**
+  - L4' (Googlebot UA) fail mezi `cf_proxied`: **15–35 %** (většina L4 blokací je anti-impersonace, ne AI politika)
+  - AI-specifická složka (L4 fail ∧ L3 pass) mezi `cf_proxied`: **3–10 p.b.**
+- mechanismus: Cloudflare blokuje podle otisku, ne podle jména; kdo zapnul bot-fight, blokuje vše neověřené, kdo ne, pustí vše. AI-specifické pravidlo (jen GPTBot) je vzácné, protože vyžaduje ruční WAF pravidlo nebo Block-AI-bots toggle, který ale míří na *ověřené* boty a náš neověřený GPTBot nemusí zasáhnout vůbec.
+
+## 5. Delta T0→T1 u V2 (managed marker) v `cf_proxied` minus delta v `no_cf`
+- populace: párově domény přítomné v T0a i T1 s robots 200 v obou
+- veličina: (podíl V2 v T1 − podíl V2 v T0a) pro `cf_proxied` minus totéž pro `no_cf`; čte se proti šumovému dnu |T0a − T0b|
+- kotva: šumové dno T0a/T0b (změří se; očekávám ≤0,5 p.b. u V2, protože robots.txt se přes den nemění)
+- jmenovatel: co by muselo platit, aby byl špatně: párování musí být na finální host po redirectu (www vs apex); kdyby se párovalo na vstupní doméně a redirect se změnil, delta by byla artefakt
+- pásmo: **0,0–1,0 p.b.** (tj. žádný skok 15. 9. viditelný v robots.txt existujících českých zón)
+- mechanismus: změna cílí na nové domény a opt-in; do robots.txt se propíše jen tam, kde správce zapne Preference Sync — to se přes noc na existujících zónách nestane.
+
+## 6. Podíl monetizovaných (V4, primárně ads.txt) mezi `cf_proxied`
+- populace: `cf_proxied` domény s L0 pass
+- veličina: `/ads.txt` 200 s ≥1 řádkem tvaru `doména, id, DIRECT|RESELLER` (primární); HTML signatura jako sekundární čtení
+- kotva: žádná
+- jmenovatel: co by muselo platit, aby byl špatně: SPA weby vracejí 200 HTML na cokoli → filtr content-type + regex řádku; bez něj by podíl narostl o falešné pozitivy
+- pásmo: **15–30 %** (ads.txt); HTML čtení očekávám vyšší o 5–15 p.b. (sklik/adsense na webech bez ads.txt)
+- mechanismus: ads.txt mají programatičtí prodejci reklamy (média, obsahové weby); e-shopy a firemní weby ne. Top-5 000 .cz má odhadem čtvrtinu obsahových webů.
+
+## 7. V7 čitelnost pro lokálního agenta
+- populace: domény s L0 pass; zvlášť `cf_proxied` a `no_cf`
+- veličina 7a: pass(L3) = poctivá HTTP knihovna projde; 7b: L0 pass ∧ L2 fail („člověk ano, agent v masce ne")
+- kotva: no_cf rameno = mechanická podlaha (kolik blokace vyrábí obyčejný hosting bez CF); medium.com = jeden bod
+- jmenovatel: co by muselo platit, aby byl špatně: L0 pass musí být skutečné 200 s obsahem, ne Cloudflare „challenge passed" stránka — kontrola titulku + délky textu; kdyby Chrome řešil JS challenge automaticky, L0 by byl „pass" i tam, kde člověk čeká 5 s, a jmenovatel by nadhodnocoval čitelnost
+- pásma:
+  - 7a pass(L3) mezi `cf_proxied`: **55–75 %**; mezi `no_cf`: **85–95 %**
+  - 7b (L0 pass ∧ L2 fail) mezi `cf_proxied`: surové **12–25 %** → **korigované 12–40 %** (drift 4: interakce dvou vrstev, TLS otisk × UA nesoulad; horní hrana ×1,6); mezi `no_cf`: **1–5 %**
+- mechanismus: L2 (UA Chrome + TLS Python) je pro bot-management nejvíc podezřelá kombinace (lež o identitě), proto padá častěji než L3 (poctivý UA), nikoli méně. Očekávám tedy pořadí fail-rate L2 ≥ L4 ≥ L3 u `cf_proxied`. Pokud vyjde L3 > L2, mechanismus je jiný (UA blocklist místo otisku) a pásmo 7b je MIMO z důvodu, který stojí za zapsání.
+
+---
+Skóruje: uživatel po T0a/T0b (1–4, 6, 7) a po T1 (5), proti `runs/<run_id>/summary.json`. Číslo bez této cesty se neskóruje.

@@ -1,0 +1,72 @@
+# Pásmo cf-T2 — podíl markeru M mezi `cf_proxied` (třída z T0a)
+
+- **autor-křeslo:** Opus 5 — modelář B / redaktor
+- **datum:** 2026-09-16
+- **run-id:** cf-T2 (plné měření 22. 9. 2026); platí, jen je-li tento soubor commitnut **před** startem T2
+- **status:** k review (pre-registrace)
+- **odkazy na artefakty:** `in/REVEAL-T1.md`, `in/delta-Q5-T0a-T1.md`, `in/noise-vs-T0a.md`, `in/mprobe-summary.md`, `in/pasmo-opus.md`, `in/CHARTER.md`, `in/OBALKA-2026-09-16-cf-T1-reveal.md`. Formulář: CHARTER §2 (dokument BOOTSTRAP §3 nebyl ve vstupech — viz reakce `out/reviews/2026-09-16-cf-T1-reakce-opus.md` §0).
+
+## 0. Deklarace expozice a kalibrace
+
+**Expozice:** na rozdíl od pásma cf-T0 je tohle pásmo psané **po reveal**. Viděl jsem T0a, T0b, T1 (úrovně M, rozpady, časový průběh), první běh denní sondy a všechna tři pásma cf-T0. Cizí pásmo pro T2 jsem neviděl. Toto pásmo tedy není nezávislá replikace stavu, je to **předpověď vývoje ze známého stavu** — a musí se tak skórovat: kotvou není neznalost, ale hodnota z T1.
+
+**Kalibrace (CHARTER §5), aplikovaná při psaní.** Vlastní tabulka minutí zatím není vedena, vedu z ní zatím dva zápisy, oba na téže ose:
+- bod 5 cf-T0: surové pásmo medián +0,3 p. b., 90 % [−0,5; +2,5]; naměřeno −10,85 → MIMO, opačný směr;
+- bod 3 cf-T0 (Q3, cz): pásmo medián 9 %, 90 % [3; 20]; podle tabulky v REVEAL §2 je hodnota 23,8 % → nad intervalem (verdikt patří držiteli běhu, tady jen jako kalibrační zápis).
+
+Společná příčina obou: modeloval jsem marker jako věc, kterou zapínají a drží **správci webů**. Marker je z většiny věc, kterou vkládá a drží **dodavatel** a může ji stáhnout přes noc.
+
+**Korekce → jak je psáno tohle pásmo (surové → korigované):**
+1. rozdělení je **dvouvrcholové**, s výslovnou pravděpodobností pro „dodavatel to zase přepne" (surové by mělo jeden vrchol u současné hodnoty);
+2. 90% interval je asymetricky natažený nahoru až k předchozí úrovni (surové by končilo kolem 4 %);
+3. drift správců (ruční zapínání, nová adopce) vážím **dolů**, protože T0a→T0b i růst M_C ukazují, že sám od sebe se robots.txt hýbe pomalu.
+
+---
+
+## 1. Formulář
+
+**populace:** domény třídy `cf_proxied` **podle T0a** (`cf-T0a-2026-09-14-home-r5`), tedy ITT množina, ve které se počítala delta Q5 — včetně domén, které mezitím třídu změnily nebo přestaly odpovídat. Běh `cf-T2` = plné měření celé tier-1 populace z domácího egressu ([IP odstraněna], IPv4), měřidlo v6.x se zachovanou cestou v5.
+
+**veličina:** podíl domén, u nichž je v T2 `M = M_B ∨ M_C`, kde M_B = tělo robots.txt obsahuje `BEGIN Cloudflare Managed content` a M_C = řádek začínající `Content-signal:`; **robots ≠ 200 ⇒ M = 0**; řádky s `via = 'L0'` (Chrome fallback) se nepočítají. Týmž matcherem (necitlivým na velikost písmen) nad uloženými těly na obou koncích — tak, jak to je v pre-registrovaném čtení `delta-Q5-T0a-T1.md`.
+
+**kotvy (s klasifikací):**
+- **Horní strukturální kotva: 13,5 %** — úroveň M v `cf_proxied` v T0a (REVEAL §2, tabulka). Klasifikace: *stav před změnou, měřený touž cestou*. Není to absolutní strop (nová adopce může přidat), je to hodnota, na kterou by se veličina vrátila při úplném obnovení funkce.
+- **Dolní mechanická kotva: 2,6 %** — úroveň M v T1 (tamtéž), tedy to, co zbývá bez vkládané šablony. Klasifikace: *mechanická podlaha, měřená touž cestou*.
+- **Šumové dno: 0,32 p. b.** — hrubý obrat M mezi T0a a T0b (`delta-Q5-T0a-T1.md`). Klasifikace: *relativní práh dle CHARTER §3*; sedmidenní odstup T1→T2 je delší než odstup T0a→T0b, takže je to spodní odhad.
+- Cizí kotva žádná. Kotvu z vendorových sdělení nemám a nepoužívám.
+
+**jmenovatel:** všechny domény `cf_proxied`@T0a. *Rituál — jmenovatel je špatně, pokud:*
+- (a) se nefixuje, která z dvou dnes existujících ITT množin platí: `delta-Q5-T0a-T1.md` má n = 6 560, tabulka REVEAL §2 má n = 6 589 (nález A5 mé reakce). **Pásmo píšu na n = 6 560** (pre-registrované čtení); při jiné volbě se posune o desetiny p. b. a to se musí přiznat, ne přepočítat potichu;
+- (b) T2 poběží z jiného egressu než z domácího. Marker je obsah vkládaný hranou, a pokud platí hypotéza H-D (změna vázaná na datacentrum, reakce §2.2), je tahle veličina na egressu závislá. Z k8s se tohle pásmo nečte;
+- (c) T2 poběží na měřidle, jehož cesta v5 se změnila, nebo se do pre-registrovaného čtení pustí fallback `via = 'L0'`;
+- (d) robots.txt přestane být pozorovatelný jinak než dnes (hrana začne challengeovat `/robots.txt`): pak M = 0 znamená „neviděli jsme", ne „není". Kontrola: podíl `cf_proxied` se statusem robots ≠ 200 v T1 a v T2 vedle sebe; rozdíl nad 2 p. b. znamená, že se čte i varianta nad pozorovatelnými;
+- (e) třída by se brala z T2 místo z T0a (pak se míchá změna markeru s migrací mezi třídami; ta je podle `delta-Q5` malá, ale ne nulová).
+
+**interval (křivka přes tři operační body, ne bod):**
+
+| operační bod | jmenovatel | medián | 50 % | 90 % |
+|---|---|---|---|---|
+| **M = M_B ∨ M_C** (primární) | `cf_proxied`@T0a (n 6 560) | **3,0 %** | [2,6; 3,9] | [2,1; 12,5] |
+| jen M_B (čtení pro článek) | `cf_proxied`@T0a | 0,7 % | [0,5; 1,2] | [0,3; 10,5] |
+| kohorta denní sondy: podíl zón se šablonou z 769 zón s M_B v T0a | 769 | 5,5 % | [4,5; 9] | [3,5; 88] |
+
+Bodové pravděpodobnosti (tvar rozdělení je dvouvrcholový, proto je uvádím zvlášť):
+- **P(M ≥ 8 %) = 0,20** — vrchol „funkce obnovena" (odpovídá H-B z reakce §2.2 s pravděpodobností 0,30 × zhruba dvě třetiny šance, že k obnovení dojde do 22. 9.).
+- **P(M ≤ 2,0 %) = 0,05** — scénář, že ubyde i zbytek (dojede i preambule `Content-signal:` u zón bez vlastního souboru, nebo šablonu ztratí i zbylých 38 zón).
+- **P(5 % ≤ M ≤ 8 %) = 0,06** — vědomě malá masa mezi vrcholy; viz vyvratitelnost níže.
+- Sekundárně, jen pokud bude tabulka per země vyexportovaná jako artefakt (nález A4): **cz** medián 3,4 %, 90 % [2,3; 21].
+
+**mechanismus (vyvratitelná věta, proč čekám právě tohle):**
+Hodnotu téhle veličiny dnes nedrží správci webů, drží ji jeden dodavatel. Mezi 16. a 22. zářím proto s hodnotou hýbou jen dvě věci, a každá jinak: (1) **chování dodavatele** — buď stav trvá (záměrná změna dosahu funkce nebo její stažení), nebo se funkce vrátí (regrese), a pak skočí zpět skoro celá, protože vkládání na hraně je binární přepínač, ne postupné nasazování po webech; (2) **drift správců** — ruční zapnutí u těch, kdo si ztráty všimnou, plus vlastní řádky `Content-signal:`; ten je podle dat pomalý (M_C bez M_B 456 → 484 za dva dny, obrat M mezi dvěma měřeními téhož dne 0,32 %) a za šest dní přidá nanejvýš několik desetin p. b. Proto čekám buď hodnotu těsně nad úrovní T1, nebo návrat k úrovni T0a, a málo mezi tím.
+
+*Vyvratitelné (co mě usvědčí z omylu):*
+- **(i) Hodnota mezi 5 % a 8 %.** Pak neplatí ani „binární přepínač zpět", ani „stav trvá", a mechanismus je třetí: postupné nebo částečné nasazování (po zónách, po plánech, po datacentrech). Tomuhle výsledku dávám dohromady 6 % a byl by pro mě nejinformativnější ze všech.
+- **(ii) Hodnota nad 13,5 %,** tedy výš než před změnou. Pak funkci nejen obnovili, ale rozšířili na zóny, které ji dřív neměly — a moje věta „dodavatel může stáhnout" by se měla přepsat na „dodavatel volně přepíná oběma směry".
+- **(iii) Rozpor uvnitř jednoho běhu:** M poroste, ale kohorta 769 zůstane pod 10 %. Pak nový marker nevzniká obnovením šablony, ale u jiných domén, a moje směs hypotéz je špatně sestavená.
+- **(iv)** Pokud se do T2 potvrdí hypotéza H-D (test T1 v reakci §2.3, tj. šablona je vidět z jiného datacentra), je tohle pásmo **neplatné** jako popis světa a platí jen jako popis toho, co uvidíme z naší přípojky; žádám, aby se v takovém případě neskórovalo a zapsalo se jako „nepoužito".
+
+---
+
+## 2. Co k tomuhle pásmu nepíšu
+
+Nepíšu pásmo na to, **proč** se to stalo, ani na odpověď Cloudflare — to není poměrová veličina a pre-registrace by z toho udělala sázku, ne predikci. Své rozdělení pravděpodobností mezi hypotézy mechanismu mám v `out/reviews/2026-09-16-cf-T1-reakce-opus.md` §2.2, commitnuté týmž dnem; je vyvratitelné odpovědí dodavatele a trváním stavu, a beru ho jako pre-registraci téhož druhu.

@@ -1,0 +1,32 @@
+# Replikace chování sítě Cloudflare z jiné sítě — 23. 9. 2026 (Opus A3, náhrada za test F)
+
+Skript `scripts/mobil-kontrola-2026-09-23.sh` (1 000 domén: všech 725 ztracených a 37 udržených s úplným T2, 142 za Cloudflare bez šablony, 96 mimo Cloudflare; robots.txt + 5 jmen na domovskou stránku; očekávání per doména z T2 v `runs/controls/mobil-2026-09-23-ocekavani-T2.json`). Spouští vlastník; exekutor porovnává doménu po doméně.
+
+## Běh 1: 23. 9. 07:15 UTC, **poskytovatel A poskytovatel A, IPv6** (`cf-mobil-20260923T0715Z.txt`, 6 000 řádků)
+Pozn.: vlastník avizoval mobilní síť; první běh šel z datacentrové sítě poskytovatel A přes IPv6, tedy jiná třída egressu (DC, IPv6) než studie (rezidenční, IPv4). Pro replikaci je to silnější kontrast než mobilní síť; riziko reputace adresy viz dole.
+
+| skupina | n | šablona v robots.txt | vlastní UA (L3) | vlastní AI UA (L5) | GPTBot | ChatGPT-User | Googlebot |
+|---|---|---|---|---|---|---|---|
+| ztratily šablonu | 725 | 0,6 % (4) · shoda s T2 100 % | 9,8 % · 96 % | 10,2 % · 96 % | **87,0 %** · shoda 99,4 % | **27,3 %** · 97 % | 22,2 % · 98 % |
+| udržely | 37 | 100 % (37) · 100 % | 2,7 % | 2,7 % | 91,9 % · 100 % | 83,8 % · 100 % | 86,5 % · 100 % |
+| za Cloudflare bez šablony | 142 | 1,4 % (2) | 18,3 % · 96 % | 19,0 % · 95 % | 39,4 % · 97 % | 28,9 % · 97 % | 27,5 % · 97 % |
+| mimo Cloudflare | 96 | 0 % | 6,2 % · 99 % | 6,2 % · 99 % | 21,9 % · 99 % | 15,6 % · 99 % | 11,5 % · 99 % |
+
+Hodnoty = podíl odmítnutých (status ≠ 200 po přesměrování; u robots.txt přítomnost bloku Cloudflare); „shoda" = podíl domén, u nichž výsledek (prošel/odmítnut) souhlasí s T2 z domácí sítě. Srovnání s T2 (domácí síť, poskytovatel C IPv4): ztracené GPTBot 86,6 → 87,0 %, ChatGPT-User 27,4 → 27,3 %, Googlebot 21,3 → 22,2 %, L5 9,2 → 10,2 %, L3 9,1 → 9,8 %; udržené shodné do jedné domény; kontrolní skupiny v mezích šumu 1,8–2,4 %.
+
+**Čtení:** hlavní nález (trénink odmítán, agent puštěn, vyhledávání beze změny, vlastní jméno jako neutrální) je **shodný z jiné sítě, jiného ASN, jiné třídy egressu a jiné IP rodiny**, doménu po doméně (shoda 95–100 %). Podmínka 5 Opuse pro tisk věty 2 je tímto splněna; mez „měřeno z jedné sítě" se z článku odstraní po druhém běhu (jiný poskytovatel, avizován vlastníkem).
+
+**Riziko:** 5 napodobených jmen × 904 webů za Cloudflare z adresy v poskytovatel A; pokud jde o produkční adresu, neopakovat (reputace; viz `vyzkum/2026-09-16-forpsi-tiket-komunikace.md`).
+e71409498f09fe788006d10e36d1431f853dd27c334cfdc0802ce9cf3620e14f  runs/controls/live-2026-09-23/cf-mobil-20260923T0715Z.txt
+
+## Běh 2: 23. 9. 07:19 UTC, **poskytovatel B poskytovatel B, IPv6 (mobilní síť)** (`cf-mobil-20260923T0719Z.txt`, 6 000 řádků)
+
+| skupina | n | šablona v robots.txt | vlastní UA (L3) | vlastní AI UA (L5) | GPTBot | ChatGPT-User | Googlebot |
+|---|---|---|---|---|---|---|---|
+| ztratily šablonu | 725 | 0,6 % (4) · shoda T2 100 % | 9,8 % · 96 % | 9,5 % · 96 % | **86,6 %** · shoda T2 99,6 %, s během 1 99,6 % | **27,0 %** · 97 % / 98 % | 22,2 % · 97 % / 99 % |
+| udržely | 37 | 97,3 % (36) | 5,4 % | 2,7 % | 91,9 % · 100 % | 83,8 % · 100 % | 86,5 % · 100 % |
+| za Cloudflare bez šablony | 142 | 1,4 % (2) | 17,6 % | 18,3 % | 38,0 % · 97 % | 28,2 % · 96 % | 26,8 % · 98 % |
+| mimo Cloudflare | 96 | 0 % | 5,2 % | 5,2 % | 20,8 % · 100 % | 14,6 % · 100 % | 10,4 % · 100 % |
+
+**Tři nezávislé sítě, tři třídy egressu, dvě IP rodiny, týž výsledek web po webu:** domácí poskytovatel C IPv4 (T2), datacentrum poskytovatel A IPv6 (běh 1), mobilní poskytovatel B IPv6 (běh 2). GPTBot u ztracených zón 86,6 / 87,0 / 86,6 %, ChatGPT-User 27,4 / 27,3 / 27,0 %, Googlebot 21,3 / 22,2 / 22,2 %, vlastní AI jméno 9,2 / 10,2 / 9,5 %. Shoda per doména 95 až 100 % ve všech buňkách; zbytek je obrat mezi dvěma měřeními (u příček 1,8 až 2,4 % za týden). Mez „chování sítě Cloudflare měřeno z jedné sítě" je tímto uzavřena; zůstává mez „neověřený žadatel" (napodobené jméno, ne skutečný robot).
+0bc848777cdfc7c8ce425c3f6238ca85e4cfd1041f1547a0d6c6921870510558  runs/controls/live-2026-09-23/cf-mobil-20260923T0719Z.txt

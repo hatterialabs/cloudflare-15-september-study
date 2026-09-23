@@ -1,0 +1,42 @@
+# AbuseIPDB — snímek 16. 9. 2026 ~10:45 UTC (dodal vlastník, přepis z webu)
+
+## 74.220.50.219 (Render, AS16509, ip-74-220-50-219.ohio-egress.render.com)
+7 reportů / 6 zdrojů / confidence 35 %; první 23. 7. 2026, poslední 14. 9. 2026 01:40 UTC.
+| kdy (UTC) | reportér | komentář (zkráceno) | kategorie |
+|---|---|---|---|
+| 2026-09-14 01:40 | LRob (DE) | asking over plain http and never following the redirect served — a crawler that reads nothing it asks… | Bad Web Bot |
+| 2026-09-11 20:15 | TPI-Abuse (US) | mod_security id:210492 | Brute-Force, Bad Web Bot, Web App Attack |
+| 2026-09-11 20:10 | VHosting (IT) | Detected WordPress attack from different servers | Brute-Force, Web App Attack |
+| 2026-09-11 19:15 | TPI-Abuse (US) | mod_security id:210492 | Brute-Force, Bad Web Bot, Web App Attack |
+| 2026-09-09 06:51 | JPPO (FR) | Port 443: Missing/absent header? Shall we hide? Block it! | Web App Attack |
+| 2026-07-28 19:27 | IRISIO (FR) | scans/SQL injection/spam posts: 27 queries | Web App Attack, SQL Injection |
+| 2026-07-23 07:10 | vaia.cloud (SE) | crowdsecurity/http-probing | Brute-Force, Web App Attack |
+
+## 34.162.191.81 (Google LLC, AS396982, [IP odstraněna].bc.googleusercontent.com; v claude.com/crawling/bots.json)
+21 reportů / 17 zdrojů / confidence **92 %** (15. 9. 19:14 UTC bylo 15 / 12 / 69 %); první 13. 9. 2026, poslední 16. 9. 08:57 UTC. Zobrazeno 15 z 21.
+| kdy (UTC) | reportér | komentář (zkráceno) | kategorie |
+|---|---|---|---|
+| 2026-09-16 08:57 | robotstxt (ES) | access log: GET /convenio/convenio-colectivo-hosteleria-de-santa… | Web App Attack |
+| 2026-09-16 08:42 | robotstxt (ES) | access log: GET /convenio/convenio-colectivo-transporte-de-merca… | Web App Attack |
+| 2026-09-16 07:20 | Anonymous | IP banned by Fail2Ban in jail nginx-abusive-ips | Web App Attack, Brute-Force, Bad Web Bot |
+| 2026-09-16 05:51 | unph (HN) | Intento de acceso sospechoso bloqueado por AbuseIPDB Blocker Plugin | Brute-Force |
+| 2026-09-16 05:00 | jbcrn (DE) | Blocked by iocaine (nam-shub-of-enki) tarpit. Classified as: Claude, ruleset: ai.robots.txt | Bad Web Bot, Web App Attack |
+| 2026-09-15 22:52 | setupgr (GR) | mod_security id:11000011 | Port Scan |
+| 2026-09-15 18:23 | polycoda (CA) | Probes for tons of inexistent files and/or PHP scripts | Hacking, Web App Attack |
+| 2026-09-15 13:32 | Anonymous | LH-Watcher: FAKE_ID [Fake Claude-User] | Bad Web Bot |
+| 2026-09-15 04:00 | service Informatique (FR) | GET /robots.txt | Web App Attack |
+| 2026-09-14 22:49 | rh24 (DE) | (badbots) Bad bot user-agent [redacted] | Hacking |
+| 2026-09-14 18:17 | bancix (DE) | Heimdall NIDS: RST_LIMIT_EXCEEDED (8/8) | Port Scan |
+| 2026-09-14 15:11 | hxsain (NL) | Blocked by UFW [443/tcp] | Port Scan |
+| 2026-09-14 13:26 | gerensat (US) | /robots.txt, UA Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatib… | Web App Attack |
+| 2026-09-14 11:10 | eposs-it.de (DE) | Blocked by os-abuseipdb; 8 hits, proto=tcp, ports=443 | Port Scan, Hacking |
+| 2026-09-14 07:00 | sockominfo (ID) | Reported by TangerangKota-CSIRT. Status: MALICIOUS | Hacking, Email Spam |
+
+## Čtení (exekutor)
+1. **Reputace adresy Anthropicu se zhoršuje rychle:** 69 % → 92 % za ~16 hodin, 6 nových reportů za posledních 12 hodin. Automatické blokace na prahu 90–100 % (běžné nastavení pluginů) se teď spustí u mnohem víc hostingů než včera.
+2. **Podstatná část reportů netvrdí útok, ale hlásí adresu za to, že je Claude:** iocaine tarpit s ruleset `ai.robots.txt` („Classified as: Claude"), LH-Watcher „Fake Claude-User", reportér „robotstxt" logující obyčejné GET stránek, dva reporty za samotné `GET /robots.txt`, „Bad bot user-agent". Reputační smyčka: nástroje proti AI crawlerům reportují oficiální adresu → hostingy s AbuseIPDB pluginem ji blokují všem → weby, které Claude chtějí, o něj přicházejí.
+3. **Několik reportů vypadá jako TCP artefakty té blokace samé:** „RST_LIMIT_EXCEEDED", „Blocked by UFW 443/tcp", „os-abuseipdb 8 hits tcp/443" = opakované SYN na 443 (přesně vzorec z našeho tcpdumpu, fetcher retransmituje po odmítnutí). Blokace tedy generuje další reporty.
+4. Reporty „probes for PHP scripts", „mod_security" mohou být skutečné user-directed fetch útočníků (hypotéza, nelze z našeho místa ověřit).
+5. Render .219: poslední report 14. 9. je o crawleru přes plain HTTP, ne o webhooku; ostatní jsou WordPress/SQLi z jiných tenantů Renderu. Confidence 35 % je pod běžnými prahy, přesto poskytovatel A blokoval → poskytovatel A má práh nízko nebo používá i jiný zdroj.
+
+AbuseIPDB nabízí revizi/odstranění falešných reportů na žádost („request to have the associated reports reviewed and removed") — to může udělat Anthropic i Render/Polar, ne my.

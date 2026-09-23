@@ -1,0 +1,90 @@
+# REVEAL T2 — verdikty Q5 (pásma cf-T2 všech tří), Q8 (pásma Gemini, Opus) a L5
+
+autor-křeslo: exekutor · datum: 2026-09-22 20:30 · status: reveal (verdikty držitele běhu) · běh: `cf-T2-2026-09-22-home` (start 06:00 UTC, konec 11:13 UTC, měřidlo v6.2 commit 9c68275, egress [IP odstraněna] poskytovatel C, 22 846 domén, 114 chyb; z cronu `/mnt/backup/cfstudy/T2.sh`) · vstupy: `delta-Q5-T0a-T2.md`, `delta-Q5-T1-T2.md`, `q8-T2.md` + `.json`, `noise-vs-T1.md`, `report-v2.md`, `reveal-vypocty.json` (hladina M, kohorta, L5; dotaz nad zapečetěnými runy) · pásma: `bands/cf-T2/{exekutor,gemini,opus}.md` (commity 16. 9., před vysvětlením Cloudflare), `bands/cf-T2/{gemini,opus}-q8.md` (18. 9., s deklarovanou expozicí vysvětlení) — všechna před startem T2
+
+## 1. Kvalita měřidla (report-v2 §1)
+unresolved 4,5 %, skipped_unreachable 8,5 %, L0 pass 80,9 % — shodné s T0a (4,5 / 8,5 / 80,9 %) a T1 (4,5 / 8,5 / 81,0 %). Rituál jmenovatele (a) všech pásem splněn. Egress a datacentrum shodné s T1 (rituál (b)). Šum T1→T2 (`noise-vs-T1.md`): třída 0,5 %, marker 0,1 %, příčky 1,8–2,4 % (o ~0,5 p.b. výš než T0a→T0b, šestidenní odstup).
+
+## 2. Q5 — podíl M mezi `cf_proxied` (třída z T0a), řádky z artefaktů
+```
+delta-Q5-T0a-T2.md: DiD (ITT, vše): -10.76 p.b. [95% CI -11.55, -10.01] · Rozpad markeru: M_B A 766 → B 51 · BPS 0 → 0 · Content-signal v bloku 765 → 50 · mimo blok 125 → 149
+delta-Q5-T1-T2.md:  DiD (ITT, vše): +0.13 p.b. [95% CI -0.05, +0.30] · jen M_B: +0.19 [+0.08, +0.32] · pravidlo c=3: žádný skok nad šumem
+reveal-vypocty.json: M % (n 6 589): T0a 13.49 · T0b 13.42 · T1 2.61 · T2 2.78 ; (n 6 560): 13.46 · 13.38 · 2.62 · 2.77 ; jen M_B 51/6 560 = 0.78 % ; kohorta 769: M_B v T2 42 (z toho 4 nově po T1)
+```
+**Čtení:** stav z T1 trvá; marker se vrací po jednotkách zón (T1 → T2: +0,17 p.b., 38 → 51 zón), nový marker „Bot Preference Sync" nula. Nic z toho není skok nad šumem podle pre-registrovaného pravidla.
+
+| křeslo | pásmo (commit) | naměřeno | verdikt |
+|---|---|---|---|
+| exekutor (bb453bc) | medián 2,8 %; 50 % [2,3; 3,6]; 90 % [1,8; 14,0]; sekundárně DiD T1→T2 +0,2 [−0,5; +11,5] | 2,78 % (n 6 589); DiD +0,13 | **TREFA** (v 50% jádru, medián na desetinu); sekundární TREFA |
+| Gemini (37a0ae0) | [1,5 %; 4,0 %] | 2,78 % | **TREFA** |
+| Opus (37a0ae0) | M: medián 3,0 %; 50 % [2,6; 3,9]; 90 % [2,1; 12,5] (n 6 560) · jen M_B 0,7 % [0,5; 1,2] · kohorta 769: 5,5 % [4,5; 9] | 2,77 % · 0,78 % · 42/769 = 5,5 % | **TREFA** ve všech třech operačních bodech (kohorta na desetinu); rituál (a) n = 6 560 dodržen, (d) robots ≠ 200 mezi cf_proxied beze změny |
+
+Opusova žádost (rozpad M_C uvnitř/mimo blok) splněna řádkem „Rozpad markeru": žádný nový blok, M_C mimo blok +1 (148 → 149), interval [2,1; 12,5] se čte jako je.
+
+## 3. Q8 — chování hrany, rameno ztracené (n 726), řádky z `q8-T2.md`
+```
+Q8a (T0a→T2): ztracene L4a 73.0 → 86.6 · L4b 74.1 → 87.5 · L4c 69.3 → 27.4 · L4g 21.8 → 21.3 · L3 8.1 → 9.1 ; nikdy L4a 33.7 → 34.6 · L4c 30.5 → 25.0
+             DiD ztracené−nikdy: L4a +12.76 [10.14, 15.34] · L4b +12.2 [9.67, 14.91] · L4c −36.37 [−40.21, −32.79] · L4g −0.77 [−2.19, 0.59] · L3 −1.57 [−3.38, 0.06]
+Q8b (T1→T2):  DiD: L4a −0.71 [−1.62, 0.21] · L4b −1.09 [−2.13, −0.12] · L4c +0.49 [−0.92, 1.94] · L4g −0.52 · L3 −0.56 — vše v šumu
+Q8a (T0a→T2) udrzene (37): L4a 91.9 → 91.9 · L4b 91.9 → 91.9 · L4c 86.5 → 83.8 · L4g 83.8 → 86.5 · L3 5.4 → 2.7 · L2 8.1 → 5.4 · L0 2.7 → 2.7
+Q8a (T0a→T2) placebo_no_cf (14533): L4a 23.6 → 24.7 · L4b 25.4 → 26.5 · L4c 17.2 → 17.5 · L4g 14.3 → 14.6 · L3 10.9 → 11.2 · L2 8.1 → 8.6 · L0 5.2 → 5.6
+Q8b (T1→T2)  udrzene (37): L4a 91.9 → 91.9 · L4b 91.9 → 91.9 · L4c 83.8 → 83.8 · L4g 86.5 → 86.5 · L3 5.4 → 2.7 · L2 8.1 → 5.4 · L0 2.7 → 2.7
+Q8b (T1→T2)  placebo_no_cf (14533): L4a 24.2 → 24.7 · L4b 26.0 → 26.5 · L4c 17.3 → 17.5 · L4g 14.5 → 14.6 · L3 11.0 → 11.2 · L2 8.2 → 8.6 · L0 5.3 → 5.6
+Q8b (T1→T2)  nikdy (5673): L4a 34.2 → 34.6 · L4b 35.4 → 36.2 · L4c 25.0 → 25.0 · L4g 23.3 → 23.8 · L3 15.6 → 16.5 · L2 14.9 → 15.4 · L0 10.0 → 9.9
+přísné čtení T2 (q8-T2.json): L4a 86.5 % (n 719) · L4c 24.6 % (n 699) ; rozpad L4a: 403 520, challenge 102, 429 1, pass 97 ; L4c: pass 527, challenge 147, 403 24
+```
+**Čtení:** Q8a H0 „efekt zmizel" zamítnuta (L4a, L4b, L4c CI mimo nulu, směr jako v T1); Q8b H0 „beze změny od T1" drží (všechny CI obsahují nulu nebo jsou v šumu 1,8–2,4 %). Rozpad zůstává 403, ne 429 (429: 1). Rameno udržené (37): L4a 91,9 → 91,9, L4c 83,8 → 83,8, šablonu neztratila žádná zóna. Kontroly: nikdy L4a 34,6 %, L4c 25,0 %; placebo no_cf +0,5 p.b. přes příčky (drift naší IP, v šumu).
+
+| křeslo | pásmo (commit d77c5d8) | naměřeno | verdikt |
+|---|---|---|---|
+| Opus | L4a plné 87,2 %, 50 % [85,8; 88,5]; přísné 87,1 [85,5; 88,5] · L4c plné 26,8 %, 50 % [24,5; 29,5]; přísné 26,3 [24,0; 29,0] · kontroly nikdy L4a 34,5 [33; 36], L4c 24,0 [21; 27] · udržené ztratí šablonu medián 4, 90 % [0; 31], P(žádná) 0,30 · nový marker medián 2, P(0) 0,45 · L5 medián 10 %, 90 % [6; 55], P(≤ 20 %) 0,80 | L4a 86,6 / 86,5 · L4c 27,4 / 24,6 · nikdy 34,6 / 25,0 · udržené ztratily 0 · nový marker 0 · L5 9,2 % | **TREFA** L4a i L4c (obě čtení v 50% jádru; L4c přísné 24,6 na dolní hraně 50 %) · kontroly TREFA · udržené v 90 % (modus 0 měl P 0,30) · nový marker TREFA (modální výsledek) · L5 TREFA (v 50 %, medián 10 vs 9,2) |
+| Gemini | přísné čtení: L4a [84,0; 90,0], L4c [23,0; 30,0] | přísné L4a 86,5, L4c 24,6 | **TREFA** obě |
+
+Opusovy předpovědi pro sondu (kohorta pod 10 % se šablonou, L4a nad 80 %, P 0,92 / 0,88): splněny ve všech měřeních 16.–22. 9. (`runs/controls/mprobe/summary.md`; 21. 9. 04:00 UTC výpadek konektivity na naší straně: err u všech 1 269 zón, ne signál).
+
+## 4. L5 — vlastní jméno `torumata-ai-train/0.1` (bez pásma exekutora; Opus §4 vedlejší predikce), `reveal-vypocty.json`
+| rameno | L5 | L3 (torumata-probe) | L3r (python-requests) | L4a (GPTBot) |
+|---|---|---|---|---|
+| ztracené (726) | **9,2 %** | 9,1 % | 28,1 % | 86,6 % |
+| udržené (37) | 2,7 % | 2,7 % | 86,5 % | 91,9 % |
+| nikdy (5 673) | 16,9 % | 16,5 % | 28,2 % | 34,6 % |
+| no_cf (14 533) | 7,9 % | 11,2 % | 16,5 % | 24,7 % |
+
+Rozpad L5 ztracené: pass 659, challenge 50, 403 5. **Čtení:** hrana zachází s vlastním jménem, které o sobě říká, že sbírá data pro trénink, stejně jako s naším neutrálním jménem (9,2 vs 9,1 %), a **desetkrát mírněji než s napodobeným GPTBot**. Blokace je vázaná na jména v registru, ne na sebe-deklarovaný účel. Pro torumatu: poctivý lokální agent s vlastním jménem projde tam, kde napodobené jméno velkého provozovatele neprojde; knihovní výchozí UA (`python-requests`) je na tom hůř než vlastní jméno (28 % vs 9 %). Mez: jedno měření, jeden egress, neověřený žadatel.
+
+## 5. Kalibrace
+Exekutor: Q5 T2 TREFA → **5 TREFA / 9 MIMO**; korekce 10 (dvoustranné pásmo kolem produktové změny) fungovala. Gemini: Q5 T2 TREFA, Q8 TREFA. Opus: Q5 T2 TREFA (3 operační body), Q8 TREFA (L4a, L4c, kontroly, L5, nový marker). Všechna pásma T2 byla psaná po reveal T1 (předpověď vývoje ze známého stavu), Q8 navíc po vysvětlení Cloudflare; skóre se čte s touto expozicí.
+
+## 6. Co T2 uzavírá a co ne
+- **Uzavřeno:** stav po 15. 9. trvá nejméně týden a je stabilní na úrovni šumu: deklarace v robots.txt u ~93 % dříve blokujících zón chybí (51 z 766), hrana blokuje tréninková jména (87 %) a pouští agentní (27 %) i vyhledávací (21 %). Věty 1 a 2 pro článek (Opus 18. 9.) jsou tímto podmíněně potvrzeny (podmínky 1–5 Opuse splněny: Q8.1 uzavřeno, CI doplněny, T2 potvrdil trvání, rozpad 403, druhý ASN doložen).
+- **Otevřeno:** deklarační mezera se zavírá tempem ~2 zóny/den v kohortě 769 (38 → 42 za 6 dní), nový marker BPS stále 0; odpověď Cloudflare na doplňující dotaz; 37 udržených zón beze změny (podnikový profil); T3 15. 10.
+
+## 7. Další kroky
+1. Zápis do LOG/STATUS, kalibrační tabulka, README runu; balíček REVEAL T2 modelářům (bez úkolu; redakce článku až po rozhodnutí vlastníka).
+2. Denní sonda běží dál do T3; T3 naplánovat jako T2 (cron 15. 10. 08:00).
+3. Článek: zadání redakce Opusovi (věty 1–2 + třetí věta o deklarační mezeře + L5 odstavec), CS + EN, po odsouhlasení vlastníkem.
+
+## 8. Doplněk 22. 9. 23:30 — audit Opuse (A1–A10, D) a opravy; Gemini zatím neodevzdal
+Zdroj: `packets/inbox/opus/reviews/2026-09-22-cf-T2-reakce-opus.md`; výpočty `audit-T2-vypocty.json`, `M_B-nove-v-T2.csv`, `delta-Q5-T1-T2-errata.md`.
+- **A1 (blokující, přijato):** `delta-Q5-T1-T2.md` počítal šumové dno z dvojice (T1, T0b), tedy z měřeného jevu (11,11 p.b., práh 33 p.b. = pravidlo nemohlo nic detekovat). Oprava v `cfstats.py delta --noise-a` (šum vždy z dvojice téhož dne T0a/T0b), erratum `delta-Q5-T1-T2-errata.md`: šum 0,32 p.b., práh 0,96, DiD +0,13 [−0,05; +0,30] → žádný skok (závěr beze změny). Původní soubor zůstává jako pre-registrovaný výstup; `T3.sh` už používá `--noise-a`. T0a→T2 opravou nedotčeno (diff prázdný).
+- **A2 (blokující, přijato):** M_B v T2 celá populace 54 = 38 udržených + 4 návraty + **12 nových** nositelů, kteří 14. 9. šablonu neměli (10 `cf_proxied`, 1 `no_cf`, 1 `cf_dns_only`; cz 6, at 2, pl/uk/sk/it po 1) — `M_B-nove-v-T2.csv`. §2 se čte: „návraty 4, nová adopce 12"; vedle potvrzování migrace běží nové zapínání. Do článku jako dvě věci.
+- **A3 (blokující, přijato):** podmínka 5 pro tisk věty 2 **není splněna** — T6 (17. 9.) měřil z druhého ASN jen robots.txt, ne hranu. §6 se opravuje: věta 2 nese mez „chování hrany měřeno z jedné sítě", dokud neproběhne mobilní kontrola (`rfc/2026-09-22-navrhy-pred-T3.md` bod 1, rozhodne vlastník).
+- **A4 (přijato):** Q8b L4b DiD −1,09 [−2,13; −0,12] nulu neobsahuje; čte se: L4a i L4c CI přes nulu, L4b posun o 1,1 p.b. pod obratem téže příčky T1→T2 (2,2 %), primární příčka L4a beze změny → závěr „stav trvá" platí, formulace „vše v šumu" nahrazena touto.
+- **A5 (přijato):** L5 vs L3 **párově** (`audit-T2-vypocty.json`): ztracené n 726: P>P 655, F>F 62, L3 pass→L5 fail 5, L3 fail→L5 pass 4, McNemar 0,0 → totožné zacházení; nikdy n 5 651: 40/18, χ² 7,6; no_cf n 12 662: 91/25, χ² 36,4 → mimo Cloudflare je L5 o 0,5 p.b. mírnější než L3 (v šumu příček 1,8–2,4 %). Rozdíl n u no_cf (13 242 vs 12 662): L5 je poslední v sekvenci a u domén, kde měřidlo po dvou selháních spojení označí doménu za nedosažitelnou, dostane `skipped_unreachable` (575 domén) nebo chybí kvůli limitu domény (5, třída `deadline`). Párové čtení to řeší; nález §4 platí.
+- **A6 (přijato):** tabulka jmenovatelů (z `audit-T2-vypocty.json`): populace 22 846 · `cf_proxied`@T0a 6 589 · ∩ souhrn T1 6 560 · ∩ souhrn T2 6 561 · M_B v T0a: populace 769, ∩ cf_proxied 768, ∩ cf_proxied ∩ T1 (ramena Q8) 763, ∩ cf_proxied ∩ T2 (delta T0a→T2 „A") 766. V textu se odkazuje na tento řádek.
+- **A7 (přijato jako návrh pro T3):** placebo `no_cf` T1→T2 +0,3 až +0,5 p.b. na všech příčkách včetně prohlížeče = otisk našeho konce (stárnutí adresy), ne webů; sonda to zatím nepotvrzuje (GPTBot pass 96–100 v kohortě, plochý). Holdout bez napodobených jmen pro T3: `rfc/2026-09-22-navrhy-pred-T3.md` bod 3.
+- **A8, A10 (přijato):** `noise-vs-T1.md` čtecí klíč: obrat před→po, ne šum (u T1→T2 shodou obě totéž); rameno udržené L3 5,4 → 2,7 a L2 8,1 → 5,4 = změna o jednu doménu z 37, ne trend.
+- **Provenance (přijato):** balíček T2 v `in/` neměl MANIFEST se všemi soubory (publish generuje manifest jen pro poslední balíček) → doplněn `MANIFEST-T2-2026-09-22.sha256` (níže).
+- **D3 (proveden):** 4 vrácené zóny, L4a/L4c/L3 T1 → T2: autohotarek.cz 403/403 · 200/200 · 200/200; bluemoon-mcfc.co.uk 403/403 · 403/403 · 200/200; pokemoncentral.it 402/402 · 200/200 · 200/200; supersound.pl 403/403 · 403/403 · 200/200. Návrat šablony nezměnil chování hrany ani u jedné (hrana už tréninkové jméno blokovala před návratem) → svázanost deklarace s hranou se z návratů číst nedá; deklarace dobíhá za vynucováním. n = 4, indicie.
+- **Opus D1–D2 (jeho kalibrační poznámky):** bere na sebe; verdikty držitele běhu v §3 zůstávají (litera pásma), jeho zápis „trefil literu, minul jev" se do jeho tabulky přebírá beze změny.
+- **SeenSure (Opus §2.1):** rozpor čísel vysvětlen — komentář ve vlákně cituje jejich tabulku „What changed" za celý vzorek 1 046, kterou jejich shrnující odstavec mylně označuje za Cloudflare; tabulka podvzorku za Cloudflare (639) má 28,1 → 32,7 / 26,8 → 31,0 / 24,7 → 3,2 / 24,9 → 3,2. Citovat tu, se snímkem z 22. 9. Jejich hladina před změnou (GPTBot 26,8 %) odpovídá našemu rameni nikdy (33,7 %); našich 73 % je rameno vybrané podle blokace. Odstavec pro článek (cs/en) přijat do `articles/`.
+
+## 9. Doplněk 23. 9. 08:30 — audit Gemini (odevzdáno 22. 9. 23:16, `packets/inbox/gemini/reviews/2026-09-22-cf-T2-reakce-gemini.md`)
+- **Přijato (chybějící cesta):** blok zdrojových řádků v §3 neobsahoval řádky ramen udržené a placebo no_cf, na které se výklad odvolával; doplněno přímo do bloku §3 z `q8-T2.json` (Q8a i Q8b, plus nikdy pro Q8b). Ostatní čtení Gemini potvrzuje: verdikty sedí na commitnutá pásma, pre-registrované a post-hoc čtení odděleno.
+- **Srovnávací tabulka SeenSure × naše měření (Gemini §2) přijata jako materiál pro článek s třemi opravami:** (a) naše primární `¬pass` je plné čtení (2xx/3xx bez challenge = pass, ze statusu a titulku), přísné čtení (403 ∨ challenge ∨ bloková stránka, výpadky vyřazeny) je sekundární — obě se hlásí; (b) Googlebot u ztracených zón není „absolutní průchod", ale ¬pass 21,8 → 21,3 % (beze změny); (c) kohorta = 726 (pre-registrace Q8), ne 725. Pět vět mezí přijato; věta 5 („spoofing UA z jedné rezidentní adresy, neověřený žadatel") je shodná s naší mezí a s mezí SeenSure.
+- Doplňující dotaz do vlákna (v2) obsahuje nabídku párových dat per identita — pokud SeenSure odpoví, srovnání se doplní na týchž zónách.
+
+## 10. Doplněk 23. 9. 09:40 — replikace z jiné sítě (náhrada za test F, Opus A3)
+Vlastník spustil `scripts/mobil-kontrola-2026-09-23.sh` (1 000 domén, 6 000 požadavků) 23. 9. 07:15 UTC z poskytovatel A poskytovatel A přes IPv6 (jiné ASN, třída DC, jiná IP rodina než studie). Výsledek doménu po doméně shodný s T2: ztracené GPTBot 87,0 % (T2 86,6; shoda 99,4 %), ChatGPT-User 27,3 % (27,4; 97 %), Googlebot 22,2 % (21,3), L5 10,2 % (9,2), robots.txt šablona 4/725 (100 % shoda); udržené 37/37 šablona, GPTBot 91,9 %, ChatGPT-User 83,8 %; kontroly v šumu. `runs/controls/live-2026-09-23/SOUHRN.md`. **Podmínka 5 (druhá síť pro hranu) splněna; §6 se čte s touto opravou.** Druhý běh z dalšího poskytovatele avizován.
+
+**Doplněk 23. 9. 10:30 (běh 2):** replikace i z mobilní sítě poskytovatel B (poskytovatel B, IPv6): GPTBot 86,6 %, ChatGPT-User 27,0 %, Googlebot 22,2 %, L5 9,5 % u ztracených; shoda s T2 i s během 1 per doména 96 až 100 %. Tři sítě, tři třídy egressu, dvě IP rodiny. `runs/controls/live-2026-09-23/SOUHRN.md`. Mez "jedna síť" uzavřena; v článku se nahradí větou o ověření ze dvou dalších sítí.

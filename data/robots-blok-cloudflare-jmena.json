@@ -1,0 +1,39 @@
+{
+ "kdy": "2026-09-23T08:26:47.488608+00:00",
+ "zdroj": "robots blobs run cf-T0a-2026-09-14-home-r5 s cf_managed=1, blok mezi BEGIN/END Cloudflare Managed content",
+ "n_souboru": 769,
+ "pocet_User-agent_radku": {
+  "10": 737,
+  "9": 31,
+  "7": 1
+ },
+ "jmena": {
+  "Amazonbot": 769,
+  "Applebot-Extended": 769,
+  "Bytespider": 769,
+  "CCBot": 769,
+  "ClaudeBot": 769,
+  "meta-externalagent": 769,
+  "*": 768,
+  "Google-Extended": 768,
+  "GPTBot": 768,
+  "CloudflareBrowserRenderingCrawler": 738
+ },
+ "oprava": "Řádky User-agent (10) zahrnují skupinu * (Content-signal + Allow: /) a CloudflareBrowserRenderingCrawler (vlastní vykreslovací robot Cloudflare, Disallow: / u 738 souborů). Robotů třetích stran pro trénink AI se zákazem Disallow: / je 8 (u 768–769 souborů). Pro článek platí „osm\".",
+ "pocet_jmen_s_Disallow": {
+  "9": 738,
+  "8": 30,
+  "5": 1
+ },
+ "jmena_s_Disallow": {
+  "Amazonbot": 769,
+  "Bytespider": 769,
+  "CCBot": 769,
+  "ClaudeBot": 769,
+  "meta-externalagent": 769,
+  "Applebot-Extended": 768,
+  "Google-Extended": 768,
+  "GPTBot": 768,
+  "CloudflareBrowserRenderingCrawler": 738
+ }
+}

@@ -1,0 +1,229 @@
+# Pásmo cf-T0 — křeslo Opus
+
+- **autor-křeslo:** Opus 5 — modelář B / redaktor
+- **datum:** 2026-09-14
+- **run-id:** cf-T0 · platnost: `cf-T1-<datum>-k8s` (veličiny 1–7); veličina 5 na obou egressech (viz §0.1)
+- **status:** k review
+- **odkazy na artefakty (úplný výčet vstupů):** `CHARTER.md`, `rfc/2026-09-13-cloudflare-pred-po.md` (dále „RFC"), `OBALKA.md` (cf-T0), `README.md`, `packets/TEMPLATE.md`; ověřeno proti `MANIFEST.sha256` balíčku. Žádná data z populace, žádná cizí pásma.
+
+---
+
+## 0. Rámec
+
+### 0.1 Platnost
+- **Neplatí** pro domácí běh T0a (start 2026-09-14 07:51, tj. před commitem tohoto souboru) pro veličiny 1–4, 6, 7. Na tomto běhu se toto pásmo neskóruje.
+- **Veličiny 1–4, 6, 7** platí pro běh `cf-T1-<datum>-k8s`, pokud současně:
+  1. start běhu je časově po commitu tohoto souboru;
+  2. start ≤ 2026-09-30 (veličiny 2 a 3 driftují; pro běh po tomto datu platí z tohoto pásma jen 1, 4, 6, 7);
+  3. populace = týž soubor se stejným sha jako domácí běh, filtr `cc = cz`, všech 4 970 vstupních domén. Běží-li k8s jen na podvzorku (RFC §4 zmiňuje 300 domén), pásmo platí jen tehdy, je-li seed zapsán před startem; intervaly se pak čtou rozšířené o výběrovou chybu podvzorku.
+- **Veličina 5** platí pro (a) domácí T0a → domácí T1 a (b) domácí T0a → `cf-T1-<datum>-k8s`, je-li commit před 2026-09-16. Varianta (b) mísí dvě měřidla (není na ní k8s baseline); píšu ji, protože ji obálka žádá, ale v auditu (review, nález N18) doporučuji nečíst ji jako deltu.
+
+### 0.2 Operační body egressu (křivka místo bodu)
+Egress k8s neznám (ASN, země, IPv4/IPv6, NAT pool). Hrana Cloudflare hodnotí reputaci zdrojové IP, proto u veličin 4, 6, 7 (a citlivostně u 2, 3, 5) píšu **dvě křivky** podle třídy egressu:
+- **RES** = ASN přístupového ISP (domácí/mobilní přípojka);
+- **DC** = ASN poskytovatele cloudu, hostingu, kolokace nebo datacentra.
+
+Třídu určí exekutor ze záznamu vlastníka ASN (RIPE/whois) k `runs.egress_asn` **před otevřením výsledků** a zapíše ji do sidecaru. Nejednoznačné, smíšené nebo rotující egress IP různých tříd ⇒ čte se křivka **DC**.
+
+### 0.3 Deklarace expozice
+Přečetl jsem celé RFC včetně §0 (domněnka exekutora o nulovém skoku), §1 (kontrolní klasifikace 4 domén), §2b (žebřík na medium.com a cloudflare.com) a §7 (benchmarky). Hodnoty z kontrolních domén do intervalů nevstupují; §2b mi pouze připomněl osu „TLS otisk vs. hlavička UA", kterou mechanismy níže používají z obecné znalosti produktů Cloudflare (Bot Fight Mode, WAF, blokace AI botů). Pásmo 5 odvozuji z vlastního popisu, na co pravidla 15. 9. míří, ne z §0. Výsledky T0a ani cizí pásma jsem neviděl.
+
+### 0.4 Kalibrace (CHARTER §5)
+Tabulka minutí tohoto křesla nebyla dodána (bezstavová session). Datová korekce: **žádná; surové = korigované.** Bez formální korekce jsem 90% intervaly psal široce, protože LLM pásma bývají přesvědčenější, než odpovídá informaci.
+
+### 0.5 Kotvy bez artefaktu
+Kde uvádím kotvu typu „cizí měření jiné populace" z vlastní znalosti trhu, **neuvádím její hodnotu**: v přílohách k ní není artefakt a CHARTER §4 číslo bez cesty nepřipouští. Uvádím jen, jakým směrem jsem ji použil. Taková kotva se nesmí citovat v článku ani ve verdiktu. Strukturální kotvy (strop, podlaha, šumové dno) mají hodnotu z téhož běhu, takže cestu mít budou.
+
+### 0.6 Společné definice (fixuji tam, kde RFC nechává mezeru)
+- Podíly jsou **nevážené** (každá vstupní doména = 1) a udávám je v procentech jmenovatele. Intervaly jsou subjektivní pravděpodobnostní: medián, 50% interval, 90% interval.
+- Třída `cf_proxied` / `cf_dns_only` / `no_cf` dle RFC §1, **z téhož běhu, ve kterém se veličina čte**. U veličiny 5 se bere třída z T0a (intention-to-treat). `cf_dns_only` nepatří do žádného ramene.
+- `pass(d, Lk)` dle RFC §2b; cokoli jiného je fail (včetně timeoutu a 4xx/5xx).
+- **L3** = UA `torumata-probe/0.1` (L3r `python-requests` jen jako citlivost u 7a). **L4** = L4a UA GPTBot. **L4'** = L4g UA Googlebot. **L2** = HTTP klient skriptu s UA Chrome.
+- Kde skript implementuje definici jinak než zde (např. cf-ray z finální odpovědi po přesměrování na cizí host), čte se verdikt se vzdáleností a citlivostí na definici (CHARTER §4); u veličiny 1 citlivost odhaduji níže.
+
+---
+
+## Přehled (mediány a 90% intervaly; detaily a 50% intervaly v sekcích)
+
+| # | veličina | rameno / bod | RES | DC |
+|---|---|---|---|---|
+| 1 | podíl `cf_proxied` z 4 970 | — | 17 % [10; 27] | totéž |
+| 2 | blokuje ≥ k tréninkových botů / robots 200 | k ≥ 1 | 13 % [6; 23] | 12 % [5; 22] |
+|   |  | k ≥ 4 | 7 % [3; 13] | 6,5 % [2,5; 12] |
+|   |  | k ≥ 8 | 4,5 % [1,5; 9] | 4 % [1,5; 8,5] |
+| 3 | managed marker / všechny `cf_proxied` | M | 9 % [3; 20] | 8 % [2; 19] |
+| 4 | ¬pass L4 (GPTBot) / L0 pass | cf_proxied | 24 % [10; 42] | 35 % [18; 55] |
+|   |  | no_cf | 5 % [1,5; 11] | 8 % [3; 16] |
+|   | ¬pass L4' (Googlebot) / L0 pass | cf_proxied | 20 % [8; 38] | 32 % [15; 52] |
+|   |  | no_cf | 3,5 % [1; 9] | 6 % [2; 14] |
+|   | AI složka: ¬pass L4 ∧ pass L3 / L0 pass | cf_proxied | 5 % [1,5; 13] | 4 % [1; 11] |
+|   |  | no_cf | 1,5 % [0,3; 5] | 1,5 % [0,3; 5] |
+| 5 | DiD markeru T0a→T1 (p. b.) | domácí | +0,3 [−0,5; +2,5] | — |
+|   |  | T0a domácí → T1-k8s | viz §5 | −0,5 [−4; +2,5] |
+| 6 | platný ads.txt / cf_proxied ∧ L0 pass | — | 17 % [7; 30] | 15 % [6; 28] |
+| 7a | pass L3 / L0 pass | cf_proxied | 78 % [60; 90] | 66 % [45; 84] |
+|    |  | no_cf | 95 % [89; 98,5] | 92 % [84; 97] |
+| 7b | ¬pass L2 / L0 pass | cf_proxied | 19 % [8; 38] | 30 % [15; 50] |
+|    |  | no_cf | 3 % [1; 9] | 5 % [2; 12] |
+
+U veličiny 1 nerozlišuji RES/DC (zdůvodnění v §1). U veličiny 5 je řádek DC pro T0a domácí → T1-k8s, pokud je k8s DC; pro RES k8s platí řádek „domácí".
+
+---
+
+## 1. Podíl domén třídy `cf_proxied` v populaci
+
+- **populace:** soubor populace dle RFC §3 (`population/eu-tier1-2026-09-13.txt`, filtr `cc = cz`, sha dle `population/SHA256SUMS`), všech 4 970 vstupních domén, běh `cf-T1-<datum>-k8s`. Domény `unresolved` a `skipped_unreachable` zůstávají ve jmenovateli (RFC §3).
+- **veličina:** syrový nevážený podíl #{d : třída(d) = `cf_proxied`} / 4 970, kde `cf_proxied` = (A/AAAA vstupní domény ∈ snapshot rozsahů CF) ∨ (`cf-ray` přítomen). Pomocná predikce pro kontrolu měřidla: domény, kde se cesty IP a `cf-ray` neshodují, tvoří ≤ 5 % domén `cf_proxied`.
+- **kotva:**
+  - globální podíl Cloudflare mezi weby podle průzkumů technologií webu — *cizí měření jiné populace* (globální web, jiná detekční metoda). Hodnotu neuvádím (§0.5). Použito jen směrově: český podíl čekám pod ní.
+  - strop *strukturální*: 100 % minus podíl `unresolved`; hodnota vznikne z téhož běhu.
+  - „nejlepší známá politika": pro podíl adopce nedává smysl, neuvádím.
+- **jmenovatel:** 4 970 vstupních domén.
+  *Rituál — jmenovatel je špatně, pokud:* (a) soubor populace v k8s běhu má jiný sha nebo jiný počet řádků `cc = cz`; (b) seznam Tranco obsahuje subdomény nebo více hostů téže registrované domény, takže se tatáž infrastruktura počítá vícekrát; (c) velká část domén nemá web (API, tracking a CDN hosty z DNS zdrojů Tranco). Pak podíl měří „CF mezi hostnames", ne „mezi weby". Kontrola: je-li `unresolved` + `skipped_unreachable` > 15 %, čte se podíl i nad dosažitelnými doménami a pásmo 1 chápu jako vázané na tuto hranici.
+- **interval:** medián **17 %**; 50 % [14; 21]; 90 % [10; 27].
+  Citlivost (není primární): nad dosažitelnými doménami medián 18,5 %, 90 % [11; 29]. Bere-li skript `cf-ray` i z finální odpovědi po přesměrování na cizí host, čekám navíc +0 až +1,5 p. b.
+  Egress: jedna křivka. Příslušnost IP k rozsahům na egressu nezávisí a `cf-ray` nese i odpověď s challenge. Výjimkou by byl geo-DNS, ten čekám zanedbatelný.
+- **mechanismus:** Hlava webu .cz stojí z velké části na domácích hostinzích s vlastní anti-DDoS/CDN vrstvou a na vlastní infrastruktuře velkých portálů a vydavatelů. Cloudflare do ní přichází hlavně přes e-shopy, agenturní weby a SaaS platformy, které samy na Cloudflare sedí. Proto čekám podíl zřetelně nenulový, ale pod globálním podílem. *Vyvratitelné:* podíl > 27 % znamená, že podceňuji agenturní/SaaS kanál; podíl < 10 % znamená, že ho přeceňuji.
+
+---
+
+## 2. Podíl domén s robots.txt 200 blokujících ≥ 1 tréninkového bota
+
+- **populace:** jako u 1, podmnožina domén, u nichž GET `https://{d}/robots.txt` klientem skriptu (s následováním přesměrování) skončil finálním statusem 200. Zahrnuje všechny CF třídy.
+- **veličina:** podíl domén, u nichž je ≥ k z 9 tokenů {GPTBot, ClaudeBot, anthropic-ai, CCBot, Google-Extended, Bytespider, Applebot-Extended, meta-externalagent, Amazonbot} ve stavu *blocked*.
+  `blocked(b)` ⇔ existuje skupina, jejíž řádek `User-agent` se shoduje s tokenem b (bez ohledu na velikost písmen), a vyhodnocení pravidel této skupiny dle RFC 9309 (více skupin pro týž token se slučuje) zakazuje cestu `/`. Dědění z `User-agent: *` se **nepočítá**. Tělo, které není robots.txt (např. HTML soft-404), neobsahuje žádné skupiny, takže doména zůstává ve jmenovateli jako neblokující.
+  **Operační body:** k = 1 (primární, zadání), k = 4, k = 8.
+- **kotva:**
+  - měření robots.txt nad globálními top weby a nad zpravodajskými vydavateli (studie 2023–2025) — *cizí měření jiné populace*, vychýlené k vydavatelům. Hodnoty neuvádím (§0.5). Směr: český podíl čekám níže než u vydavatelů.
+  - report technologychecker.io (RFC §5.2) — **nemám jako artefakt, nepoužil jsem.**
+  - *strukturální dolní mez* pro k ≥ 8: podíl domén s markerem `BEGIN Cloudflare Managed content` mezi doménami s robots 200 (managed blok dle RFC §0 obsahuje 8 z 9 tokenů; předpokládám, že jde o `Disallow: /`).
+- **jmenovatel:** domény s finálním robots.txt 200.
+  *Rituál — jmenovatel je špatně, pokud:* (a) hrana na robots.txt vrací klientovi skriptu challenge s kódem 200 (HTML), čímž přidává do jmenovatele neblokující „robots"; (b) na doménách, kde hrana nepustí HTTP knihovnu, robots.txt nevrátí 200. Pak systematicky vypadávají restriktivnější weby (hlavně `cf_proxied` a hlavně na egressu DC) a podíl je podhodnocený; (c) přesměrování robots.txt na cizí host přináší cizí politiku.
+- **interval (křivka přes k):**
+
+| k | RES medián | RES 50 % | RES 90 % | DC medián | DC 90 % |
+|---|---|---|---|---|---|
+| ≥ 1 | **13 %** | [9; 17] | [6; 23] | 12 % | [5; 22] |
+| ≥ 4 | 7 % | [5; 9,5] | [3; 13] | 6,5 % | [2,5; 12] |
+| ≥ 8 | 4,5 % | [3; 6,5] | [1,5; 9] | 4 % | [1,5; 8,5] |
+
+  DC je níže kvůli výpadku restriktivních domén ze jmenovatele (rituál b).
+- **mechanismus:** Blokace je soustředěná ve dvou skupinách. (1) Vydavatelé a obsahové weby blokují ručně a vybíravě, typicky jen několik tokenů. (2) Šablonové bloky (managed robots.txt Cloudflare, pluginy CMS, kopírované seznamy) blokují 8–9 tokenů najednou. E-shopy a firemní weby tvoří většinu hlavy .cz a neblokují, protože chtějí být vidět v AI odpovědích a vyhledávání. *Vyvratitelné:* poměr podíl(k ≥ 8) / podíl(k ≥ 1) leží v [0,2; 0,55]. Nad 0,55 je blokace převážně šablonová (a pásmo 3 mám nízko), pod 0,2 převážně ruční.
+
+---
+
+## 3. Podíl `cf_proxied` domén s Cloudflare managed markerem v robots.txt
+
+- **populace:** všechny domény třídy `cf_proxied` v běhu k8s, bez ohledu na status robots.txt.
+- **veličina:** podíl domén s markerem M = M_B ∨ M_C, kde
+  - M_B = tělo robots.txt obsahuje `BEGIN Cloudflare Managed content` (bez ohledu na velikost písmen),
+  - M_C = existuje řádek, který po odstranění úvodních bílých znaků začíná `Content-signal:` (bez ohledu na velikost písmen).
+
+  Robots.txt jiný než 200 ⇒ M = 0. Složky predikuji zvlášť.
+- **kotva:**
+  - *strop strukturální:* M_B mezi `cf_proxied` s robots 200 ≤ podíl `cf_proxied` s blokací k ≥ 8, plus domény, kde origin managed blok přepsal. Hodnota z téhož běhu.
+  - vendorová sdělení Cloudflare o počtu zón se spravovaným robots.txt — *cizí měření jiné populace* (celá síť Cloudflare včetně neaktivních zón). Hodnotu neuvádím (§0.5). Směr: český podíl čekám nízko, protože zapnutí je ruční (RFC §0).
+- **jmenovatel:** všechny `cf_proxied`.
+  *Rituál — jmenovatel je špatně, pokud:* (a) hrana vrací klientovi skriptu na robots.txt challenge, takže M = 0 kvůli nepozorovatelnosti, ne kvůli politice. Kontrola: podíl `cf_proxied` se statusem robots 403/503 nebo `cf-mitigated`; nad 5 % se čte i varianta nad pozorovatelnými; (b) `cf_proxied` obsahuje nájemníky SaaS platforem, kteří k nastavení Cloudflare nemají přístup a marker zapnout nemohou; (c) třída vznikla z `cf-ray` po přesměrování na cizí host.
+- **interval:**
+  - RES: M medián **9 %**; 50 % [6; 13]; 90 % [3; 20]. M_B medián 8 %, 90 % [2,5; 18]. M_C ∧ ¬M_B medián 0,5 %, 90 % [0; 1,5].
+  - DC: M medián 8 %; 90 % [2; 19].
+  - Pomocné kontroly měřidla: M_B v `no_cf` ≤ 0,7 % (kopie souboru, odchod z Cloudflare); mezi doménami s M_B a robots 200 splňuje k ≥ 8 alespoň 90 % domén.
+- **mechanismus:** Managed robots.txt se zapíná ručně. České zóny na Cloudflare z velké části spravují agentury a malí provozovatelé, kteří po onboardingu nastavení neotevírají. Marker proto nese menšina, ale ne zanedbatelná, protože Cloudflare volbu aktivně nabízí v dashboardu a kolem 15. 9. k revizi vyzývá. *Vyvratitelné:* M > 20 % znamená, že Cloudflare marker existujícím zónám zapnul plošně nebo implicitně. Poměr M_B / (podíl `cf_proxied` s k ≥ 1 mezi robots 200) čekám v [0,3; 0,7].
+
+---
+
+## 4. Neprůchod UA GPTBot a Googlebot mezi doménami s L0 pass; AI-specifická složka
+
+- **populace:** domény třídy `cf_proxied`, resp. `no_cf` (běh k8s), s `pass(d, L0)`.
+- **veličina (per rameno):**
+  - F4 = podíl ¬pass(L4a, UA GPTBot);
+  - F4' = podíl ¬pass(L4g, UA Googlebot);
+  - AI = podíl ¬pass(L4a) ∧ pass(L3), jmenovatel stále L0 pass.
+- **kotva:**
+  - *mechanická podlaha* = rameno `no_cf` (RFC §2b);
+  - *podlaha anti-impersonace* = F4' v témže rameni;
+  - *strop* složky AI = F4 v témže rameni;
+  - cizí měření zacházení s neověřeným žadatelem s bot UA na české populaci neznám, žádnou numerickou kotvu nemám.
+- **jmenovatel:** domény ramene s L0 pass.
+  *Rituál — jmenovatel je špatně, pokud:* (a) „pass" L0 zahrnuje challenge nebo blokové stránky mimo signatury Cloudflare (titulek, `cf-mitigated`), např. u jiných WAF s kódem 200; v `no_cf` pak jmenovatel obsahuje blokované domény; (b) L0 v k8s běhu neběží na všech doménách a jmenovatelem je podvzorek; (c) L0 selhává technicky (timeout Chrome) korelovaně s pomalými weby; (d) na egressu DC hrana challengeuje i L0, jmenovatel ztratí nejrestriktivnější weby za Cloudflare a F4 v `cf_proxied` tím klesá (selekce proti směru reputace IP).
+- **interval:**
+
+| rameno | veličina | RES medián | RES 50 % | RES 90 % | DC medián | DC 90 % |
+|---|---|---|---|---|---|---|
+| cf_proxied | F4 | **24 %** | [17; 31] | [10; 42] | 35 % | [18; 55] |
+| cf_proxied | F4' | 20 % | [14; 27] | [8; 38] | 32 % | [15; 52] |
+| cf_proxied | AI | 5 % | [3; 8] | [1,5; 13] | 4 % | [1; 11] |
+| no_cf | F4 | 5 % | [3; 7] | [1,5; 11] | 8 % | [3; 16] |
+| no_cf | F4' | 3,5 % | [2; 5] | [1; 9] | 6 % | [2; 14] |
+| no_cf | AI | 1,5 % | [0,8; 2,5] | [0,3; 5] | 1,5 % | [0,3; 5] |
+
+- **mechanismus:** Většina neprůchodů GPTBot UA za Cloudflare je obecná obrana proti automatům: Bot Fight Mode, WAF pravidla a skóre bota stojí na TLS otisku a chování klienta, takže padne i L3 a L4'. Podvržený Googlebot z cizí IP je navíc sám silný signál. AI-specifická složka vzniká jen tam, kde je zapnutá blokace AI botů nebo vlastní UA pravidlo bez obecné anti-bot vrstvy. Mimo Cloudflare vzniká neprůchod hlavně z UA pravidel hostingu a WordPress pluginů. *Vyvratitelné:*
+  - (i) v `cf_proxied` platí AI < ½ · F4. Pokud ne, dominují UA pravidla nad otiskem;
+  - (ii) F4' ≤ F4 a zároveň F4' ≥ 0,6 · F4. Pokud F4' > F4, je detekce podvrženého Googlebota přísnější než pravidla proti AI.
+
+---
+
+## 5. Delta T0→T1 podílu managed markeru: `cf_proxied` minus `no_cf` (DiD)
+
+- **populace:** domény s třídou z **T0a** (ITT). Rameno CF = `cf_proxied`@T0a, placebo = `no_cf`@T0a. Stejná množina domén v obou časech; domény, které mezi T0a a T1 změní třídu, zůstávají v rameni z T0a.
+- **veličina:** M (definice z §3) pro každou doménu a čas; robots.txt jiný než 200 ⇒ M = 0.
+  Δ_ramene = podíl M@T1 − podíl M@T0a (nad touž množinou domén). **DiD = Δ_cf − Δ_no**, v procentních bodech.
+  Šumové dno = totéž s T0b místo T1 (T0a→T0b, domácí egress).
+  Citlivostní varianta (není primární): párově jen domény s robots 200 v obou časech.
+- **kotva:**
+  - *šumové dno* T0a/T0b — relativní práh dle CHARTER §3; hodnota z běhů;
+  - *strop strukturální:* Δ_cf ≤ 100 % − podíl M@T0a v `cf_proxied`;
+  - nejlepší známá politika ani cizí měření skoku neexistuje.
+- **jmenovatel:** `cf_proxied`@T0a, resp. `no_cf`@T0a (čekám řádově 850, resp. 3 900 domén; odhad, ne měření).
+  *Rituál — jmenovatel je špatně, pokud:* (a) T0a, T0b a T1 nemají stejný `script_commit` (RFC §4 uvádí změnu měřidla v5 datovanou 2026-09-14 a T0a startoval 07:51; neshoda znamená, že šumové dno i delta míchají měřidla); (b) na T1 vypadne jiný podíl domén jako nedosažitelný než na T0a, takže M = 0 z výpadku, ne ze změny; (c) u k8s: robots.txt se na egressu DC challengeuje častěji než z domácí IP, takže Δ_cf je záporná z měřidla.
+- **interval:**
+  - **(a) domácí T0a → domácí T1:** DiD medián **+0,3 p. b.**; 50 % [0; +0,8]; 90 % [−0,5; +2,5]. Tvarová poznámka: rozdělení je dvouvrcholové. P(DiD ≥ +5 p. b.) = **8 %** (scénář, že Cloudflare 15.–16. 9. plošně překlopí výchozí stav existujícím zónám).
+    V počtech domén: čistý přírůstek M v `cf_proxied` medián +3, 90 % [−3; +18]. Šumové dno (podíl `cf_proxied` domén s různým M mezi T0a a T0b) čekám ≤ 1 %, medián 0,3 %.
+  - **(b) domácí T0a → `cf-T1-<datum>-k8s`:** je-li k8s RES, platí interval (a) rozšířený na 90 % [−1,5; +3]. Je-li k8s DC: medián −0,5 p. b.; 90 % [−4; +2,5].
+- **mechanismus:** Pravidla 15. 9. míří na hranu (blokace tréninkových a agentních botů na stránkách s reklamou) a na **nové** zóny. Managed robots.txt je samostatný přepínač, který existující zóna musí zapnout ručně, a výzva v dashboardu za 2 dny zasáhne jen jednotky provozovatelů. V robots.txt existujících českých domén za Cloudflare proto čekám přírůstek na úrovni šumového dna. *Vyvratitelné:* DiD > +2,5 p. b. nebo DiD > 3× šumové dno znamená, že Cloudflare změnil výchozí stav i pro existující zóny, nebo že výzva k revizi funguje řádově lépe, než předpokládám.
+
+---
+
+## 6. Podíl `cf_proxied` domén (L0 pass) s platným `/ads.txt`
+
+- **populace:** `cf_proxied` ∧ pass(L0), běh k8s.
+- **veličina:** podíl domén, u nichž GET `https://{d}/ads.txt` klientem skriptu (s následováním přesměrování v rámci téže registrované domény) vrátí finální 200 a tělo obsahuje ≥ 1 platný řádek. Platný řádek = po odstranění komentáře (`#…`) má ≥ 3 čárkou oddělená pole, 1. pole má tvar doménového jména a 3. pole ∈ {DIRECT, RESELLER} (bez ohledu na velikost písmen). Řádky proměnných (`contact=`, `ownerdomain=`, `managerdomain=`, `subdomain=`) se nepočítají. HTML tělo ⇒ neplatné.
+- **kotva:**
+  - *srovnávací mechanická hodnota:* týž podíl v `no_cf` ∧ L0 pass (predikuji níže);
+  - adopce ads.txt u globálních top webů — *cizí měření jiné populace*. Hodnotu neuvádím (§0.5). Směr: český podíl nižší, protože hlavu .cz tvoří hodně e-shopů;
+  - *strop* (neměřený): podíl programaticky monetizovaných domén, jehož je platný ads.txt podmnožinou.
+- **jmenovatel:** `cf_proxied` s L0 pass.
+  *Rituál — jmenovatel je špatně, pokud:* (a) klient skriptu dostane na ads.txt challenge na doménách, kde L0 projde a L3 ne. Ads.txt je tam nepozorovatelný a počítá se jako chybějící, takže podíl je podhodnocený. Kontrola: podíl L0 pass ∧ ¬pass L3 v `cf_proxied`; (b) L0 pass selektuje proti restriktivním webům (viz 4d); (c) ads.txt se přesměruje na cizí doménu.
+- **interval:** RES medián **17 %**; 50 % [12; 22]; 90 % [7; 30]. DC medián 15 %; 90 % [6; 28].
+  Pomocné: `no_cf` ∧ L0 pass medián 15 %; rozdíl cf − no_cf medián +2 p. b., 90 % [−5; +10].
+- **mechanismus:** Ads.txt v hlavě .cz nesou hlavně obsahové weby monetizované přes programatické systémy (Google, Seznam); e-shopy a firemní weby ho nemají. Vydavatelé nejsou na Cloudflare výrazně častěji než e-shopy (velcí čeští vydavatelé mají vlastní infrastrukturu), proto čekám cf ≈ no_cf. *Vyvratitelné:* rozdíl cf − no_cf > +10 p. b. znamená, že se vydavatelé na Cloudflare samovybírají.
+
+---
+
+## 7. Čitelnost pro lokálního agenta
+
+- **populace:** domény třídy `cf_proxied`, resp. `no_cf` (běh k8s), s pass(L0).
+- **veličina:**
+  - **7a** = podíl pass(L3, UA `torumata-probe/0.1`). Operační bod L3r (`python-requests`) jako citlivost.
+  - **7b** = podíl ¬pass(L2), tj. „člověk ano, knihovna s UA prohlížeče ne". Zadání píše „podíl L0 pass ∧ L2 fail"; nad jmenovatelem L0 pass je to totéž. Nepodmíněný podíl nad celým ramenem = 7b × podíl L0 pass (pomocná predikce níže).
+- **kotva:**
+  - *mechanická podlaha* = rameno `no_cf` (RFC §2b);
+  - *strop* = 100 % (jmenovatel je L0 pass, prohlížeč prošel);
+  - žádná známá cizí kotva (shodně s RFC §2b).
+- **jmenovatel:** domény ramene s L0 pass.
+  *Rituál — jmenovatel je špatně, pokud:* (a)–(d) jako u veličiny 4; navíc (e) L0 není „člověk", ale automatizovaný Chrome. Pokud ho hrana poznává (headless signatury), jmenovatel vylučuje právě weby s nejpřísnější detekcí a 7a je nadhodnocené.
+- **interval:**
+
+| rameno | veličina | RES medián | RES 50 % | RES 90 % | DC medián | DC 90 % |
+|---|---|---|---|---|---|---|
+| cf_proxied | 7a pass L3 | **78 %** | [71; 84] | [60; 90] | 66 % | [45; 84] |
+| no_cf | 7a pass L3 | **95 %** | [93; 97] | [89; 98,5] | 92 % | [84; 97] |
+| cf_proxied | 7b ¬pass L2 | **19 %** | [13; 26] | [8; 38] | 30 % | [15; 50] |
+| no_cf | 7b ¬pass L2 | **3 %** | [2; 5] | [1; 9] | 5 % | [2; 12] |
+
+  Citlivost L3r: pass L3r ≤ pass L3 o 0–4 p. b. v obou ramenech (UA `python-requests` je na seznamech „bad bot" hostingových WAF).
+  Pomocné, pro převod na nepodmíněné podíly (RES): podíl L0 pass v `cf_proxied` medián 92 %, 90 % [84; 97]; v `no_cf` medián 86 %, 90 % [76; 93]. `no_cf` je níže, protože do něj strukturálně padají nerezolvované a nedosažitelné domény.
+- **mechanismus:** Hrana Cloudflare u zón se zapnutou anti-bot vrstvou rozhoduje podle TLS/HTTP otisku a chování, ne podle UA. Knihovna proto padá stejně s poctivým UA (L3) jako s UA prohlížeče (L2). Mimo Cloudflare běžný hosting knihovnu pouští, pokud UA není na seznamu. *Vyvratitelné:*
+  - (i) v `cf_proxied` platí |¬pass L2 − ¬pass L3| ≤ 5 p. b. Pokud je ¬pass L2 výrazně vyšší, trestá hrana samotný nesoulad UA a otisku víc než poctivou knihovnu;
+  - (ii) rozdíl ramen v 7a (no_cf − cf_proxied) je na RES ≥ 7 p. b. Pokud ne, vedlejší škoda na lokálních agentech není vlastnost Cloudflare, ale obecná.

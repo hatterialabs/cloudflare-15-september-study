@@ -1,0 +1,13 @@
+# Pásmo: Q8 (hladiny ¬pass v T2)
+autor-křeslo: gemini / datum: 2026-09-18 / run-id: cf-T2 / status: pre-registrace
+
+**Expozice:** Deklaruji plnou obeznámenost s výsledky testu T4 a testu B (propady a nárůsty L4a a L4c mezi T0a a T1), a explicitně i se zněním blogových příspěvků Cloudflare z 21. 8. a 15. 9., které potvrzují plošné zrušení `managed robots.txt` a migraci blokování "Training" vs "Agent" botů na síťovou hranu (Bot Preference Sync a Disallow AI Training).
+
+- **populace:** ITT rameno `ztracené` definované v Q8 (zóny v populaci `cf_proxied`, které měly marker `M_B` v T0a a prokazatelně jej ztratily v T1; n = 726).
+- **veličina:** Absolutní hladina přísného „¬pass“ (v procentech) pro příčky L4a (GPTBot) a L4c (ChatGPT-User) naměřená během T2. (Přísné čtení = zachycené stavové kódy 403, challenge a block_sig; výpadky typu 5xx a timeout vyřazeny).
+- **kotva:** Hodnoty hladin z T1 u téhož ramene (L4a: 86,9 %; L4c: 26,9 %). Klasifikace: ověřený a ustálený stav nové granulární WAF politiky definované na blogu Cloudflare.
+- **jmenovatel:** Zafixovaný počet domén spadajících do ramene `ztracené` s vynecháním těch, co neodpoví kvůli chybám spojení (timeout/NXDOMAIN). Rituál omylu: „Jmenovatel by způsobil zkreslení, pokud by extrémní většina zón do T2 padla na timeout či odešla od CF, čímž by procenta podlehla extrémnímu šumu z důvodu příliš malého jmenovatele.“
+- **pásmo:** Dvoustranný interval pro měření 22. 9.:
+  - **L4a (GPTBot):** [84,0 %; 90,0 %]
+  - **L4c (ChatGPT-User):** [23,0 %; 30,0 %]
+- **mechanismus:** Jak potvrdily oficiální zdroje, rozdílný přístup v T1 k L4a a L4c není náhodný bug, ale výsledek cílené implementace "Accountable mixed-use AI crawlers" ze dne 15. 9. Tréninkové boty padají do kategorie Disallow AI Training (na hraně), agentní boti záměrně Disallow volbu nemají, proto L4c propadává. Tyto hladiny tak v T2 zůstanou vysoce stabilní bez skokových odchylek a návratů, s pohybem v řádu běžného měřicího šumu.

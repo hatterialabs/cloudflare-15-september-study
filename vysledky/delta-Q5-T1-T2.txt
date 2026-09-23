@@ -1,0 +1,13 @@
+# Q5 delta markeru M (= M_B ∨ M_C dle obálky, cesta v5): `cf-T1-2026-09-16-home-r2` → `cf-T2-2026-09-22-home` (ITT třída z cf-T1-2026-09-16-home-r2; šum: `cf-T0b-2026-09-14-home-r5`)
+
+Bootstrap: jednotka doména, převzorkování zvlášť v každém rameni, 1000 replikací, seed 7 (fixováno v kódu před T1). Fallback robots přes Chrome (v6, `via=L0`) do pre-registrovaného čtení NEvstupuje (Opus reakce §2.1).
+
+- **DiD (ITT, vše, pre-registrované čtení):** +0.13 p.b. [95% CI -0.05, +0.30] · n cf_proxied 6542, no_cf 14480
+- **DiD (podmíněná: stejná třída v obou, L2 odpověděla; Gemini #4):** +0.13 p.b. [-0.05, +0.30] · n 19614
+- **Citlivost — s Chrome fallbackem (v6):** +0.17 p.b. [+0.04, +0.32] · **jen M_B (čtení pro článek):** +0.19 p.b. [+0.08, +0.32]
+- **Citlivost 18. 9. — M_B ∨ BPS ∨ M_C (BPS = marker `Bot Preference Sync`, nástupce managed robots.txt):** +0.13 p.b. [-0.05, +0.30] · domén s BPS: A 0, B 0
+- **Rozpad markeru mezi `cf_proxied` (Opus 18. 9.): M_B A 38 → B 51 · BPS A 0 → B 0 · `Content-signal:` uvnitř bloku Cloudflare A 37 → B 50 · mimo blok A 147 → B 148**
+- **Šumové dno = hrubý obrat M mezi cf-T0a-2026-09-14-home-r5 a cf-T0b-2026-09-14-home-r5:** cf_proxied 0.32 % (n 6542), no_cf 0.00 % (n 14480) → šum = 0.32 p.b.; čistý DiD(cf-T1-2026-09-16-home-r2→cf-T0b-2026-09-14-home-r5) = +10.75 p.b. [+10.06, +11.49] jen jako kontrola směru
+- **Pravidlo (c = 3.0, `rfc/2026-09-15-prahy-cf-T0.md`):** dolní mez CI > 0: False; DiD > c·šum (0.96 p.b.): False → **žádný skok nad šumem**
+- Mez: obrat mezi dvěma měřeními téhož dne je spodní odhad šumu pro odstup dvou dnů.
+- **Migrace tříd A→B:** no_cf→cf_proxied: 25, no_cf→deadline: 13, cf_dns_only→cf_proxied: 13, cf_proxied→cf_dns_only: 13, unresolved→no_cf: 9, no_cf→cf_dns_only: 9, no_cf→unresolved: 9, deadline→no_cf: 8, deadline→cf_proxied: 6, cf_proxied→unresolved: 4, cf_proxied→deadline: 4, cf_proxied→no_cf: 3, unresolved→cf_proxied: 3, deadline→cf_dns_only: 1, cf_dns_only→unresolved: 1

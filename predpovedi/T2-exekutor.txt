@@ -1,0 +1,13 @@
+# Pásmo exekutora pro T2 (22. 9. 2026) — veličina: podíl M mezi `cf_proxied` (třída z T0a)
+
+autor-křeslo: exekutor · datum: 2026-09-16 16:10 · run-id: cf-T2-2026-09-22-home · status: pre-registrace (commit před spouštěcím kódem T2) · expozice: T0a, T0b, T1, denní sonda 16. 9. (38/769), reakce Gemini a Opuse k T1 (přečteny před psaním; jejich pásma pro T2 NEČTENA)
+
+## Formulář (BOOTSTRAP §3)
+- **populace:** domény `cf_proxied` podle T0a (ITT, n = 6 589), v T2 měřené týmž měřidlem (v6.1 nebo novější commit s kontrolou aditivity) z téhož domácího egressu.
+- **veličina:** podíl domén s M = M_B ∨ M_C z cesty v5 (robots 200 ∧ text ∧ via ≠ L0), jmenovatel všech 6 589 (robots ≠ 200 ⇒ M = 0). Sekundárně DiD T1→T2 proti `no_cf`.
+- **kotva:** T0a 13,5 %, T1 2,6 % (`REVEAL-T1.md` §2; klasifikace: vlastní měření, ne cizí). Šum 0,32 p.b. (T0a/T0b). Strop strukturální 100 %.
+- **jmenovatel + rituál:** jmenovatel je špatně, pokud (a) T2 vypadne jiný podíl `unreachable` než 8,5 % ± 1 p.b. (M = 0 z výpadku); (b) T2 poběží z jiného egressu nebo přes jiné datacentrum Cloudflare než T1 (kód v `cf_ray`), pak se čte jako jiná křivka; (c) změní se marker (nový text šablony bez „BEGIN Cloudflare Managed content"), pak M_B podhodnocuje a čte se M_C zvlášť.
+- **mechanismus:** stav z T1 je výsledek nasazení Cloudflare kolem 15. 9. Dvě větve: (P ≈ 0,70) stav trvá (záměrný opt-in nebo nezveřejněná změna), M zůstane u 2–3,5 %, drobný drift nahoru, jak správci šablonu ručně zapnou; (P ≈ 0,25) obnovení funkce do 22. 9. (regrese opravena), M se vrátí k 11–14 %; (P ≈ 0,05) něco jiného (částečné obnovení, jiný text šablony).
+- **interval (dvoustranný, korekce 10 z `bands/kalibrace-exekutor.md`):** medián **2,8 %**; 50 % [2,3; 3,6]; 90 % **[1,8; 14,0]** (dvouvrcholové: hlavní vrchol 2,3–3,6, vedlejší 11–14). Surové = korigované (korekce 10 aplikována už tvarem: ocas do velikosti veličiny).
+- **DiD T1→T2 (sekundární):** medián +0,2 p.b.; 90 % [−0,5; +11,5].
+- **co by muselo platit, aby byl špatně:** obnovení proběhlo částečně (M 5–10 %) — to má u mě P ≈ 0,05 a leží mimo obě jádra; nebo Cloudflare změnil text šablony (M_B klesne k 0, M_C zůstane).
