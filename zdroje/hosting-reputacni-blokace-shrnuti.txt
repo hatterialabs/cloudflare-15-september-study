@@ -1,6 +1,6 @@
 Reputační blokace adres AI služeb hostingem (shrnutí, 15. až 18. 9. 2026)
 
-Doloženo u jednoho evropského hostingu (v článku nejmenován, na přání vlastníka webů). Zdroj: písemná odpověď technického oddělení hostingu na tiket vlastníka (16. 9. 2026) a předchozí chat s podporou (15. 9. 2026). Přepis tiketu se nepublikuje (obsahuje osobní údaje).
+Doloženo u hostingu Forpsi (INTERNET CZ, a.s.), u kterého běží servery vlastníka. Zdroj: písemná odpověď technického oddělení hostingu na tiket vlastníka (16. 9. 2026) a předchozí chat s podporou (15. 9. 2026). Přepis tiketu se nepublikuje (obsahuje osobní údaje).
 
 Co hosting potvrdil:
 - Firewall automaticky blokuje zdrojové IP adresy podle veřejných databází hlášení o zneužití (odkázal na AbuseIPDB), včetně adresy 34.162.191.81 z oficiálního seznamu crawlerů Anthropicu (claude.com/crawling/bots.json) a sdílené odchozí adresy platformy Render 74.220.50.219, přes kterou chodí webhooky platební brány.

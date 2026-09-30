@@ -21,4 +21,4 @@ ZDROJE.txt: mapování tvrzení v článku „Co se 15. září stalo s AI robot
 
 Doplňkové: vysledky/report-T0a|T0b|T1|T2 (plné reporty běhů), vysledky/denni-sonda-souhrn.txt (sonda 2× denně od 16. 9.), data/marker-podle-zemi-T0a-T1.csv, data/blok-cloudflare-T0a-T1-po-domenach.csv, data/hrana-Q8-predbezne-T0a-T1.json, metodika/prahy-hypotez-T0.txt, metodika/slovnik-cs-en.txt, skripty/ (měřidlo cfprobe.py, statistiky cfstats.py, sonda mprobe.py, kontrola aditivity, replikace z jiné sítě).
 
-Redakce zveřejněné kopie: jména poskytovatelů připojení a hostingu nahrazena označením „poskytovatel A/B/C", IP adresy vlastníka odstraněny, osobní údaje odstraněny; veřejné adresy AI služeb (např. 34.162.191.81) ponechány. Interní odkazy na soubory ve formátu .md v textech odpovídají souborům .txt v tomto repozitáři (stejný název).
+Redakce zveřejněné kopie: jména poskytovatelů připojení a hostingu nahrazena označením „Forpsi (INTERNET CZ, a.s.)/B/C", IP adresy vlastníka odstraněny, osobní údaje odstraněny; veřejné adresy AI služeb (např. 34.162.191.81) ponechány. Interní odkazy na soubory ve formátu .md v textech odpovídají souborům .txt v tomto repozitáři (stejný název).

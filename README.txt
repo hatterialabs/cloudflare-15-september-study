@@ -20,6 +20,6 @@ Jak se v tom vyznat
 
 Meze měření jsou popsané v článku (část „Jak jsme měřili a co měření neumí") a v každém reveal. Měříme program, který si jméno robota jen nastaví v hlavičce; jak Cloudflare zachází se skutečnými roboty firem OpenAI nebo Anthropic, se zvenčí změřit nedá.
 
-Redakce: jména poskytovatelů připojení a hostingu jsou nahrazena označením „poskytovatel A/B/C", vlastní IP adresy a osobní údaje odstraněny. Zdrojová databáze měření (SQLite s uloženými těly odpovědí) není součástí repozitáře kvůli velikosti; na vyžádání.
+Redakce: jména poskytovatelů připojení a hostingu jsou nahrazena označením „Forpsi (INTERNET CZ, a.s.)/B/C", vlastní IP adresy a osobní údaje odstraněny. Zdrojová databáze měření (SQLite s uloženými těly odpovědí) není součástí repozitáře kvůli velikosti; na vyžádání.
 
 Licence: LICENSE.txt. Kontakt: torumata.com.
