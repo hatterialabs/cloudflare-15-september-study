@@ -74,7 +74,7 @@ Jejich stránka prošla několika opravami, které sami vyznačili a datovali. K
 
 3. Pokud si sami pouštíte program, který čte weby, nepředstavujte se jménem cizího robota ani výchozím jménem knihovny. Vlastní jméno projde skoro všude.
 
-Zkontrolovat si to jde ručně za pár minut. My na to stavíme nástroj Torumata, který měří všechny tři brány najednou.
+Zkontrolovat si to jde ručně za pár minut. Část z toho za vás udělá Torumata, nástroj, který jsme na to postavili. Zkontroluje soubor robots.txt a pozná, jestli web běží za sítí, jako je Cloudflare. Nastavení pro AI roboty v takové síti si pak ověříte sami ve své správě. Bránu hostingu zvenčí změřit nejde, tu prověří jen dotaz u poskytovatele.
 
 ---
 

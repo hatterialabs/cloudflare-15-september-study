@@ -74,7 +74,7 @@ Their page carries several corrections that they marked and dated themselves. As
 
 3. If you run a program of your own that reads websites, do not identify it by somebody else's crawler name or by the default name of a library. Your own name gets through almost everywhere.
 
-You can check all of this by hand in a few minutes. We are building torumata for it, a tool that measures all three gates at once.
+You can check all of this by hand in a few minutes. Torumata, the tool we built for it, does part of it for you. It checks the robots.txt file and detects whether the site runs behind a network such as Cloudflare. The settings for AI crawlers in such a network you then verify yourself in your own control panel. The hosting gate cannot be measured from outside; only asking your provider will tell.
 
 ---
 
