@@ -1,0 +1,23 @@
+# Šumové dno: `cf-T2-2026-09-22-home` vs `cf-T2b-2026-10-04-home`
+
+společných domén: 22692 · A start 2026-09-22T06:00:01Z · B start 2026-10-04T05:47:12Z
+
+| veličina | domén se změnou | z n | podíl |
+|---|---|---|---|
+| CF třída | 539 | 22692 | 2.4 % [2.2–2.6] |
+| robots.txt hash | 1779 | 17031 | 10.4 % [10.0–10.9] |
+| robots: blokuje tréninkového bota | 159 | 22692 | 0.7 % [0.6–0.8] |
+| robots: CF managed / Content-signal | 50 | 22692 | 0.2 % [0.2–0.3] |
+| L0 pass/fail | 506 | 19233 | 2.6 % [2.4–2.9] |
+| L1 pass/fail | 436 | 19228 | 2.3 % [2.1–2.5] |
+| L2 pass/fail | 516 | 19899 | 2.6 % [2.4–2.8] |
+| L3 pass/fail | 432 | 19905 | 2.2 % [2.0–2.4] |
+| L3r pass/fail | 565 | 19912 | 2.8 % [2.6–3.1] |
+| L4a pass/fail | 645 | 19900 | 3.2 % [3.0–3.5] |
+| L4b pass/fail | 695 | 19954 | 3.5 % [3.2–3.7] |
+| L4c pass/fail | 541 | 19930 | 2.7 % [2.5–2.9] |
+| L4g pass/fail | 557 | 19882 | 2.8 % [2.6–3.0] |
+| ads.txt platný | 87 | 22692 | 0.4 % [0.3–0.5] |
+
+Čtení: delta T0→T1 u veličiny je informativní jen nad tímto podílem změn (a nad rozdílem cf_proxied − no_cf).
+

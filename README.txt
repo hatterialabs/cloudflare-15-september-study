@@ -5,7 +5,7 @@ Tento repozitář obsahuje všechna data, výstupy, předpovědi zapsané před 
 
 Co bylo měřeno
 - 22 846 nejnavštěvovanějších domén deseti evropských zemí (žebříček Tranco), z jedné domácí internetové přípojky v Česku.
-- 14. 9. 2026 dvakrát (před změnou Cloudflare, druhé měření jako odhad běžného rozptylu), 16. 9. a 22. 9. (po změně).
+- 14. 9. 2026 dvakrát (před změnou Cloudflare, druhé měření jako odhad běžného rozptylu), 16. 9., 22. 9. a 4. 10. (po změně).
 - U každého webu: soubor robots.txt (blok pravidel vkládaný Cloudflare), domovská stránka s různými jmény návštěvníka (prohlížeč, vlastní jména, jména známých robotů), a další soubory.
 - 23. 9. replikace chování sítě Cloudflare na 1 000 webech ze dvou dalších sítí jiných poskytovatelů.
 

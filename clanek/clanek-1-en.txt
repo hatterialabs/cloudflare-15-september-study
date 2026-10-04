@@ -2,9 +2,9 @@
 
 ## Summary for everyone
 
-On 15 September 2026, Cloudflare retired one of its features. Cloudflare is a company whose servers carry a large share of the web, and those servers decide who gets through to a site. Until that day, it could insert ready made rules into a site's robots.txt file against crawlers that collect text for training artificial intelligence. The robots.txt file is where a site tells crawlers what they may read.
+On 15 September 2026, Cloudflare retired one of its features. Cloudflare is a company whose servers carry a large share of the web, and those servers decide who gets through to a site. Until that day, at the site owner's request, it could insert ready made rules into a site's robots.txt file forbidding crawlers that collect text for training artificial intelligence to read the site. The robots.txt file is where a site tells crawlers what they may read.
 
-We measured what happened across the 22,846 most visited sites in ten European countries. On 14 September, 769 sites carried those rules. On 16 September, only 39 did. The owners of those sites did nothing, and most of them do not know about the change.
+We measured what happened across the 22,846 most visited sites in ten European countries. On 14 September, 769 sites carried those rules. On 16 September, only 39 did, and on 4 October, three weeks after the change, 73. The owners of those sites did nothing; the rules disappeared without any action on their part.
 
 This does not mean the sites opened up to artificial intelligence. Cloudflare moved the choice those sites had on file into a different setting, and that setting shows up directly in its network. A crawler that collects data for training is now refused by those sites more often than before. What disappeared is the written record, not the ban.
 
@@ -16,35 +16,33 @@ What should a site owner do about it? Look at what the robots.txt file says toda
 
 ## What happened
 
-On 15 September 2026, Cloudflare changed a setting that concerns artificial intelligence crawlers. We measured the European web two days before that change, one day after it, and once more a week later. The result has three parts. Visible rules disappeared from the sites, the Cloudflare network changed whom those sites let in, and the new rule is so far written down nowhere.
+On 15 September 2026, Cloudflare changed a setting that concerns artificial intelligence crawlers. We measured the European web two days before that change, one day after it, a week later, and for the last time on 4 October, three weeks after the change. The result has three parts. Visible rules disappeared from the sites, the Cloudflare network changed whom those sites let in, and the new rule is so far written down nowhere.
 
 We measured the 22,846 most visited domains of ten European countries according to the Tranco ranking. Of those, 28.8 % ran through the Cloudflare network, and in the Czech Republic 21.4 %. By the Cloudflare network we mean the servers a site runs through.
 
 ## The rules disappeared from the robots.txt file
 
-Cloudflare was able to insert a ready made block of rules into a site's robots.txt file, forbidding eight named crawlers to collect content for training. On the morning of 14 September, 769 sites in our population carried it, and on 16 September 39 did. On 22 September there were 54, of which 38 sites never lost it and at 4 it came back.
+Cloudflare was able to insert a ready made block of rules into a site's robots.txt file, forbidding eight named crawlers to collect content for training: Amazonbot, Applebot-Extended, Bytespider, CCBot, ClaudeBot, Google-Extended, GPTBot and meta-externalagent. On the morning of 14 September, 769 sites in our population carried it, and on 16 September 39 did. On 22 September there were 54 and on 4 October 73. Of those 73, 38 sites never lost the block, at 11 it came back, and 24 had never had it before. Alongside the migration being confirmed, new switching on is therefore happening too, so far at a few dozen sites out of thousands.
 
-The remaining 12 sites had never had it before. Alongside the migration being confirmed, new switching on is therefore happening too, so far at a handful of sites, and four of those twelve belong to a single operator.
-
-To show that this is not ordinary fluctuation, we compare it with sites that are not behind Cloudflare. Against them the difference is 10.8 percentage points downwards, with a range of 10.0 to 11.6. The normal variation between two measurements taken on the same day is 0.3 of a percentage point.
+To show that this is not ordinary fluctuation, we compare it with sites that are not behind Cloudflare. Against them the difference is 10.7 percentage points downwards, with a range of 10.0 to 11.5. The normal variation between two measurements taken on the same day is 0.3 of a percentage point.
 
 ## The Cloudflare network changed whom the sites let in
 
 For the sites that lost the block of rules, we sent an ordinary request to the home page and changed only the name the visitor gives.
 
-A program identifying itself by the name GPTBot was refused by 73.0 % of those sites on 14 September and by 86.6 % on 22 September. Under the name ClaudeBot it was 74.1 % first and 87.5 % afterwards. Under the name ChatGPT-User, which is a user-directed assistant, that is an assistant reading a page because a person asked for it, the request was refused by 69.3 % of the sites first and by only 27.4 % after the change. The name Googlebot did not move, refused by 21.8 % of the sites and by 21.3 % afterwards.
+A program identifying itself by the name GPTBot was refused by 73.0 % of those sites on 14 September and by 86.0 % on 4 October. Under the name ClaudeBot it was 74.1 % first and 87.2 % afterwards. Under the name ChatGPT-User, which is a user-directed assistant, that is an assistant reading a page because a person asked for it, the request was refused by 69.3 % of the sites first and by only 27.3 % after the change. The name Googlebot did not move, refused by 21.8 % of the sites and by 22.9 % afterwards. Between 16 September and 4 October these values moved only within normal variation. On 4 October we also added the name of OpenAI's search crawler, OAI-SearchBot. It was refused by 26.4 % of those sites, much like the assistant ChatGPT-User and unlike the training crawlers.
 
-In the comparison group of Cloudflare sites that never had the block of rules, nothing changed beyond the normal variation between two measurements: the name GPTBot failed to get through in 33.7 % of cases before the change and in 34.6 % after it.
+In the comparison group of Cloudflare sites that never had the block of rules, the name GPTBot failed to get through in 33.7 % of cases before the change and in 38.9 % on 4 October. The shift in this group is the same for every name including Googlebot, so it does not concern training crawlers alone, and it arose partly because 352 sites in this group ceased to exist between 22 September and 4 October. Up to 22 September this group had not moved (34.6 %).
 
-Most refusals, 520 out of 629, are an outright rejection of the request. A verification page, where the visitor has to prove being human, appeared at 102 sites.
+Most refusals, 510 out of 624, are an outright rejection of the request. A verification page, where the visitor has to prove being human, appeared at 104 sites.
 
 We measure, though, a program that merely sets a crawler's name in the request header. The real crawlers of OpenAI or Anthropic identify themselves by address and signature, and how Cloudflare treats those cannot be measured from outside. We also checked the behaviour of the Cloudflare network from two further networks of other providers, and the result matched site by site.
 
 ## The ban is written down nowhere today
 
-According to its blog, Cloudflare replaced the retired feature with a new one. It is called Bot Preference Sync and is meant to publish a site owner's do not train preference in the robots.txt file. As of 22 September, not one site in our population had it there.
+According to its blog, Cloudflare replaced the retired feature with a new one. It is called Bot Preference Sync and is meant to publish a site owner's do not train preference in the robots.txt file. As of 4 October, not one site in our population had it there.
 
-The old block of rules is coming back, but slowly, appearing at 16 sites in six days. At the four where it returned, the behaviour of the network did not change, it was already refusing training crawlers before. The written record is therefore trailing behind the actual setting, not the other way round.
+The old block of rules is coming back, but slowly, appearing at 35 sites in three weeks. At all 11 sites where it returned, the behaviour of the network did not change, it was already refusing training crawlers before. The written record is therefore trailing behind the actual setting, not the other way round.
 
 ## What Cloudflare says about it
 
@@ -54,7 +52,7 @@ The blog also says the customer needs to do nothing. From a site owner's point o
 
 ## Your own name gets through, somebody else's does not
 
-We added our own name, torumata-ai-train, to the measurement, a name nobody knows and one that says of itself that it collects data for training. It was refused by 9.2 % of the sites that lost the block of rules, and our neutral program without such a name by 9.1 % of the same sites. Compared site by site, the two names differed at only nine sites out of 726. The borrowed name GPTBot, by contrast, failed to get through in 86.6 % of cases, and the default name of a common programming library, python-requests, in 28.1 %.
+We added our own name, torumata-ai-train, to the measurement, a name nobody knows and one that says of itself that it collects data for training. On 4 October it was refused by 10.2 % of the sites that lost the block of rules, and our neutral program without such a name by 10.3 % of the same sites. Compared site by site, the two names differed at only 3 sites out of 724. The borrowed name GPTBot, by contrast, failed to get through in 86.0 % of cases, and the default name of a common programming library, python-requests, in 28.9 %.
 
 Refusal therefore does not target what a program does, nor what it claims about itself. It targets the particular names that the Cloudflare network knows.
 
@@ -64,17 +62,17 @@ Our team was not the only one measuring the 15 September change. SeenSure, a com
 
 Their figures show the same pattern as ours. At sites behind Cloudflare, refusals of training crawlers rose between 14 and 16 September, for the name GPTBot from 26.8 % to 31.0 %. Refusals of assistants and of the search crawlers of artificial intelligence companies fell sharply, for the name ChatGPT-User from 24.7 % to 3.2 % and for the name OAI-SearchBot from 24.9 % to 3.2 %. At sites not behind Cloudflare nothing changed.
 
-The difference in size makes sense. We measure sites that had blocking switched on and that Cloudflare migrated to a new setting, while they measured mostly new domains to which the new defaults apply. The direction is comparable, the magnitude is not. Their refusal is moreover any response with a status code of 400 or above, so a rejection and a verification page count alike. They did not measure the robots.txt file, and we measured no search crawlers of AI companies.
+The difference in size makes sense. We measure sites that had blocking switched on and that Cloudflare migrated to a new setting, while they measured mostly new domains to which the new defaults apply. The direction is comparable, the size of the difference is not. Their refusal is moreover any response with a status code of 400 or above, so a rejection and a verification page count alike. They did not measure the robots.txt file, and we measured OpenAI's search crawler only on 4 October, with no reading from before the change.
 
-Their page carries four corrections that they marked and dated themselves. One summary paragraph on it also labels whole sample figures as figures for sites behind Cloudflare, so we cite the table with the explicit split.
+Their page carries several corrections that they marked and dated themselves. As of 22 September, one summary paragraph on it labelled whole-sample figures as figures for the Cloudflare side; after we pointed it out, the authors corrected it on 23 September. We therefore cite the table with the explicit split, as captured on 22 September; a new snapshot from 30 September is in the repository.
 
 ## What this means for a site owner
 
-First. If you switched training blocking on with one click at Cloudflare, it is probably no longer in your robots.txt file. It still works, but nobody will learn about it from your site. If you want your preference to be visible, you have to write the rule into the file yourself.
+1. If you switched training blocking on with one click at Cloudflare, it is probably no longer in your robots.txt file. It still works, but nobody will learn about it from your site. If you want your preference to be visible, you have to write the rule into the file yourself.
 
-Second. Assistants that read pages at a person's request now reach your pages far more often than in mid September. If you want people to find you through them, that is good news. If not, your setting changed without you doing anything.
+2. Assistants that read pages at a person's request now reach your pages far more often than in mid September. If you want people to find you through them, that is good news. If not, your setting changed without you doing anything.
 
-Third. If you run a program of your own that reads websites, do not identify it by somebody else's crawler name or by the default name of a library. Your own name gets through almost everywhere.
+3. If you run a program of your own that reads websites, do not identify it by somebody else's crawler name or by the default name of a library. Your own name gets through almost everywhere.
 
 You can check all of this by hand in a few minutes. We are building torumata for it, a tool that measures all three gates at once.
 
@@ -86,19 +84,35 @@ Of the 21,821 reachable domains in our population, 4.7 % run only over an insecu
 
 ### The third gate that a site owner never sees
 
-Between a website and artificial intelligence there is more than the robots.txt file and the Cloudflare network. The third gate is a hosting provider's automatic protection, which blocks addresses with a bad reputation. One of the addresses from which Claude fetches pages is listed in Anthropic's official list and on 16 September also appeared in an abuse report database with a confidence score of 92 %. Part of those reports does not claim an attack. They report the address for being an artificial intelligence crawler. At the hosting provider where we documented it, the block applies to all of that provider's customers. How common this is elsewhere we do not measure. The site owner neither sees this nor has any way to influence it. We are not naming the hosting provider where we documented it.
+Between a website and artificial intelligence there is more than the robots.txt file and the Cloudflare network. The third gate is a hosting provider's automatic protection, which blocks addresses with a bad reputation. One of the addresses from which Claude fetches pages is listed in Anthropic's official list and on 16 September also appeared in the AbuseIPDB abuse-report database with a confidence score of 92 %. Part of those reports does not claim an attack. They report the address for being an artificial intelligence crawler. At the hosting provider where we documented it, the block applies to all of that provider's customers. How common this is elsewhere we do not measure. The site owner neither sees this nor has any way to influence it. We documented this at the hosting provider Forpsi (INTERNET CZ, a.s.), where our own servers run and whose services we are otherwise satisfied with. We mention it because its customers who receive payments through a payment gateway or want to be readable by AI assistants may have the same problem without knowing it. On 16 September its technical department confirmed in writing that the firewall blocks addresses automatically on the basis of public abuse-report databases, that no exception can be granted for a specific address, and that the list of blocked addresses is not provided to customers. We asked for an official statement on 25 September; none had arrived by the 30 September deadline. If one arrives, we will add it here in full.
 
 ---
 
+### How hosting protection could work better
+
+This is not a criticism of one hosting provider. Automatic blocking of addresses by reputation is common and, in itself, correct: a provider protects thousands of customers at once and cannot review every address by hand. The problem is not that it blocks, but what the customer sees and what the customer can do about it. From what we documented, three things could be done differently, and for each we say what it would change.
+
+1. The customer should be told about a block. Today the customer sees only a failure: a payment does not arrive, an assistant claims the site forbids access, and the cause has to be found by hand in the network traffic on the server. A list in the control panel or an e-mail saying that an address which just tried to reach the server was stopped would be enough. Whoever knows about a block can decide. Whoever does not know is solving a mystery.
+
+2. An exception should be tied to one server, not to the whole network. Today the provider offers two options only: remove the address from protection for every customer forever, or nothing. A sensible protection can say: this address may reach this server and no other. A shop owner could then let in the addresses of the payment gateway and the official addresses of AI services without weakening anyone else's protection.
+
+3. Reports in the AbuseIPDB database are not all alike. For the address that Claude uses to read pages, we saw that a large share of the reports do not describe an attack, only the fact that it is an AI crawler, and others were created by the blocked address retrying its connection. Whoever takes the overall score as the only input blocks according to strangers' opinions about AI crawlers, not according to behaviour towards their own network. Addresses that their operator publicly acknowledges deserve at least a different threshold.
+
+What this means now for companies whose servers sit behind protection set up this way: payments over webhooks can fail without warning, AI assistants can claim their site forbids access, and the owner has no way to find out or to change it. The only way out is to put their own layer in front of the servers outside the provider's network, or to move. If the provider offered a notification and a per-server exception, its customers could stay and still decide for themselves whom to allow in. The protection would be just as strong, and it would also offer a choice.
+
 ## How we measured and what the measurement cannot do
 
-We measured four times: twice on 14 September, so that we could see how the figures move on their own, then on 16 and on 22 September. Every site received the same set of requests: a browser driven by a program, a program with a name of its own, and a program with the name of a well known crawler. All from a home internet connection in the Czech Republic. We also checked the behaviour of the Cloudflare network from two further networks of other providers, one in a data centre and one on a mobile network, across 1,000 sites, and the result matched site by site.
+We measured five times: twice on 14 September, so that we could see how the figures move on their own, then on 16 September, 22 September and 4 October. Every site received the same set of requests: a browser driven by a program, a program with a name of its own, and a program with the name of a well known crawler. All from a home internet connection in the Czech Republic. We also checked the behaviour of the Cloudflare network from two further networks of other providers, one in a data centre and one on a mobile network, across 1,000 sites, and the result matched site by site.
 
-Before each measurement we wrote down a prediction and only then ran it. On the 15 September change all three of us who wrote predictions got it wrong, the author of this text included. Nobody expected bans to disappear. For the measurement of 22 September the predictions held. We put this here because otherwise a reader has no way of telling which sentences were written only after the data arrived.
+Before each measurement we wrote down a prediction and only then ran it. On the 15 September change all three of us who wrote predictions got it wrong, the author of this text included. Nobody expected bans to disappear. For the measurement of 22 September the predictions held, and the measurement of 4 October showed the same state. We put this here because otherwise a reader has no way of telling which sentences were written only after the data arrived.
 
 What the measurement cannot do. It cannot say how Cloudflare treats the real crawlers of OpenAI and Anthropic, because those identify themselves by address and signature. It cannot separate whether the refusal was decided by the Cloudflare network or by the site itself. And the Tranco ranking is a ranking of traffic, not a list of all websites.
 
 ---
+
+## Statements from the companies
+
+We asked Cloudflare and Anthropic for comment on 25 September with a deadline of 29 September. Neither company had responded by the deadline. If a statement arrives, we will add it here in full, with the date. We asked Forpsi (INTERNET CZ, a.s.) for a statement on 25 September with a deadline of 30 September; it had not responded by the deadline.
 
 ## Sources and data
 

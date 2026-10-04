@@ -1,0 +1,3475 @@
+{
+ "ramena_n": {
+  "ztracene": 726,
+  "udrzene": 37,
+  "MC_bez_MB": 120,
+  "nikdy": 5673,
+  "placebo_no_cf": 14533
+ },
+ "runs": {
+  "a": "cf-T0a-2026-09-14-home-r5",
+  "noise": "cf-T0b-2026-09-14-home-r5",
+  "b": "cf-T1-2026-09-16-home-r2",
+  "c": "cf-T2b-2026-10-04-home"
+ },
+ "Q8a": {
+  "L4a": {
+   "ztracene": {
+    "full": {
+     "h1": 73.0,
+     "h2": 86.0,
+     "n1": 726,
+     "n2": 726,
+     "delta_pb": 12.95,
+     "delta_logodds": 0.816,
+     "DiD_vs_nikdy_pb": 7.76,
+     "DiD_vs_nikdy_logodds": 0.591
+    },
+    "strict": {
+     "h1": 72.2,
+     "h2": 85.8,
+     "n1": 704,
+     "n2": 718,
+     "delta_pb": 13.63,
+     "delta_logodds": 0.846,
+     "DiD_vs_nikdy_pb": 10.14,
+     "DiD_vs_nikdy_logodds": 0.691
+    },
+    "prechod": {
+     "P>F": 108,
+     "F>F": 516,
+     "P>P": 88,
+     "F>P": 14
+    },
+    "mcnemar_chi2": 70.9,
+    "rozpad_1": {
+     "pass": 196,
+     "challenge": 110,
+     "403": 398,
+     "jine 4xx": 10,
+     "5xx": 4,
+     "429": 7,
+     "timeout/spojeni": 1
+    },
+    "rozpad_2": {
+     "403": 510,
+     "pass": 102,
+     "challenge": 104,
+     "jine 4xx": 6,
+     "429": 4
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     7.42,
+     12.59
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 91.9,
+     "h2": 91.9,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -5.19,
+     "DiD_vs_nikdy_logodds": -0.225
+    },
+    "strict": {
+     "h1": 91.9,
+     "h2": 91.9,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -3.49,
+     "DiD_vs_nikdy_logodds": -0.155
+    },
+    "prechod": {
+     "P>P": 3,
+     "F>F": 34
+    },
+    "mcnemar_chi2": 0,
+    "rozpad_1": {
+     "pass": 3,
+     "403": 30,
+     "challenge": 4
+    },
+    "rozpad_2": {
+     "pass": 3,
+     "403": 30,
+     "challenge": 4
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.64,
+     -2.34
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 34.2,
+     "h2": 36.7,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": 2.5,
+     "delta_logodds": 0.109,
+     "DiD_vs_nikdy_pb": -2.69,
+     "DiD_vs_nikdy_logodds": -0.116
+    },
+    "strict": {
+     "h1": 32.5,
+     "h2": 34.5,
+     "n1": 117,
+     "n2": 116,
+     "delta_pb": 2.0,
+     "delta_logodds": 0.09,
+     "DiD_vs_nikdy_pb": -1.49,
+     "DiD_vs_nikdy_logodds": -0.065
+    },
+    "prechod": {
+     "P>P": 76,
+     "F>F": 41,
+     "P>F": 3
+    },
+    "mcnemar_chi2": 1.3,
+    "rozpad_1": {
+     "pass": 79,
+     "challenge": 25,
+     "429": 1,
+     "403": 13,
+     "timeout/spojeni": 1,
+     "jine 4xx": 1
+    },
+    "rozpad_2": {
+     "pass": 76,
+     "challenge": 26,
+     "429": 2,
+     "403": 14,
+     "timeout/spojeni": 1,
+     "jine 4xx": 1
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -2.87,
+     2.94
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 33.7,
+     "h2": 38.9,
+     "n1": 5668,
+     "n2": 5297,
+     "delta_pb": 5.19,
+     "delta_logodds": 0.225,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 32.4,
+     "h2": 35.9,
+     "n1": 5556,
+     "n2": 5046,
+     "delta_pb": 3.49,
+     "delta_logodds": 0.155,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "P>P": 3167,
+     "F>F": 1836,
+     "P>F": 225,
+     "F>P": 67
+    },
+    "mcnemar_chi2": 84.4,
+    "rozpad_1": {
+     "pass": 3756,
+     "challenge": 1260,
+     "403": 540,
+     "429": 28,
+     "5xx": 35,
+     "nedostupne": 5,
+     "jine 4xx": 37,
+     "timeout/spojeni": 12
+    },
+    "rozpad_2": {
+     "pass": 3235,
+     "challenge": 1217,
+     "429": 171,
+     "403": 584,
+     "nedostupne": 15,
+     "chybi": 361,
+     "5xx": 31,
+     "timeout/spojeni": 26,
+     "jine 4xx": 33
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 23.6,
+     "h2": 23.9,
+     "n1": 13209,
+     "n2": 13243,
+     "delta_pb": 0.26,
+     "delta_logodds": 0.015,
+     "DiD_vs_nikdy_pb": -4.93,
+     "DiD_vs_nikdy_logodds": -0.21
+    },
+    "strict": {
+     "h1": 14.9,
+     "h2": 15.3,
+     "n1": 11864,
+     "n2": 11909,
+     "delta_pb": 0.4,
+     "delta_logodds": 0.031,
+     "DiD_vs_nikdy_pb": -3.09,
+     "DiD_vs_nikdy_logodds": -0.124
+    },
+    "prechod": {
+     "P>P": 9839,
+     "F>F": 2905,
+     "P>F": 207,
+     "F>P": 178
+    },
+    "mcnemar_chi2": 2.0,
+    "rozpad_1": {
+     "pass": 10093,
+     "429": 200,
+     "403": 1740,
+     "jine 4xx": 209,
+     "nedostupne": 1324,
+     "timeout/spojeni": 799,
+     "5xx": 137,
+     "challenge": 31
+    },
+    "rozpad_2": {
+     "pass": 10084,
+     "429": 206,
+     "403": 1747,
+     "jine 4xx": 215,
+     "nedostupne": 1267,
+     "challenge": 47,
+     "timeout/spojeni": 794,
+     "5xx": 150,
+     "chybi": 23
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.43,
+     -2.0
+    ]
+   }
+  },
+  "L4b": {
+   "ztracene": {
+    "full": {
+     "h1": 74.1,
+     "h2": 87.2,
+     "n1": 726,
+     "n2": 726,
+     "delta_pb": 13.09,
+     "delta_logodds": 0.866,
+     "DiD_vs_nikdy_pb": 7.85,
+     "DiD_vs_nikdy_logodds": 0.643
+    },
+    "strict": {
+     "h1": 73.1,
+     "h2": 87.0,
+     "n1": 700,
+     "n2": 716,
+     "delta_pb": 13.87,
+     "delta_logodds": 0.9,
+     "DiD_vs_nikdy_pb": 10.22,
+     "DiD_vs_nikdy_logodds": 0.74
+    },
+    "prechod": {
+     "P>F": 108,
+     "F>F": 525,
+     "P>P": 80,
+     "F>P": 13
+    },
+    "mcnemar_chi2": 73.0,
+    "rozpad_1": {
+     "pass": 188,
+     "challenge": 118,
+     "403": 394,
+     "timeout/spojeni": 3,
+     "jine 4xx": 10,
+     "5xx": 6,
+     "429": 7
+    },
+    "rozpad_2": {
+     "403": 507,
+     "pass": 93,
+     "challenge": 115,
+     "jine 4xx": 7,
+     "timeout/spojeni": 1,
+     "429": 3
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     7.29,
+     13.04
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 91.9,
+     "h2": 91.9,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -5.24,
+     "DiD_vs_nikdy_logodds": -0.223
+    },
+    "strict": {
+     "h1": 91.9,
+     "h2": 91.9,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -3.65,
+     "DiD_vs_nikdy_logodds": -0.16
+    },
+    "prechod": {
+     "P>P": 3,
+     "F>F": 34
+    },
+    "mcnemar_chi2": 0,
+    "rozpad_1": {
+     "pass": 3,
+     "403": 30,
+     "challenge": 4
+    },
+    "rozpad_2": {
+     "pass": 3,
+     "403": 30,
+     "challenge": 4
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.55,
+     -2.17
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 35.0,
+     "h2": 38.3,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": 3.33,
+     "delta_logodds": 0.144,
+     "DiD_vs_nikdy_pb": -1.91,
+     "DiD_vs_nikdy_logodds": -0.079
+    },
+    "strict": {
+     "h1": 32.8,
+     "h2": 35.1,
+     "n1": 116,
+     "n2": 114,
+     "delta_pb": 2.33,
+     "delta_logodds": 0.104,
+     "DiD_vs_nikdy_pb": -1.32,
+     "DiD_vs_nikdy_logodds": -0.056
+    },
+    "prechod": {
+     "P>P": 73,
+     "F>F": 41,
+     "P>F": 5,
+     "F>P": 1
+    },
+    "mcnemar_chi2": 1.5,
+    "rozpad_1": {
+     "pass": 78,
+     "challenge": 23,
+     "429": 2,
+     "403": 15,
+     "timeout/spojeni": 1,
+     "jine 4xx": 1
+    },
+    "rozpad_2": {
+     "pass": 74,
+     "challenge": 24,
+     "429": 4,
+     "403": 16,
+     "timeout/spojeni": 1,
+     "jine 4xx": 1
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.44,
+     4.54
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 35.1,
+     "h2": 40.3,
+     "n1": 5670,
+     "n2": 5303,
+     "delta_pb": 5.24,
+     "delta_logodds": 0.223,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 33.5,
+     "h2": 37.1,
+     "n1": 5534,
+     "n2": 5035,
+     "delta_pb": 3.65,
+     "delta_logodds": 0.16,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "P>P": 3086,
+     "F>F": 1904,
+     "P>F": 232,
+     "F>P": 80
+    },
+    "mcnemar_chi2": 73.1,
+    "rozpad_1": {
+     "pass": 3682,
+     "challenge": 1289,
+     "403": 563,
+     "429": 28,
+     "jine 4xx": 43,
+     "5xx": 47,
+     "timeout/spojeni": 18,
+     "nedostupne": 3
+    },
+    "rozpad_2": {
+     "pass": 3166,
+     "challenge": 1253,
+     "403": 609,
+     "429": 159,
+     "timeout/spojeni": 36,
+     "jine 4xx": 38,
+     "chybi": 358,
+     "5xx": 42,
+     "nedostupne": 12
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 25.4,
+     "h2": 25.3,
+     "n1": 13269,
+     "n2": 13291,
+     "delta_pb": -0.06,
+     "delta_logodds": -0.003,
+     "DiD_vs_nikdy_pb": -5.3,
+     "DiD_vs_nikdy_logodds": -0.226
+    },
+    "strict": {
+     "h1": 15.9,
+     "h2": 16.2,
+     "n1": 11773,
+     "n2": 11843,
+     "delta_pb": 0.29,
+     "delta_logodds": 0.022,
+     "DiD_vs_nikdy_pb": -3.36,
+     "DiD_vs_nikdy_logodds": -0.138
+    },
+    "prechod": {
+     "P>P": 9650,
+     "F>F": 3129,
+     "F>P": 209,
+     "P>F": 202
+    },
+    "mcnemar_chi2": 0.1,
+    "rozpad_1": {
+     "pass": 9904,
+     "403": 1839,
+     "jine 4xx": 225,
+     "429": 236,
+     "nedostupne": 1264,
+     "5xx": 122,
+     "timeout/spojeni": 913,
+     "challenge": 30
+    },
+    "rozpad_2": {
+     "pass": 9928,
+     "403": 1851,
+     "jine 4xx": 231,
+     "429": 215,
+     "nedostupne": 1217,
+     "challenge": 44,
+     "5xx": 127,
+     "timeout/spojeni": 895,
+     "chybi": 25
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.61,
+     -2.2
+    ]
+   }
+  },
+  "L4c": {
+   "ztracene": {
+    "full": {
+     "h1": 69.3,
+     "h2": 27.3,
+     "n1": 726,
+     "n2": 726,
+     "delta_pb": -42.01,
+     "delta_logodds": -1.794,
+     "DiD_vs_nikdy_pb": -41.02,
+     "DiD_vs_nikdy_logodds": -1.747
+    },
+    "strict": {
+     "h1": 68.6,
+     "h2": 24.9,
+     "n1": 711,
+     "n2": 703,
+     "delta_pb": -43.74,
+     "delta_logodds": -1.887,
+     "DiD_vs_nikdy_pb": -40.7,
+     "DiD_vs_nikdy_logodds": -1.735
+    },
+    "prechod": {
+     "P>P": 212,
+     "F>F": 187,
+     "F>P": 316,
+     "P>F": 11
+    },
+    "mcnemar_chi2": 282.6,
+    "rozpad_1": {
+     "pass": 223,
+     "challenge": 100,
+     "403": 388,
+     "timeout/spojeni": 2,
+     "5xx": 4,
+     "jine 4xx": 8,
+     "429": 1
+    },
+    "rozpad_2": {
+     "pass": 528,
+     "challenge": 149,
+     "timeout/spojeni": 5,
+     "5xx": 9,
+     "jine 4xx": 8,
+     "429": 2,
+     "403": 25
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -42.73,
+     -35.26
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 86.5,
+     "h2": 83.8,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": -2.7,
+     "delta_logodds": -0.214,
+     "DiD_vs_nikdy_pb": -1.71,
+     "DiD_vs_nikdy_logodds": -0.167
+    },
+    "strict": {
+     "h1": 54.5,
+     "h2": 45.5,
+     "n1": 11,
+     "n2": 11,
+     "delta_pb": -9.09,
+     "delta_logodds": -0.365,
+     "DiD_vs_nikdy_pb": -6.05,
+     "DiD_vs_nikdy_logodds": -0.213
+    },
+    "prechod": {
+     "P>P": 5,
+     "F>P": 1,
+     "F>F": 31
+    },
+    "mcnemar_chi2": 0.0,
+    "rozpad_1": {
+     "pass": 5,
+     "403": 2,
+     "jine 4xx": 26,
+     "challenge": 4
+    },
+    "rozpad_2": {
+     "pass": 6,
+     "jine 4xx": 26,
+     "challenge": 5
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -5.73,
+     3.64
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 30.8,
+     "h2": 25.8,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": -5.0,
+     "delta_logodds": -0.247,
+     "DiD_vs_nikdy_pb": -4.01,
+     "DiD_vs_nikdy_logodds": -0.2
+    },
+    "strict": {
+     "h1": 29.7,
+     "h2": 23.3,
+     "n1": 118,
+     "n2": 116,
+     "delta_pb": -6.39,
+     "delta_logodds": -0.329,
+     "DiD_vs_nikdy_pb": -3.35,
+     "DiD_vs_nikdy_logodds": -0.177
+    },
+    "prechod": {
+     "P>P": 79,
+     "F>F": 27,
+     "F>P": 10,
+     "P>F": 4
+    },
+    "mcnemar_chi2": 1.8,
+    "rozpad_1": {
+     "pass": 83,
+     "challenge": 23,
+     "403": 12,
+     "jine 4xx": 1,
+     "timeout/spojeni": 1
+    },
+    "rozpad_2": {
+     "pass": 89,
+     "challenge": 24,
+     "jine 4xx": 1,
+     "429": 2,
+     "timeout/spojeni": 1,
+     "403": 3
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -8.02,
+     3.41
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 30.5,
+     "h2": 29.6,
+     "n1": 5670,
+     "n2": 5301,
+     "delta_pb": -0.99,
+     "delta_logodds": -0.047,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 29.2,
+     "h2": 26.2,
+     "n1": 5566,
+     "n2": 5060,
+     "delta_pb": -3.04,
+     "delta_logodds": -0.152,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "P>P": 3388,
+     "F>F": 1380,
+     "P>F": 187,
+     "F>P": 346
+    },
+    "mcnemar_chi2": 46.8,
+    "rozpad_1": {
+     "pass": 3938,
+     "challenge": 1158,
+     "429": 20,
+     "403": 470,
+     "5xx": 27,
+     "jine 4xx": 45,
+     "timeout/spojeni": 12,
+     "nedostupne": 3
+    },
+    "rozpad_2": {
+     "pass": 3734,
+     "challenge": 1177,
+     "429": 150,
+     "403": 141,
+     "5xx": 28,
+     "nedostupne": 15,
+     "jine 4xx": 44,
+     "chybi": 357,
+     "timeout/spojeni": 27
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 17.2,
+     "h2": 16.8,
+     "n1": 13252,
+     "n2": 13279,
+     "delta_pb": -0.36,
+     "delta_logodds": -0.025,
+     "DiD_vs_nikdy_pb": 0.63,
+     "DiD_vs_nikdy_logodds": 0.022
+    },
+    "strict": {
+     "h1": 9.5,
+     "h2": 9.5,
+     "n1": 12122,
+     "n2": 12205,
+     "delta_pb": 0.04,
+     "delta_logodds": 0.005,
+     "DiD_vs_nikdy_pb": 3.08,
+     "DiD_vs_nikdy_logodds": 0.157
+    },
+    "prechod": {
+     "P>P": 10788,
+     "F>P": 169,
+     "F>F": 2085,
+     "P>F": 126
+    },
+    "mcnemar_chi2": 6.0,
+    "rozpad_1": {
+     "pass": 10973,
+     "429": 89,
+     "403": 1119,
+     "nedostupne": 1281,
+     "5xx": 87,
+     "timeout/spojeni": 773,
+     "jine 4xx": 181,
+     "challenge": 30
+    },
+    "rozpad_2": {
+     "pass": 11043,
+     "403": 1099,
+     "nedostupne": 1230,
+     "challenge": 42,
+     "5xx": 87,
+     "timeout/spojeni": 730,
+     "jine 4xx": 188,
+     "429": 90,
+     "chybi": 24
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     1.69,
+     3.51
+    ]
+   }
+  },
+  "L4g": {
+   "ztracene": {
+    "full": {
+     "h1": 21.8,
+     "h2": 22.9,
+     "n1": 726,
+     "n2": 726,
+     "delta_pb": 1.1,
+     "delta_logodds": 0.064,
+     "DiD_vs_nikdy_pb": -3.13,
+     "DiD_vs_nikdy_logodds": -0.159
+    },
+    "strict": {
+     "h1": 20.0,
+     "h2": 21.6,
+     "n1": 710,
+     "n2": 714,
+     "delta_pb": 1.57,
+     "delta_logodds": 0.095,
+     "DiD_vs_nikdy_pb": -0.7,
+     "DiD_vs_nikdy_logodds": -0.031
+    },
+    "prechod": {
+     "P>P": 544,
+     "F>F": 142,
+     "P>F": 24,
+     "F>P": 16
+    },
+    "mcnemar_chi2": 1.2,
+    "rozpad_1": {
+     "pass": 568,
+     "challenge": 130,
+     "403": 12,
+     "5xx": 7,
+     "jine 4xx": 4,
+     "timeout/spojeni": 4,
+     "429": 1
+    },
+    "rozpad_2": {
+     "pass": 560,
+     "challenge": 143,
+     "timeout/spojeni": 6,
+     "429": 2,
+     "403": 9,
+     "5xx": 3,
+     "jine 4xx": 3
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.36,
+     0.16
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 83.8,
+     "h2": 89.2,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 5.41,
+     "delta_logodds": 0.468,
+     "DiD_vs_nikdy_pb": 1.18,
+     "DiD_vs_nikdy_logodds": 0.245
+    },
+    "strict": {
+     "h1": 83.8,
+     "h2": 89.2,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 5.41,
+     "delta_logodds": 0.468,
+     "DiD_vs_nikdy_pb": 3.14,
+     "DiD_vs_nikdy_logodds": 0.342
+    },
+    "prechod": {
+     "P>P": 4,
+     "F>F": 31,
+     "P>F": 2
+    },
+    "mcnemar_chi2": 0.5,
+    "rozpad_1": {
+     "pass": 6,
+     "challenge": 31
+    },
+    "rozpad_2": {
+     "pass": 4,
+     "challenge": 33
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -2.98,
+     10.87
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 28.3,
+     "h2": 32.5,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": 4.17,
+     "delta_logodds": 0.197,
+     "DiD_vs_nikdy_pb": -0.06,
+     "DiD_vs_nikdy_logodds": -0.026
+    },
+    "strict": {
+     "h1": 27.1,
+     "h2": 29.6,
+     "n1": 118,
+     "n2": 115,
+     "delta_pb": 2.45,
+     "delta_logodds": 0.121,
+     "DiD_vs_nikdy_pb": 0.18,
+     "DiD_vs_nikdy_logodds": -0.005
+    },
+    "prechod": {
+     "F>F": 34,
+     "P>P": 81,
+     "P>F": 5
+    },
+    "mcnemar_chi2": 3.2,
+    "rozpad_1": {
+     "challenge": 28,
+     "pass": 86,
+     "403": 4,
+     "timeout/spojeni": 1,
+     "429": 1
+    },
+    "rozpad_2": {
+     "challenge": 30,
+     "pass": 81,
+     "403": 4,
+     "429": 4,
+     "timeout/spojeni": 1
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -1.77,
+     5.62
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 23.4,
+     "h2": 27.7,
+     "n1": 5668,
+     "n2": 5300,
+     "delta_pb": 4.23,
+     "delta_logodds": 0.223,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 22.6,
+     "h2": 24.9,
+     "n1": 5606,
+     "n2": 5102,
+     "delta_pb": 2.27,
+     "delta_logodds": 0.126,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "F>F": 1258,
+     "P>P": 3768,
+     "P>F": 207,
+     "F>P": 65
+    },
+    "mcnemar_chi2": 73.1,
+    "rozpad_1": {
+     "challenge": 1182,
+     "pass": 4339,
+     "5xx": 22,
+     "403": 85,
+     "timeout/spojeni": 13,
+     "nedostupne": 5,
+     "429": 9,
+     "jine 4xx": 18
+    },
+    "rozpad_2": {
+     "challenge": 1180,
+     "pass": 3833,
+     "429": 144,
+     "nedostupne": 16,
+     "403": 83,
+     "chybi": 357,
+     "5xx": 22,
+     "timeout/spojeni": 22,
+     "jine 4xx": 16
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 14.3,
+     "h2": 14.5,
+     "n1": 13203,
+     "n2": 13242,
+     "delta_pb": 0.24,
+     "delta_logodds": 0.019,
+     "DiD_vs_nikdy_pb": -3.99,
+     "DiD_vs_nikdy_logodds": -0.204
+    },
+    "strict": {
+     "h1": 7.5,
+     "h2": 7.9,
+     "n1": 12239,
+     "n2": 12290,
+     "delta_pb": 0.37,
+     "delta_logodds": 0.052,
+     "DiD_vs_nikdy_pb": -1.9,
+     "DiD_vs_nikdy_logodds": -0.074
+    },
+    "prechod": {
+     "P>P": 11110,
+     "F>F": 1745,
+     "P>F": 153,
+     "F>P": 116
+    },
+    "mcnemar_chi2": 4.8,
+    "rozpad_1": {
+     "pass": 11321,
+     "403": 889,
+     "nedostupne": 1330,
+     "timeout/spojeni": 705,
+     "5xx": 80,
+     "jine 4xx": 117,
+     "429": 62,
+     "challenge": 29
+    },
+    "rozpad_2": {
+     "pass": 11323,
+     "403": 909,
+     "nedostupne": 1268,
+     "challenge": 46,
+     "timeout/spojeni": 697,
+     "5xx": 87,
+     "jine 4xx": 112,
+     "429": 68,
+     "chybi": 23
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.02,
+     -1.78
+    ]
+   }
+  },
+  "L3": {
+   "ztracene": {
+    "full": {
+     "h1": 8.1,
+     "h2": 10.3,
+     "n1": 726,
+     "n2": 726,
+     "delta_pb": 2.2,
+     "delta_logodds": 0.264,
+     "DiD_vs_nikdy_pb": -1.64,
+     "DiD_vs_nikdy_logodds": -0.024
+    },
+    "strict": {
+     "h1": 6.2,
+     "h2": 8.8,
+     "n1": 711,
+     "n2": 714,
+     "delta_pb": 2.64,
+     "delta_logodds": 0.383,
+     "DiD_vs_nikdy_pb": -1.01,
+     "DiD_vs_nikdy_logodds": 0.097
+    },
+    "prechod": {
+     "P>P": 634,
+     "F>F": 42,
+     "P>F": 33,
+     "F>P": 17
+    },
+    "mcnemar_chi2": 4.5,
+    "rozpad_1": {
+     "pass": 667,
+     "challenge": 36,
+     "429": 2,
+     "403": 8,
+     "5xx": 5,
+     "jine 4xx": 4,
+     "timeout/spojeni": 4
+    },
+    "rozpad_2": {
+     "pass": 651,
+     "challenge": 54,
+     "timeout/spojeni": 4,
+     "429": 4,
+     "5xx": 4,
+     "403": 6,
+     "jine 4xx": 3
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -2.68,
+     1.16
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 5.4,
+     "h2": 0.0,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": -5.41,
+     "delta_logodds": null,
+     "DiD_vs_nikdy_pb": -9.25,
+     "DiD_vs_nikdy_logodds": null
+    },
+    "strict": {
+     "h1": 5.4,
+     "h2": 0.0,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": -5.41,
+     "delta_logodds": null,
+     "DiD_vs_nikdy_pb": -9.06,
+     "DiD_vs_nikdy_logodds": null
+    },
+    "prechod": {
+     "P>P": 35,
+     "F>P": 2
+    },
+    "mcnemar_chi2": 0.5,
+    "rozpad_1": {
+     "pass": 35,
+     "challenge": 2
+    },
+    "rozpad_2": {
+     "pass": 37
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -16.63,
+     -2.72
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 10.8,
+     "h2": 16.7,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": 5.83,
+     "delta_logodds": 0.498,
+     "DiD_vs_nikdy_pb": 1.99,
+     "DiD_vs_nikdy_logodds": 0.21
+    },
+    "strict": {
+     "h1": 9.3,
+     "h2": 14.5,
+     "n1": 118,
+     "n2": 117,
+     "delta_pb": 5.21,
+     "delta_logodds": 0.503,
+     "DiD_vs_nikdy_pb": 1.56,
+     "DiD_vs_nikdy_logodds": 0.217
+    },
+    "prechod": {
+     "P>P": 100,
+     "F>F": 13,
+     "P>F": 7
+    },
+    "mcnemar_chi2": 5.1,
+    "rozpad_1": {
+     "pass": 107,
+     "challenge": 10,
+     "timeout/spojeni": 1,
+     "403": 1,
+     "429": 1
+    },
+    "rozpad_2": {
+     "pass": 100,
+     "challenge": 16,
+     "timeout/spojeni": 1,
+     "403": 1,
+     "429": 2
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -1.05,
+     7.38
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 14.0,
+     "h2": 17.8,
+     "n1": 5668,
+     "n2": 5301,
+     "delta_pb": 3.84,
+     "delta_logodds": 0.288,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 13.3,
+     "h2": 16.9,
+     "n1": 5620,
+     "n2": 5242,
+     "delta_pb": 3.65,
+     "delta_logodds": 0.286,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "P>P": 4271,
+     "P>F": 236,
+     "F>P": 83,
+     "F>F": 710
+    },
+    "mcnemar_chi2": 72.4,
+    "rozpad_1": {
+     "pass": 4874,
+     "challenge": 690,
+     "5xx": 22,
+     "403": 56,
+     "timeout/spojeni": 6,
+     "nedostupne": 5,
+     "jine 4xx": 15,
+     "429": 5
+    },
+    "rozpad_2": {
+     "pass": 4355,
+     "challenge": 825,
+     "5xx": 20,
+     "nedostupne": 15,
+     "chybi": 357,
+     "timeout/spojeni": 20,
+     "403": 53,
+     "jine 4xx": 16,
+     "429": 12
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 10.9,
+     "h2": 10.9,
+     "n1": 13238,
+     "n2": 13266,
+     "delta_pb": -0.03,
+     "delta_logodds": -0.003,
+     "DiD_vs_nikdy_pb": -3.87,
+     "DiD_vs_nikdy_logodds": -0.291
+    },
+    "strict": {
+     "h1": 4.4,
+     "h2": 4.7,
+     "n1": 12334,
+     "n2": 12407,
+     "delta_pb": 0.33,
+     "delta_logodds": 0.076,
+     "DiD_vs_nikdy_pb": -3.32,
+     "DiD_vs_nikdy_logodds": -0.21
+    },
+    "prechod": {
+     "P>P": 11608,
+     "F>F": 1302,
+     "P>F": 127,
+     "F>P": 126
+    },
+    "mcnemar_chi2": 0.0,
+    "rozpad_1": {
+     "pass": 11796,
+     "403": 511,
+     "timeout/spojeni": 677,
+     "5xx": 74,
+     "nedostupne": 1295,
+     "jine 4xx": 103,
+     "429": 50,
+     "challenge": 27
+    },
+    "rozpad_2": {
+     "pass": 11825,
+     "403": 522,
+     "timeout/spojeni": 645,
+     "challenge": 34,
+     "5xx": 81,
+     "nedostupne": 1242,
+     "429": 58,
+     "jine 4xx": 101,
+     "chybi": 25
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.58,
+     -2.23
+    ]
+   }
+  },
+  "L2": {
+   "ztracene": {
+    "full": {
+     "h1": 8.8,
+     "h2": 10.5,
+     "n1": 726,
+     "n2": 726,
+     "delta_pb": 1.65,
+     "delta_logodds": 0.19,
+     "DiD_vs_nikdy_pb": -0.58,
+     "DiD_vs_nikdy_logodds": 0.029
+    },
+    "strict": {
+     "h1": 7.2,
+     "h2": 9.0,
+     "n1": 713,
+     "n2": 714,
+     "delta_pb": 1.81,
+     "delta_logodds": 0.245,
+     "DiD_vs_nikdy_pb": -0.3,
+     "DiD_vs_nikdy_logodds": 0.087
+    },
+    "prechod": {
+     "P>P": 633,
+     "F>F": 47,
+     "P>F": 29,
+     "F>P": 17
+    },
+    "mcnemar_chi2": 2.6,
+    "rozpad_1": {
+     "pass": 662,
+     "challenge": 44,
+     "5xx": 4,
+     "403": 7,
+     "jine 4xx": 3,
+     "timeout/spojeni": 4,
+     "429": 2
+    },
+    "rozpad_2": {
+     "pass": 650,
+     "challenge": 56,
+     "timeout/spojeni": 6,
+     "429": 2,
+     "5xx": 4,
+     "403": 6,
+     "jine 4xx": 2
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -1.43,
+     2.41
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 8.1,
+     "h2": 8.1,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -2.23,
+     "DiD_vs_nikdy_logodds": -0.161
+    },
+    "strict": {
+     "h1": 8.1,
+     "h2": 8.1,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -2.11,
+     "DiD_vs_nikdy_logodds": -0.158
+    },
+    "prechod": {
+     "P>P": 34,
+     "F>F": 3
+    },
+    "mcnemar_chi2": 0,
+    "rozpad_1": {
+     "pass": 34,
+     "challenge": 3
+    },
+    "rozpad_2": {
+     "pass": 34,
+     "challenge": 3
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -1.74,
+     -0.68
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 11.7,
+     "h2": 14.2,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": 2.5,
+     "delta_logodds": 0.223,
+     "DiD_vs_nikdy_pb": 0.27,
+     "DiD_vs_nikdy_logodds": 0.062
+    },
+    "strict": {
+     "h1": 11.7,
+     "h2": 14.2,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": 2.5,
+     "delta_logodds": 0.223,
+     "DiD_vs_nikdy_pb": 0.39,
+     "DiD_vs_nikdy_logodds": 0.065
+    },
+    "prechod": {
+     "P>P": 103,
+     "F>F": 14,
+     "P>F": 3
+    },
+    "mcnemar_chi2": 1.3,
+    "rozpad_1": {
+     "pass": 106,
+     "challenge": 13,
+     "403": 1
+    },
+    "rozpad_2": {
+     "pass": 103,
+     "challenge": 16,
+     "403": 1
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -1.11,
+     4.57
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 15.5,
+     "h2": 17.7,
+     "n1": 5669,
+     "n2": 5299,
+     "delta_pb": 2.23,
+     "delta_logodds": 0.161,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 14.8,
+     "h2": 17.0,
+     "n1": 5626,
+     "n2": 5250,
+     "delta_pb": 2.11,
+     "delta_logodds": 0.158,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "P>P": 4286,
+     "P>F": 136,
+     "F>P": 73,
+     "F>F": 803
+    },
+    "mcnemar_chi2": 18.4,
+    "rozpad_1": {
+     "pass": 4791,
+     "challenge": 789,
+     "403": 46,
+     "429": 5,
+     "timeout/spojeni": 6,
+     "5xx": 18,
+     "nedostupne": 4,
+     "jine 4xx": 14
+    },
+    "rozpad_2": {
+     "pass": 4360,
+     "challenge": 835,
+     "timeout/spojeni": 15,
+     "chybi": 357,
+     "5xx": 18,
+     "403": 48,
+     "nedostupne": 17,
+     "jine 4xx": 16,
+     "429": 7
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 8.1,
+     "h2": 7.9,
+     "n1": 13220,
+     "n2": 13236,
+     "delta_pb": -0.17,
+     "delta_logodds": -0.023,
+     "DiD_vs_nikdy_pb": -2.4,
+     "DiD_vs_nikdy_logodds": -0.184
+    },
+    "strict": {
+     "h1": 2.2,
+     "h2": 2.3,
+     "n1": 12417,
+     "n2": 12476,
+     "delta_pb": 0.17,
+     "delta_logodds": 0.076,
+     "DiD_vs_nikdy_pb": -1.94,
+     "DiD_vs_nikdy_logodds": -0.082
+    },
+    "prechod": {
+     "P>P": 11958,
+     "F>F": 919,
+     "P>F": 119,
+     "F>P": 139
+    },
+    "mcnemar_chi2": 1.4,
+    "rozpad_1": {
+     "pass": 12148,
+     "403": 267,
+     "timeout/spojeni": 587,
+     "nedostupne": 1313,
+     "5xx": 72,
+     "jine 4xx": 101,
+     "429": 43,
+     "challenge": 2
+    },
+    "rozpad_2": {
+     "pass": 12185,
+     "403": 264,
+     "timeout/spojeni": 547,
+     "challenge": 11,
+     "nedostupne": 1274,
+     "5xx": 74,
+     "429": 59,
+     "jine 4xx": 96,
+     "chybi": 23
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -1.9,
+     -0.74
+    ]
+   }
+  },
+  "L0": {
+   "ztracene": {
+    "full": {
+     "h1": 8.4,
+     "h2": 9.7,
+     "n1": 726,
+     "n2": 721,
+     "delta_pb": 1.31,
+     "delta_logodds": 0.159,
+     "DiD_vs_nikdy_pb": 0.66,
+     "DiD_vs_nikdy_logodds": 0.09
+    },
+    "strict": {
+     "h1": 5.9,
+     "h2": 7.1,
+     "n1": 707,
+     "n2": 701,
+     "delta_pb": 1.19,
+     "delta_logodds": 0.196,
+     "DiD_vs_nikdy_pb": 0.61,
+     "DiD_vs_nikdy_logodds": 0.127
+    },
+    "prechod": {
+     "P>P": 635,
+     "P>F": 27,
+     "F>F": 43,
+     "F>P": 16
+    },
+    "mcnemar_chi2": 2.3,
+    "rozpad_1": {
+     "pass": 665,
+     "5xx": 7,
+     "challenge": 35,
+     "jine": 5,
+     "403": 7,
+     "jine 4xx": 3,
+     "timeout/spojeni": 3,
+     "429": 1
+    },
+    "rozpad_2": {
+     "pass": 651,
+     "timeout/spojeni": 6,
+     "challenge": 43,
+     "5xx": 5,
+     "jine": 5,
+     "403": 7,
+     "429": 1,
+     "jine 4xx": 3,
+     "chybi": 5
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -0.36,
+     3.26
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 2.7,
+     "h2": 2.7,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -0.65,
+     "DiD_vs_nikdy_logodds": -0.069
+    },
+    "strict": {
+     "h1": 2.7,
+     "h2": 2.7,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -0.58,
+     "DiD_vs_nikdy_logodds": -0.069
+    },
+    "prechod": {
+     "P>P": 36,
+     "F>F": 1
+    },
+    "mcnemar_chi2": 0,
+    "rozpad_1": {
+     "pass": 36,
+     "challenge": 1
+    },
+    "rozpad_2": {
+     "pass": 36,
+     "challenge": 1
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -0.57,
+     0.36
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 5.8,
+     "h2": 6.7,
+     "n1": 120,
+     "n2": 119,
+     "delta_pb": 0.89,
+     "delta_logodds": 0.151,
+     "DiD_vs_nikdy_pb": 0.24,
+     "DiD_vs_nikdy_logodds": 0.082
+    },
+    "strict": {
+     "h1": 5.0,
+     "h2": 5.9,
+     "n1": 119,
+     "n2": 118,
+     "delta_pb": 0.89,
+     "delta_logodds": 0.172,
+     "DiD_vs_nikdy_pb": 0.31,
+     "DiD_vs_nikdy_logodds": 0.103
+    },
+    "prechod": {
+     "P>P": 109,
+     "F>P": 2,
+     "F>F": 5,
+     "P>F": 3
+    },
+    "mcnemar_chi2": 0.0,
+    "rozpad_1": {
+     "pass": 113,
+     "challenge": 5,
+     "403": 1,
+     "timeout/spojeni": 1
+    },
+    "rozpad_2": {
+     "pass": 111,
+     "challenge": 6,
+     "403": 1,
+     "jine 4xx": 1,
+     "chybi": 1
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -2.88,
+     4.24
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 10.3,
+     "h2": 11.0,
+     "n1": 5667,
+     "n2": 5266,
+     "delta_pb": 0.65,
+     "delta_logodds": 0.069,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 9.0,
+     "h2": 9.6,
+     "n1": 5586,
+     "n2": 5186,
+     "delta_pb": 0.58,
+     "delta_logodds": 0.069,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "P>P": 4608,
+     "P>F": 84,
+     "F>F": 493,
+     "F>P": 79
+    },
+    "mcnemar_chi2": 0.1,
+    "rozpad_1": {
+     "pass": 5083,
+     "5xx": 24,
+     "challenge": 465,
+     "403": 38,
+     "timeout/spojeni": 30,
+     "jine": 6,
+     "chybi": 6,
+     "jine 4xx": 16,
+     "429": 5
+    },
+    "rozpad_2": {
+     "pass": 4689,
+     "challenge": 451,
+     "5xx": 20,
+     "chybi": 407,
+     "timeout/spojeni": 30,
+     "jine": 4,
+     "403": 43,
+     "jine 4xx": 20,
+     "429": 9
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 5.2,
+     "h2": 5.2,
+     "n1": 12661,
+     "n2": 12619,
+     "delta_pb": -0.01,
+     "delta_logodds": -0.001,
+     "DiD_vs_nikdy_pb": -0.66,
+     "DiD_vs_nikdy_logodds": -0.07
+    },
+    "strict": {
+     "h1": 1.7,
+     "h2": 2.0,
+     "n1": 12213,
+     "n2": 12208,
+     "delta_pb": 0.28,
+     "delta_logodds": 0.152,
+     "DiD_vs_nikdy_pb": -0.3,
+     "DiD_vs_nikdy_logodds": 0.083
+    },
+    "prechod": {
+     "P>P": 11711,
+     "F>F": 493,
+     "P>F": 146,
+     "F>P": 128
+    },
+    "mcnemar_chi2": 1.1,
+    "rozpad_1": {
+     "pass": 12001,
+     "403": 198,
+     "chybi": 1872,
+     "5xx": 71,
+     "jine": 120,
+     "jine 4xx": 73,
+     "timeout/spojeni": 162,
+     "429": 22,
+     "challenge": 14
+    },
+    "rozpad_2": {
+     "pass": 11962,
+     "403": 202,
+     "chybi": 1914,
+     "challenge": 20,
+     "5xx": 73,
+     "jine": 116,
+     "429": 29,
+     "jine 4xx": 72,
+     "timeout/spojeni": 145
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -0.47,
+     0.58
+    ]
+   }
+  }
+ },
+ "Q8b": {
+  "L4a": {
+   "ztracene": {
+    "full": {
+     "h1": 86.9,
+     "h2": 86.0,
+     "n1": 726,
+     "n2": 726,
+     "delta_pb": -0.96,
+     "delta_logodds": -0.082,
+     "DiD_vs_nikdy_pb": -5.7,
+     "DiD_vs_nikdy_logodds": -0.286
+    },
+    "strict": {
+     "h1": 86.8,
+     "h2": 85.8,
+     "n1": 717,
+     "n2": 718,
+     "delta_pb": -0.96,
+     "delta_logodds": -0.081,
+     "DiD_vs_nikdy_pb": -3.91,
+     "DiD_vs_nikdy_logodds": -0.212
+    },
+    "prechod": {
+     "F>F": 620,
+     "P>P": 91,
+     "P>F": 4,
+     "F>P": 11
+    },
+    "mcnemar_chi2": 2.4,
+    "rozpad_1": {
+     "403": 527,
+     "pass": 95,
+     "challenge": 94,
+     "jine 4xx": 6,
+     "429": 3,
+     "timeout/spojeni": 1
+    },
+    "rozpad_2": {
+     "403": 510,
+     "pass": 102,
+     "challenge": 104,
+     "jine 4xx": 6,
+     "429": 4
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -4.68,
+     -2.26
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 91.9,
+     "h2": 91.9,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -4.74,
+     "DiD_vs_nikdy_logodds": -0.204
+    },
+    "strict": {
+     "h1": 91.9,
+     "h2": 91.9,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -2.95,
+     "DiD_vs_nikdy_logodds": -0.131
+    },
+    "prechod": {
+     "P>P": 3,
+     "F>F": 34
+    },
+    "mcnemar_chi2": 0,
+    "rozpad_1": {
+     "pass": 3,
+     "403": 30,
+     "challenge": 4
+    },
+    "rozpad_2": {
+     "pass": 3,
+     "403": 30,
+     "challenge": 4
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.13,
+     -1.91
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 35.0,
+     "h2": 36.7,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": 1.67,
+     "delta_logodds": 0.072,
+     "DiD_vs_nikdy_pb": -3.07,
+     "DiD_vs_nikdy_logodds": -0.132
+    },
+    "strict": {
+     "h1": 33.3,
+     "h2": 34.5,
+     "n1": 117,
+     "n2": 116,
+     "delta_pb": 1.15,
+     "delta_logodds": 0.051,
+     "DiD_vs_nikdy_pb": -1.8,
+     "DiD_vs_nikdy_logodds": -0.08
+    },
+    "prechod": {
+     "P>P": 76,
+     "F>F": 42,
+     "P>F": 2
+    },
+    "mcnemar_chi2": 0.5,
+    "rozpad_1": {
+     "pass": 78,
+     "challenge": 24,
+     "429": 1,
+     "403": 15,
+     "timeout/spojeni": 1,
+     "jine 4xx": 1
+    },
+    "rozpad_2": {
+     "pass": 76,
+     "challenge": 26,
+     "429": 2,
+     "403": 14,
+     "timeout/spojeni": 1,
+     "jine 4xx": 1
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -2.78,
+     1.63
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 34.2,
+     "h2": 38.9,
+     "n1": 5668,
+     "n2": 5297,
+     "delta_pb": 4.74,
+     "delta_logodds": 0.204,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 32.9,
+     "h2": 35.9,
+     "n1": 5562,
+     "n2": 5046,
+     "delta_pb": 2.95,
+     "delta_logodds": 0.131,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "P>P": 3168,
+     "F>F": 1862,
+     "P>F": 200,
+     "F>P": 67
+    },
+    "mcnemar_chi2": 65.3,
+    "rozpad_1": {
+     "pass": 3730,
+     "challenge": 1242,
+     "403": 581,
+     "429": 33,
+     "5xx": 33,
+     "timeout/spojeni": 13,
+     "chybi": 2,
+     "jine 4xx": 36,
+     "nedostupne": 3
+    },
+    "rozpad_2": {
+     "pass": 3235,
+     "challenge": 1217,
+     "429": 171,
+     "403": 584,
+     "nedostupne": 15,
+     "chybi": 361,
+     "5xx": 31,
+     "timeout/spojeni": 26,
+     "jine 4xx": 33
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 24.2,
+     "h2": 23.9,
+     "n1": 13202,
+     "n2": 13243,
+     "delta_pb": -0.37,
+     "delta_logodds": -0.02,
+     "DiD_vs_nikdy_pb": -5.11,
+     "DiD_vs_nikdy_logodds": -0.224
+    },
+    "strict": {
+     "h1": 15.6,
+     "h2": 15.3,
+     "n1": 11852,
+     "n2": 11909,
+     "delta_pb": -0.27,
+     "delta_logodds": -0.02,
+     "DiD_vs_nikdy_pb": -3.22,
+     "DiD_vs_nikdy_logodds": -0.151
+    },
+    "prechod": {
+     "P>P": 9789,
+     "F>F": 2940,
+     "F>P": 229,
+     "P>F": 176
+    },
+    "mcnemar_chi2": 6.7,
+    "rozpad_1": {
+     "pass": 10004,
+     "429": 215,
+     "403": 1793,
+     "jine 4xx": 209,
+     "nedostupne": 1326,
+     "timeout/spojeni": 820,
+     "5xx": 130,
+     "challenge": 31,
+     "chybi": 5
+    },
+    "rozpad_2": {
+     "pass": 10084,
+     "429": 206,
+     "403": 1747,
+     "jine 4xx": 215,
+     "nedostupne": 1267,
+     "challenge": 47,
+     "timeout/spojeni": 794,
+     "5xx": 150,
+     "chybi": 23
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.61,
+     -2.27
+    ]
+   }
+  },
+  "L4b": {
+   "ztracene": {
+    "full": {
+     "h1": 87.7,
+     "h2": 87.2,
+     "n1": 726,
+     "n2": 726,
+     "delta_pb": -0.55,
+     "delta_logodds": -0.05,
+     "DiD_vs_nikdy_pb": -5.44,
+     "DiD_vs_nikdy_logodds": -0.258
+    },
+    "strict": {
+     "h1": 87.5,
+     "h2": 87.0,
+     "n1": 714,
+     "n2": 716,
+     "delta_pb": -0.52,
+     "delta_logodds": -0.047,
+     "DiD_vs_nikdy_pb": -3.71,
+     "DiD_vs_nikdy_logodds": -0.186
+    },
+    "prechod": {
+     "F>F": 628,
+     "P>P": 84,
+     "P>F": 5,
+     "F>P": 9
+    },
+    "mcnemar_chi2": 0.6,
+    "rozpad_1": {
+     "403": 522,
+     "pass": 89,
+     "challenge": 102,
+     "jine 4xx": 6,
+     "429": 4,
+     "timeout/spojeni": 3
+    },
+    "rozpad_2": {
+     "403": 507,
+     "pass": 93,
+     "challenge": 115,
+     "jine 4xx": 7,
+     "timeout/spojeni": 1,
+     "429": 3
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -4.28,
+     -1.88
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 91.9,
+     "h2": 91.9,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -4.89,
+     "DiD_vs_nikdy_logodds": -0.208
+    },
+    "strict": {
+     "h1": 91.9,
+     "h2": 91.9,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -3.19,
+     "DiD_vs_nikdy_logodds": -0.139
+    },
+    "prechod": {
+     "P>P": 3,
+     "F>F": 34
+    },
+    "mcnemar_chi2": 0,
+    "rozpad_1": {
+     "pass": 3,
+     "403": 30,
+     "challenge": 4
+    },
+    "rozpad_2": {
+     "pass": 3,
+     "403": 30,
+     "challenge": 4
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.17,
+     -1.96
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 36.7,
+     "h2": 38.3,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": 1.67,
+     "delta_logodds": 0.071,
+     "DiD_vs_nikdy_pb": -3.22,
+     "DiD_vs_nikdy_logodds": -0.137
+    },
+    "strict": {
+     "h1": 33.9,
+     "h2": 35.1,
+     "n1": 115,
+     "n2": 114,
+     "delta_pb": 1.17,
+     "delta_logodds": 0.052,
+     "DiD_vs_nikdy_pb": -2.02,
+     "DiD_vs_nikdy_logodds": -0.087
+    },
+    "prechod": {
+     "P>P": 73,
+     "F>F": 43,
+     "P>F": 3,
+     "F>P": 1
+    },
+    "mcnemar_chi2": 0.2,
+    "rozpad_1": {
+     "pass": 76,
+     "challenge": 22,
+     "429": 3,
+     "403": 17,
+     "timeout/spojeni": 1,
+     "jine 4xx": 1
+    },
+    "rozpad_2": {
+     "pass": 74,
+     "challenge": 24,
+     "429": 4,
+     "403": 16,
+     "timeout/spojeni": 1,
+     "jine 4xx": 1
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.99,
+     2.62
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 35.4,
+     "h2": 40.3,
+     "n1": 5669,
+     "n2": 5303,
+     "delta_pb": 4.89,
+     "delta_logodds": 0.208,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 33.9,
+     "h2": 37.1,
+     "n1": 5543,
+     "n2": 5035,
+     "delta_pb": 3.19,
+     "delta_logodds": 0.139,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "P>P": 3095,
+     "F>F": 1932,
+     "P>F": 205,
+     "F>P": 71
+    },
+    "mcnemar_chi2": 64.1,
+    "rozpad_1": {
+     "pass": 3662,
+     "challenge": 1261,
+     "403": 612,
+     "jine 4xx": 41,
+     "429": 28,
+     "5xx": 44,
+     "timeout/spojeni": 21,
+     "chybi": 2,
+     "nedostupne": 2
+    },
+    "rozpad_2": {
+     "pass": 3166,
+     "challenge": 1253,
+     "403": 609,
+     "429": 159,
+     "timeout/spojeni": 36,
+     "jine 4xx": 38,
+     "chybi": 358,
+     "5xx": 42,
+     "nedostupne": 12
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 26.0,
+     "h2": 25.3,
+     "n1": 13260,
+     "n2": 13291,
+     "delta_pb": -0.72,
+     "delta_logodds": -0.038,
+     "DiD_vs_nikdy_pb": -5.61,
+     "DiD_vs_nikdy_logodds": -0.246
+    },
+    "strict": {
+     "h1": 16.4,
+     "h2": 16.2,
+     "n1": 11738,
+     "n2": 11843,
+     "delta_pb": -0.26,
+     "delta_logodds": -0.019,
+     "DiD_vs_nikdy_pb": -3.45,
+     "DiD_vs_nikdy_logodds": -0.158
+    },
+    "prechod": {
+     "P>P": 9595,
+     "F>F": 3170,
+     "F>P": 258,
+     "P>F": 166
+    },
+    "mcnemar_chi2": 19.5,
+    "rozpad_1": {
+     "pass": 9809,
+     "403": 1880,
+     "jine 4xx": 225,
+     "429": 276,
+     "nedostupne": 1269,
+     "5xx": 126,
+     "timeout/spojeni": 913,
+     "challenge": 31,
+     "chybi": 4
+    },
+    "rozpad_2": {
+     "pass": 9928,
+     "403": 1851,
+     "jine 4xx": 231,
+     "429": 215,
+     "nedostupne": 1217,
+     "challenge": 44,
+     "5xx": 127,
+     "timeout/spojeni": 895,
+     "chybi": 25
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.93,
+     -2.51
+    ]
+   }
+  },
+  "L4c": {
+   "ztracene": {
+    "full": {
+     "h1": 26.9,
+     "h2": 27.3,
+     "n1": 726,
+     "n2": 726,
+     "delta_pb": 0.41,
+     "delta_logodds": 0.021,
+     "DiD_vs_nikdy_pb": -4.17,
+     "DiD_vs_nikdy_logodds": -0.21
+    },
+    "strict": {
+     "h1": 23.9,
+     "h2": 24.9,
+     "n1": 698,
+     "n2": 703,
+     "delta_pb": 0.97,
+     "delta_logodds": 0.052,
+     "DiD_vs_nikdy_pb": -1.74,
+     "DiD_vs_nikdy_logodds": -0.093
+    },
+    "prechod": {
+     "P>P": 509,
+     "F>F": 176,
+     "F>P": 19,
+     "P>F": 22
+    },
+    "mcnemar_chi2": 0.1,
+    "rozpad_1": {
+     "pass": 531,
+     "challenge": 138,
+     "timeout/spojeni": 8,
+     "5xx": 11,
+     "jine 4xx": 9,
+     "403": 27,
+     "429": 2
+    },
+    "rozpad_2": {
+     "pass": 528,
+     "challenge": 149,
+     "timeout/spojeni": 5,
+     "5xx": 9,
+     "jine 4xx": 8,
+     "429": 2,
+     "403": 25
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -4.29,
+     -0.77
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 83.8,
+     "h2": 83.8,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -4.58,
+     "DiD_vs_nikdy_logodds": -0.231
+    },
+    "strict": {
+     "h1": 45.5,
+     "h2": 45.5,
+     "n1": 11,
+     "n2": 11,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -2.71,
+     "DiD_vs_nikdy_logodds": -0.145
+    },
+    "prechod": {
+     "P>P": 6,
+     "F>F": 31
+    },
+    "mcnemar_chi2": 0,
+    "rozpad_1": {
+     "pass": 6,
+     "jine 4xx": 26,
+     "challenge": 5
+    },
+    "rozpad_2": {
+     "pass": 6,
+     "jine 4xx": 26,
+     "challenge": 5
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.58,
+     -2.38
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 22.5,
+     "h2": 25.8,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": 3.33,
+     "delta_logodds": 0.182,
+     "DiD_vs_nikdy_pb": -1.25,
+     "DiD_vs_nikdy_logodds": -0.049
+    },
+    "strict": {
+     "h1": 21.2,
+     "h2": 23.3,
+     "n1": 118,
+     "n2": 116,
+     "delta_pb": 2.09,
+     "delta_logodds": 0.121,
+     "DiD_vs_nikdy_pb": -0.62,
+     "DiD_vs_nikdy_logodds": -0.024
+    },
+    "prechod": {
+     "P>P": 89,
+     "F>F": 27,
+     "P>F": 4
+    },
+    "mcnemar_chi2": 2.2,
+    "rozpad_1": {
+     "pass": 93,
+     "challenge": 22,
+     "jine 4xx": 1,
+     "timeout/spojeni": 1,
+     "403": 3
+    },
+    "rozpad_2": {
+     "pass": 89,
+     "challenge": 24,
+     "jine 4xx": 1,
+     "429": 2,
+     "timeout/spojeni": 1,
+     "403": 3
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -2.51,
+     3.82
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 25.0,
+     "h2": 29.6,
+     "n1": 5668,
+     "n2": 5301,
+     "delta_pb": 4.58,
+     "delta_logodds": 0.231,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 23.5,
+     "h2": 26.2,
+     "n1": 5558,
+     "n2": 5060,
+     "delta_pb": 2.71,
+     "delta_logodds": 0.145,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "P>P": 3686,
+     "F>F": 1363,
+     "P>F": 204,
+     "F>P": 48
+    },
+    "mcnemar_chi2": 95.3,
+    "rozpad_1": {
+     "pass": 4252,
+     "challenge": 1165,
+     "429": 20,
+     "403": 134,
+     "5xx": 32,
+     "jine 4xx": 47,
+     "timeout/spojeni": 18,
+     "chybi": 2,
+     "nedostupne": 3
+    },
+    "rozpad_2": {
+     "pass": 3734,
+     "challenge": 1177,
+     "429": 150,
+     "403": 141,
+     "5xx": 28,
+     "nedostupne": 15,
+     "jine 4xx": 44,
+     "chybi": 357,
+     "timeout/spojeni": 27
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 17.3,
+     "h2": 16.8,
+     "n1": 13250,
+     "n2": 13279,
+     "delta_pb": -0.47,
+     "delta_logodds": -0.034,
+     "DiD_vs_nikdy_pb": -5.05,
+     "DiD_vs_nikdy_logodds": -0.265
+    },
+    "strict": {
+     "h1": 9.6,
+     "h2": 9.5,
+     "n1": 12126,
+     "n2": 12205,
+     "delta_pb": -0.13,
+     "delta_logodds": -0.015,
+     "DiD_vs_nikdy_pb": -2.84,
+     "DiD_vs_nikdy_logodds": -0.16
+    },
+    "prechod": {
+     "P>P": 10782,
+     "F>F": 2100,
+     "P>F": 115,
+     "F>P": 177
+    },
+    "mcnemar_chi2": 12.7,
+    "rozpad_1": {
+     "pass": 10956,
+     "403": 1125,
+     "nedostupne": 1279,
+     "5xx": 91,
+     "timeout/spojeni": 778,
+     "jine 4xx": 185,
+     "429": 85,
+     "challenge": 30,
+     "chybi": 4
+    },
+    "rozpad_2": {
+     "pass": 11043,
+     "403": 1099,
+     "nedostupne": 1230,
+     "challenge": 42,
+     "5xx": 87,
+     "timeout/spojeni": 730,
+     "jine 4xx": 188,
+     "429": 90,
+     "chybi": 24
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -4.07,
+     -2.77
+    ]
+   }
+  },
+  "L4g": {
+   "ztracene": {
+    "full": {
+     "h1": 21.3,
+     "h2": 22.9,
+     "n1": 726,
+     "n2": 726,
+     "delta_pb": 1.52,
+     "delta_logodds": 0.088,
+     "DiD_vs_nikdy_pb": -2.87,
+     "DiD_vs_nikdy_logodds": -0.144
+    },
+    "strict": {
+     "h1": 20.1,
+     "h2": 21.6,
+     "n1": 715,
+     "n2": 714,
+     "delta_pb": 1.43,
+     "delta_logodds": 0.087,
+     "DiD_vs_nikdy_pb": -0.93,
+     "DiD_vs_nikdy_logodds": -0.044
+    },
+    "prechod": {
+     "P>P": 548,
+     "F>F": 143,
+     "F>P": 12,
+     "P>F": 23
+    },
+    "mcnemar_chi2": 2.9,
+    "rozpad_1": {
+     "pass": 571,
+     "challenge": 130,
+     "timeout/spojeni": 4,
+     "403": 11,
+     "5xx": 5,
+     "jine 4xx": 3,
+     "429": 2
+    },
+    "rozpad_2": {
+     "pass": 560,
+     "challenge": 143,
+     "timeout/spojeni": 6,
+     "429": 2,
+     "403": 9,
+     "5xx": 3,
+     "jine 4xx": 3
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.03,
+     0.38
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 86.5,
+     "h2": 89.2,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 2.7,
+     "delta_logodds": 0.254,
+     "DiD_vs_nikdy_pb": -1.69,
+     "DiD_vs_nikdy_logodds": 0.022
+    },
+    "strict": {
+     "h1": 86.5,
+     "h2": 89.2,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 2.7,
+     "delta_logodds": 0.254,
+     "DiD_vs_nikdy_pb": 0.34,
+     "DiD_vs_nikdy_logodds": 0.123
+    },
+    "prechod": {
+     "P>P": 4,
+     "F>F": 32,
+     "P>F": 1
+    },
+    "mcnemar_chi2": 0.0,
+    "rozpad_1": {
+     "pass": 5,
+     "challenge": 32
+    },
+    "rozpad_2": {
+     "pass": 4,
+     "challenge": 33
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.3,
+     5.6
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 27.5,
+     "h2": 32.5,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": 5.0,
+     "delta_logodds": 0.239,
+     "DiD_vs_nikdy_pb": 0.61,
+     "DiD_vs_nikdy_logodds": 0.007
+    },
+    "strict": {
+     "h1": 26.3,
+     "h2": 29.6,
+     "n1": 118,
+     "n2": 115,
+     "delta_pb": 3.29,
+     "delta_logodds": 0.164,
+     "DiD_vs_nikdy_pb": 0.93,
+     "DiD_vs_nikdy_logodds": 0.033
+    },
+    "prechod": {
+     "F>F": 33,
+     "P>P": 81,
+     "P>F": 6
+    },
+    "mcnemar_chi2": 4.2,
+    "rozpad_1": {
+     "challenge": 27,
+     "pass": 87,
+     "403": 4,
+     "timeout/spojeni": 1,
+     "429": 1
+    },
+    "rozpad_2": {
+     "challenge": 30,
+     "pass": 81,
+     "403": 4,
+     "429": 4,
+     "timeout/spojeni": 1
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -1.26,
+     6.36
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 23.3,
+     "h2": 27.7,
+     "n1": 5668,
+     "n2": 5300,
+     "delta_pb": 4.39,
+     "delta_logodds": 0.232,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 22.5,
+     "h2": 24.9,
+     "n1": 5611,
+     "n2": 5102,
+     "delta_pb": 2.36,
+     "delta_logodds": 0.131,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "F>F": 1259,
+     "P>P": 3778,
+     "P>F": 208,
+     "F>P": 55
+    },
+    "mcnemar_chi2": 87.8,
+    "rozpad_1": {
+     "challenge": 1171,
+     "pass": 4348,
+     "429": 10,
+     "5xx": 20,
+     "403": 86,
+     "timeout/spojeni": 15,
+     "chybi": 2,
+     "jine 4xx": 18,
+     "nedostupne": 3
+    },
+    "rozpad_2": {
+     "challenge": 1180,
+     "pass": 3833,
+     "429": 144,
+     "nedostupne": 16,
+     "403": 83,
+     "chybi": 357,
+     "5xx": 22,
+     "timeout/spojeni": 22,
+     "jine 4xx": 16
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 14.5,
+     "h2": 14.5,
+     "n1": 13199,
+     "n2": 13242,
+     "delta_pb": 0.02,
+     "delta_logodds": 0.002,
+     "DiD_vs_nikdy_pb": -4.37,
+     "DiD_vs_nikdy_logodds": -0.23
+    },
+    "strict": {
+     "h1": 7.7,
+     "h2": 7.9,
+     "n1": 12230,
+     "n2": 12290,
+     "delta_pb": 0.17,
+     "delta_logodds": 0.024,
+     "DiD_vs_nikdy_pb": -2.19,
+     "DiD_vs_nikdy_logodds": -0.107
+    },
+    "prechod": {
+     "P>P": 11095,
+     "F>F": 1758,
+     "P>F": 142,
+     "F>P": 137
+    },
+    "mcnemar_chi2": 0.1,
+    "rozpad_1": {
+     "pass": 11289,
+     "403": 902,
+     "nedostupne": 1328,
+     "5xx": 87,
+     "timeout/spojeni": 710,
+     "jine 4xx": 115,
+     "429": 66,
+     "challenge": 30,
+     "chybi": 6
+    },
+    "rozpad_2": {
+     "pass": 11323,
+     "403": 909,
+     "nedostupne": 1268,
+     "challenge": 46,
+     "timeout/spojeni": 697,
+     "5xx": 87,
+     "jine 4xx": 112,
+     "429": 68,
+     "chybi": 23
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -3.54,
+     -2.21
+    ]
+   }
+  },
+  "L3": {
+   "ztracene": {
+    "full": {
+     "h1": 8.7,
+     "h2": 10.3,
+     "n1": 726,
+     "n2": 726,
+     "delta_pb": 1.65,
+     "delta_logodds": 0.193,
+     "DiD_vs_nikdy_pb": -0.63,
+     "DiD_vs_nikdy_logodds": 0.029
+    },
+    "strict": {
+     "h1": 7.1,
+     "h2": 8.8,
+     "n1": 714,
+     "n2": 714,
+     "delta_pb": 1.68,
+     "delta_logodds": 0.23,
+     "DiD_vs_nikdy_pb": -0.44,
+     "DiD_vs_nikdy_logodds": 0.071
+    },
+    "prechod": {
+     "P>P": 638,
+     "F>P": 13,
+     "F>F": 50,
+     "P>F": 25
+    },
+    "mcnemar_chi2": 3.2,
+    "rozpad_1": {
+     "pass": 663,
+     "timeout/spojeni": 5,
+     "challenge": 40,
+     "429": 4,
+     "403": 7,
+     "5xx": 4,
+     "jine 4xx": 3
+    },
+    "rozpad_2": {
+     "pass": 651,
+     "challenge": 54,
+     "timeout/spojeni": 4,
+     "429": 4,
+     "5xx": 4,
+     "403": 6,
+     "jine 4xx": 3
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -1.29,
+     2.07
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 5.4,
+     "h2": 0.0,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": -5.41,
+     "delta_logodds": null,
+     "DiD_vs_nikdy_pb": -7.69,
+     "DiD_vs_nikdy_logodds": null
+    },
+    "strict": {
+     "h1": 5.4,
+     "h2": 0.0,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": -5.41,
+     "delta_logodds": null,
+     "DiD_vs_nikdy_pb": -7.53,
+     "DiD_vs_nikdy_logodds": null
+    },
+    "prechod": {
+     "P>P": 35,
+     "F>P": 2
+    },
+    "mcnemar_chi2": 0.5,
+    "rozpad_1": {
+     "pass": 35,
+     "challenge": 2
+    },
+    "rozpad_2": {
+     "pass": 37
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -14.4,
+     -0.98
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 13.3,
+     "h2": 16.7,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": 3.33,
+     "delta_logodds": 0.262,
+     "DiD_vs_nikdy_pb": 1.05,
+     "DiD_vs_nikdy_logodds": 0.098
+    },
+    "strict": {
+     "h1": 11.9,
+     "h2": 14.5,
+     "n1": 118,
+     "n2": 117,
+     "delta_pb": 2.67,
+     "delta_logodds": 0.233,
+     "DiD_vs_nikdy_pb": 0.55,
+     "DiD_vs_nikdy_logodds": 0.074
+    },
+    "prechod": {
+     "P>P": 100,
+     "F>F": 16,
+     "P>F": 4
+    },
+    "mcnemar_chi2": 2.2,
+    "rozpad_1": {
+     "pass": 104,
+     "challenge": 13,
+     "timeout/spojeni": 1,
+     "403": 1,
+     "429": 1
+    },
+    "rozpad_2": {
+     "pass": 100,
+     "challenge": 16,
+     "timeout/spojeni": 1,
+     "403": 1,
+     "429": 2
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -0.71,
+     5.61
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 15.6,
+     "h2": 17.8,
+     "n1": 5667,
+     "n2": 5301,
+     "delta_pb": 2.28,
+     "delta_logodds": 0.164,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 14.8,
+     "h2": 16.9,
+     "n1": 5616,
+     "n2": 5242,
+     "delta_pb": 2.12,
+     "delta_logodds": 0.159,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "P>P": 4284,
+     "F>P": 71,
+     "P>F": 136,
+     "F>F": 810
+    },
+    "mcnemar_chi2": 19.8,
+    "rozpad_1": {
+     "pass": 4785,
+     "429": 8,
+     "5xx": 22,
+     "challenge": 770,
+     "403": 55,
+     "timeout/spojeni": 13,
+     "chybi": 2,
+     "jine 4xx": 14,
+     "nedostupne": 4
+    },
+    "rozpad_2": {
+     "pass": 4355,
+     "challenge": 825,
+     "5xx": 20,
+     "nedostupne": 15,
+     "chybi": 357,
+     "timeout/spojeni": 20,
+     "403": 53,
+     "jine 4xx": 16,
+     "429": 12
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 11.0,
+     "h2": 10.9,
+     "n1": 13233,
+     "n2": 13266,
+     "delta_pb": -0.16,
+     "delta_logodds": -0.016,
+     "DiD_vs_nikdy_pb": -2.44,
+     "DiD_vs_nikdy_logodds": -0.18
+    },
+    "strict": {
+     "h1": 4.6,
+     "h2": 4.7,
+     "n1": 12342,
+     "n2": 12407,
+     "delta_pb": 0.1,
+     "delta_logodds": 0.022,
+     "DiD_vs_nikdy_pb": -2.02,
+     "DiD_vs_nikdy_logodds": -0.137
+    },
+    "prechod": {
+     "P>P": 11602,
+     "F>F": 1307,
+     "P>F": 119,
+     "F>P": 136
+    },
+    "mcnemar_chi2": 1.0,
+    "rozpad_1": {
+     "pass": 11775,
+     "403": 523,
+     "timeout/spojeni": 677,
+     "5xx": 77,
+     "nedostupne": 1295,
+     "jine 4xx": 102,
+     "429": 53,
+     "challenge": 26,
+     "chybi": 5
+    },
+    "rozpad_2": {
+     "pass": 11825,
+     "403": 522,
+     "timeout/spojeni": 645,
+     "challenge": 34,
+     "5xx": 81,
+     "nedostupne": 1242,
+     "429": 58,
+     "jine 4xx": 101,
+     "chybi": 25
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -1.91,
+     -0.76
+    ]
+   }
+  },
+  "L2": {
+   "ztracene": {
+    "full": {
+     "h1": 8.5,
+     "h2": 10.5,
+     "n1": 726,
+     "n2": 726,
+     "delta_pb": 1.93,
+     "delta_logodds": 0.225,
+     "DiD_vs_nikdy_pb": -0.9,
+     "DiD_vs_nikdy_logodds": 0.017
+    },
+    "strict": {
+     "h1": 7.3,
+     "h2": 9.0,
+     "n1": 716,
+     "n2": 714,
+     "delta_pb": 1.7,
+     "delta_logodds": 0.229,
+     "DiD_vs_nikdy_pb": -0.98,
+     "DiD_vs_nikdy_logodds": 0.025
+    },
+    "prechod": {
+     "P>P": 637,
+     "F>P": 13,
+     "F>F": 49,
+     "P>F": 27
+    },
+    "mcnemar_chi2": 4.2,
+    "rozpad_1": {
+     "pass": 664,
+     "timeout/spojeni": 4,
+     "challenge": 44,
+     "5xx": 4,
+     "403": 6,
+     "jine 4xx": 3,
+     "429": 1
+    },
+    "rozpad_2": {
+     "pass": 650,
+     "challenge": 56,
+     "timeout/spojeni": 6,
+     "429": 2,
+     "5xx": 4,
+     "403": 6,
+     "jine 4xx": 2
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -1.61,
+     1.85
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 8.1,
+     "h2": 8.1,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -2.83,
+     "DiD_vs_nikdy_logodds": -0.208
+    },
+    "strict": {
+     "h1": 8.1,
+     "h2": 8.1,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -2.68,
+     "DiD_vs_nikdy_logodds": -0.204
+    },
+    "prechod": {
+     "P>P": 34,
+     "F>F": 3
+    },
+    "mcnemar_chi2": 0,
+    "rozpad_1": {
+     "pass": 34,
+     "challenge": 3
+    },
+    "rozpad_2": {
+     "pass": 34,
+     "challenge": 3
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -2.36,
+     -1.28
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 11.7,
+     "h2": 14.2,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": 2.5,
+     "delta_logodds": 0.223,
+     "DiD_vs_nikdy_pb": -0.33,
+     "DiD_vs_nikdy_logodds": 0.015
+    },
+    "strict": {
+     "h1": 11.7,
+     "h2": 14.2,
+     "n1": 120,
+     "n2": 120,
+     "delta_pb": 2.5,
+     "delta_logodds": 0.223,
+     "DiD_vs_nikdy_pb": -0.18,
+     "DiD_vs_nikdy_logodds": 0.019
+    },
+    "prechod": {
+     "P>P": 103,
+     "F>F": 14,
+     "P>F": 3
+    },
+    "mcnemar_chi2": 1.3,
+    "rozpad_1": {
+     "pass": 106,
+     "challenge": 13,
+     "403": 1
+    },
+    "rozpad_2": {
+     "pass": 103,
+     "challenge": 16,
+     "403": 1
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -1.68,
+     3.47
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 14.9,
+     "h2": 17.7,
+     "n1": 5668,
+     "n2": 5299,
+     "delta_pb": 2.83,
+     "delta_logodds": 0.208,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 14.3,
+     "h2": 17.0,
+     "n1": 5627,
+     "n2": 5250,
+     "delta_pb": 2.68,
+     "delta_logodds": 0.204,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "P>P": 4302,
+     "P>F": 155,
+     "F>F": 784,
+     "F>P": 58
+    },
+    "mcnemar_chi2": 43.3,
+    "rozpad_1": {
+     "pass": 4824,
+     "challenge": 749,
+     "403": 46,
+     "timeout/spojeni": 14,
+     "429": 5,
+     "5xx": 16,
+     "chybi": 2,
+     "jine 4xx": 14,
+     "nedostupne": 3
+    },
+    "rozpad_2": {
+     "pass": 4360,
+     "challenge": 835,
+     "timeout/spojeni": 15,
+     "chybi": 357,
+     "5xx": 18,
+     "403": 48,
+     "nedostupne": 17,
+     "jine 4xx": 16,
+     "429": 7
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 8.2,
+     "h2": 7.9,
+     "n1": 13210,
+     "n2": 13236,
+     "delta_pb": -0.27,
+     "delta_logodds": -0.036,
+     "DiD_vs_nikdy_pb": -3.1,
+     "DiD_vs_nikdy_logodds": -0.244
+    },
+    "strict": {
+     "h1": 2.3,
+     "h2": 2.3,
+     "n1": 12413,
+     "n2": 12476,
+     "delta_pb": 0.02,
+     "delta_logodds": 0.009,
+     "DiD_vs_nikdy_pb": -2.66,
+     "DiD_vs_nikdy_logodds": -0.195
+    },
+    "prechod": {
+     "P>P": 11954,
+     "F>F": 930,
+     "P>F": 110,
+     "F>P": 139
+    },
+    "mcnemar_chi2": 3.1,
+    "rozpad_1": {
+     "pass": 12126,
+     "403": 276,
+     "timeout/spojeni": 585,
+     "nedostupne": 1318,
+     "5xx": 74,
+     "jine 4xx": 104,
+     "429": 44,
+     "chybi": 5,
+     "challenge": 1
+    },
+    "rozpad_2": {
+     "pass": 12185,
+     "403": 264,
+     "timeout/spojeni": 547,
+     "challenge": 11,
+     "nedostupne": 1274,
+     "5xx": 74,
+     "429": 59,
+     "jine 4xx": 96,
+     "chybi": 23
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -2.63,
+     -1.48
+    ]
+   }
+  },
+  "L0": {
+   "ztracene": {
+    "full": {
+     "h1": 8.4,
+     "h2": 9.7,
+     "n1": 726,
+     "n2": 721,
+     "delta_pb": 1.31,
+     "delta_logodds": 0.159,
+     "DiD_vs_nikdy_pb": 0.4,
+     "DiD_vs_nikdy_logodds": 0.062
+    },
+    "strict": {
+     "h1": 6.3,
+     "h2": 7.1,
+     "n1": 710,
+     "n2": 701,
+     "delta_pb": 0.79,
+     "delta_logodds": 0.127,
+     "DiD_vs_nikdy_pb": 0.06,
+     "DiD_vs_nikdy_logodds": 0.04
+    },
+    "prechod": {
+     "P>P": 635,
+     "F>P": 16,
+     "P>F": 26,
+     "F>F": 44
+    },
+    "mcnemar_chi2": 1.9,
+    "rozpad_1": {
+     "pass": 665,
+     "timeout/spojeni": 4,
+     "5xx": 4,
+     "challenge": 36,
+     "jine": 5,
+     "403": 8,
+     "jine 4xx": 3,
+     "429": 1
+    },
+    "rozpad_2": {
+     "pass": 651,
+     "timeout/spojeni": 6,
+     "challenge": 43,
+     "5xx": 5,
+     "jine": 5,
+     "403": 7,
+     "429": 1,
+     "jine 4xx": 3,
+     "chybi": 5
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -0.78,
+     2.86
+    ]
+   },
+   "udrzene": {
+    "full": {
+     "h1": 2.7,
+     "h2": 2.7,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -0.91,
+     "DiD_vs_nikdy_logodds": -0.097
+    },
+    "strict": {
+     "h1": 2.7,
+     "h2": 2.7,
+     "n1": 37,
+     "n2": 37,
+     "delta_pb": 0.0,
+     "delta_logodds": 0.0,
+     "DiD_vs_nikdy_pb": -0.73,
+     "DiD_vs_nikdy_logodds": -0.087
+    },
+    "prechod": {
+     "P>P": 36,
+     "F>F": 1
+    },
+    "mcnemar_chi2": 0,
+    "rozpad_1": {
+     "pass": 36,
+     "challenge": 1
+    },
+    "rozpad_2": {
+     "pass": 36,
+     "challenge": 1
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -0.82,
+     0.11
+    ]
+   },
+   "MC_bez_MB": {
+    "full": {
+     "h1": 5.0,
+     "h2": 6.7,
+     "n1": 120,
+     "n2": 119,
+     "delta_pb": 1.72,
+     "delta_logodds": 0.314,
+     "DiD_vs_nikdy_pb": 0.81,
+     "DiD_vs_nikdy_logodds": 0.217
+    },
+    "strict": {
+     "h1": 4.2,
+     "h2": 5.9,
+     "n1": 119,
+     "n2": 118,
+     "delta_pb": 1.73,
+     "delta_logodds": 0.363,
+     "DiD_vs_nikdy_pb": 1.0,
+     "DiD_vs_nikdy_logodds": 0.276
+    },
+    "prechod": {
+     "P>P": 111,
+     "F>F": 6,
+     "P>F": 2
+    },
+    "mcnemar_chi2": 0.5,
+    "rozpad_1": {
+     "pass": 114,
+     "challenge": 4,
+     "403": 1,
+     "jine 4xx": 1
+    },
+    "rozpad_2": {
+     "pass": 111,
+     "challenge": 6,
+     "403": 1,
+     "jine 4xx": 1,
+     "chybi": 1
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -0.59,
+     3.9
+    ]
+   },
+   "nikdy": {
+    "full": {
+     "h1": 10.0,
+     "h2": 11.0,
+     "n1": 5665,
+     "n2": 5266,
+     "delta_pb": 0.91,
+     "delta_logodds": 0.097,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "strict": {
+     "h1": 8.9,
+     "h2": 9.6,
+     "n1": 5591,
+     "n2": 5186,
+     "delta_pb": 0.73,
+     "delta_logodds": 0.087,
+     "DiD_vs_nikdy_pb": 0.0,
+     "DiD_vs_nikdy_logodds": 0.0
+    },
+    "prechod": {
+     "P>P": 4614,
+     "F>P": 73,
+     "P>F": 92,
+     "F>F": 485
+    },
+    "mcnemar_chi2": 2.0,
+    "rozpad_1": {
+     "pass": 5096,
+     "jine": 7,
+     "5xx": 21,
+     "challenge": 451,
+     "403": 41,
+     "timeout/spojeni": 27,
+     "chybi": 8,
+     "jine 4xx": 15,
+     "429": 7
+    },
+    "rozpad_2": {
+     "pass": 4689,
+     "challenge": 451,
+     "5xx": 20,
+     "chybi": 407,
+     "timeout/spojeni": 30,
+     "jine": 4,
+     "403": 43,
+     "jine 4xx": 20,
+     "429": 9
+    },
+    "CI95_DiD_vs_nikdy_full": null
+   },
+   "placebo_no_cf": {
+    "full": {
+     "h1": 5.3,
+     "h2": 5.2,
+     "n1": 12650,
+     "n2": 12619,
+     "delta_pb": -0.11,
+     "delta_logodds": -0.023,
+     "DiD_vs_nikdy_pb": -1.02,
+     "DiD_vs_nikdy_logodds": -0.12
+    },
+    "strict": {
+     "h1": 2.0,
+     "h2": 2.0,
+     "n1": 12221,
+     "n2": 12208,
+     "delta_pb": 0.02,
+     "delta_logodds": 0.009,
+     "DiD_vs_nikdy_pb": -0.71,
+     "DiD_vs_nikdy_logodds": -0.078
+    },
+    "prechod": {
+     "P>P": 11695,
+     "F>F": 492,
+     "P>F": 151,
+     "F>P": 140
+    },
+    "mcnemar_chi2": 0.3,
+    "rozpad_1": {
+     "pass": 11977,
+     "403": 213,
+     "chybi": 1883,
+     "5xx": 69,
+     "jine": 115,
+     "timeout/spojeni": 167,
+     "jine 4xx": 75,
+     "429": 22,
+     "challenge": 12
+    },
+    "rozpad_2": {
+     "pass": 11962,
+     "403": 202,
+     "chybi": 1914,
+     "challenge": 20,
+     "5xx": 73,
+     "jine": 116,
+     "429": 29,
+     "jine 4xx": 72,
+     "timeout/spojeni": 145
+    },
+    "CI95_DiD_vs_nikdy_full": [
+     -0.81,
+     0.27
+    ]
+   }
+  }
+ },
+ "ads_interakce_L4a_Q8a": {
+  "ztracene/ads": {
+   "n": 141,
+   "h1": 75.2,
+   "h2": 81.6
+  },
+  "ztracene/bez_ads": {
+   "n": 585,
+   "h1": 72.5,
+   "h2": 87.0
+  },
+  "nikdy/ads": {
+   "n": 886,
+   "h1": 36.2,
+   "h2": 38.1
+  },
+  "nikdy/bez_ads": {
+   "n": 4787,
+   "h1": 33.3,
+   "h2": 39.1
+  }
+ }
+}

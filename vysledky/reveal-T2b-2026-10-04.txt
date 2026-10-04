@@ -1,0 +1,30 @@
+# REVEAL T2b — kontrolní měření 4. 10. 2026 (tři týdny po změně), bez nových pásem
+
+autor-křeslo: exekutor · datum: 2026-10-04 13:30 · status: pozorování (žádné pásmo nebylo na T2b psáno; pásma platí pro T3 15. 10.) · běh `cf-T2b-2026-10-04-home` (05:47–10:54 UTC, v6.3 commit fc15e9c, L5 + L6, bez holdoutu, egress poskytovatel C, 22 846 domén, 131 chyb) · vstupy: `report-v2.md`, `delta-Q5-T0a-T2b.md`, `delta-Q5-T2-T2b.md` (šum T0a/T0b), `q8-T2b.md`, `noise-vs-T2.md`, `reveal-vypocty.json`, `reveal-vypocty-2.json` · účel: aktualizace čísel v článku 1 před vydáním (pokyn vlastníka)
+
+## 1. Kvalita měřidla
+unresolved 6,0 % (dříve 4,5 %), skipped_unreachable 8,4 %, L0 pass 79,5 %. Nárůst nerozřešených = **352 domén, které mezi 22. 9. a 4. 10. přestaly existovat** (NXDOMAIN u obou resolverů, rovnoměrně celý běh, nerezolvují ani po běhu): 345 italských ze strata random1000, všechny `cf_proxied`, všechny v rameni nikdy, třetina s hazardním vzorem v názvu; vypadá to na odstranění registrem. Žádná z nich není v rameni ztracené ani udržené. Ostatní ukazatele shodné s T0a–T2.
+
+## 2. Marker M (Q5) — stav trvá, blok se pomalu vrací
+```
+delta-Q5-T0a-T2b: DiD -10.73 p.b. [-11.54, -10.00] · M_B cf_proxied 766 → 62 · BPS 0 → 0
+delta-Q5-T2-T2b:  DiD +0.03 p.b. [-0.14, +0.21] · šum 0.32 → žádný skok
+reveal-vypocty.json: M % (n 6 589): T0a 13.49 · T1 2.61 · T2 2.78 · T2b 2.96 ; M_B populace 769 → 39 → 54 → 73 (38 udržených + 11 návratů + 24 nových) ; kohorta 769: 38 → 42 → 49
+```
+Tempo návratu ~1,6 zóny/den v kohortě; nová adopce 24 zón (14 cf_proxied, 8 no_cf, 2 dns_only podle T0a). Nový marker Bot Preference Sync stále 0. U všech 11 návratů bylo chování hrany (L4a) stejné před návratem i po něm (`reveal-vypocty-2.json`).
+
+## 3. Hrana (Q8) — ztracené beze změny, srovnávací skupina se posunula
+```
+q8-T2b Q8a ztracené: L4a 73.0 → 86.0 · L4b 74.1 → 87.2 · L4c 69.3 → 27.3 · L4g 21.8 → 22.9 · L3 8.1 → 10.3
+q8-T2b Q8b (T1→T2b) ztracené: L4a 86.9 → 86.0 · L4c 26.9 → 27.3 (v šumu)
+rozpad L4a ztracené T2b: 403 510 · challenge 104 · pass 102 · 429 4
+nikdy: L4a 33.7 → 38.9 · L4c 30.5 → 29.6 · L4g 23.4 → 27.7 · L3 14.0 → 17.8 ; placebo no_cf beze změny (L4a 23.6 → 23.9)
+```
+**Srovnávací skupina nikdy** se mezi 22. 9. a 4. 10. posunula nahoru u všech jmen včetně Googlebota a L3 (o 2 až 4 p.b.). Rozklad (`reveal-vypocty.json`, `nikdy_slozeni`): zhruba polovina je **změna složení** (352 zaniklých domén mělo nízké odmítání; nikdy bez nich v T2: L4a 36,9 %), zbytek (+2 p.b.) je plošný posun u webů za Cloudflare na všech příčkách, mimo Cloudflare nic. Nejde o změnu z 15. 9. (týká se i Googlebota a vlastního UA); kandidáti: stárnutí reputace naší adresy u Cloudflare nebo obecné přitvrzení; rozhodne holdout v T3. Důsledek pro DiD L4a ztracené−nikdy: +7,8 p.b. [7,4; 12,6] (T0a→T2b) místo +12,8 (T0a→T2); hladiny u ztracených se nezměnily.
+
+## 4. L5 a L6 (průřez, bez „před")
+Ztracené: L3 10,3 % · L5 (vlastní tréninkové jméno) 10,2 % · párově L3/L5: 649 shod pass, 72 shod fail, 3 rozdíly ze 724 · L3r (python-requests) 28,9 % · **L6 OAI-SearchBot 26,4 %** · L4c ChatGPT-User 27,3 % · párově L4c/L6: 699 shod, 24 rozdílů. Udržené: L6 86,5 %. Nikdy: L6 30,5 %. No_cf: L6 13,8 %.
+Čtení: vyhledávací identita OpenAI je u migrovaných zón zacházena stejně jako agentní (puštěna), ne jako tréninková; sedí na kategorie z blogu 15. 9. a na směr SeenSure (OAI-SearchBot). Bez „před" nelze říct, o kolik se změnila.
+
+## 5. Co jde do článku (stav k 4. 10.)
+769 → 39 → 54 → 73 (38/11/24); GPTBot 73,0 → 86,0 %; ClaudeBot 74,1 → 87,2 %; ChatGPT-User 69,3 → 27,3 %; Googlebot 21,8 → 22,9 %; OAI-SearchBot 26,4 % (jen 4. 10.); srovnávací skupina GPTBot 33,7 → 38,9 % s poznámkou o složení; rozpad 510 z 624 + 104 ověřovacích stránek; DiD markeru −10,7 [−11,5; −10,0]; L5 10,2 vs L3 10,3, rozdíl u 3 ze 724; python-requests 28,9 %; BPS 0; návraty 11, hrana beze změny u všech 11; měřeno pětkrát.
