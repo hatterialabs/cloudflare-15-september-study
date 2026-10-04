@@ -88,6 +88,12 @@ Between a website and artificial intelligence there is more than the robots.txt 
 
 ---
 
+### A side note: 345 sites that vanished overnight
+
+In the 4 October measurement, 352 sites in our sample could not be found at all. Their names had ceased to exist in the domain name system. 345 of them share one story. They are Italian domains registered on 28 and 29 July 2026 with the same registrar, all ran through the Cloudflare network, and all looked alike: English texts in the style of a news blog with random headlines, images from the same storage service, and links to the same group of Italian sites. A third of them had gambling words in their names. On 2 October between two and three in the morning UTC, the .it domain registry set them to the status "inactive" with locks that the owner cannot remove. Since then they do not exist. The registry has not said why it acted. It looks like a network of sites built for links, not for readers.
+
+Why we mention it: those sites were in the Tranco ranking, from which we drew our sample, between the 400,000th and 950,000th most visited place in the world. Out of a thousand randomly chosen Italian domains outside the top thousand, they made up 345, and 62 % of the Italian sites behind Cloudflare in that selection. Whoever measures "the Italian web" by such a ranking is partly measuring one domain factory. They are not in our main figures: none of them had the Cloudflare block of rules and all belonged to the comparison group. Their disappearance is the reason the comparison group shifted between 22 September and 4 October.
+
 ### How hosting protection could work better
 
 This is not a criticism of one hosting provider. Automatic blocking of addresses by reputation is common and, in itself, correct: a provider protects thousands of customers at once and cannot review every address by hand. The problem is not that it blocks, but what the customer sees and what the customer can do about it. From what we documented, three things could be done differently, and for each we say what it would change.

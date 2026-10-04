@@ -90,6 +90,12 @@ Doložili jsme to u hostingu Forpsi (INTERNET CZ, a.s.), kde běží i naše ser
 
 ---
 
+### Zajímavost na okraj: 345 webů, které zmizely přes noc
+
+Při měření 4. října se 352 webů z našeho vzorku vůbec nepodařilo najít. Jejich jména přestala v systému doménových jmen existovat. 345 z nich má společný příběh. Jsou to italské domény registrované 28. a 29. července 2026 u téhož registrátora, všechny běžely přes síť Cloudflare a všechny vypadaly podobně: anglické texty na způsob zpravodajského blogu s nahodilými titulky, obrázky ze stejného úložiště a odkazy na stejnou skupinu italských webů. Třetina z nich měla v názvu slova z hazardu. 2. října mezi druhou a třetí hodinou ráno jim registr domén .it nastavil stav „neaktivní" se zámky, které majitel sám odstranit nemůže. Od té chvíle neexistují. Proč registr zasáhl, neoznámil. Vypadá to na síť webů vytvořených pro odkazy, ne pro čtenáře.
+
+Proč to píšeme: ty weby byly v žebříčku Tranco, ze kterého jsme vzorek brali, mezi 400 000. a 950 000. nejnavštěvovanějším místem na světě. Z tisíce náhodně vybraných italských domén mimo prvních tisíc jich tvořily 345 a z italských webů za Cloudflare v tomto výběru 62 %. Kdo měří „italský web" podle takového žebříčku, měří zčásti jednu továrnu na domény. V našich hlavních číslech nejsou, žádný z nich neměl blok pravidel od Cloudflare a všechny patřily do srovnávací skupiny. Jejich zánik je důvod, proč se srovnávací skupina mezi 22. zářím a 4. říjnem posunula.
+
 ### Jak by ochrana hostingu mohla vypadat lépe
 
 Toto není kritika jednoho hostingu. Automatická blokace adres podle pověsti je běžná a sama o sobě správná. Hosting chrání tisíce zákazníků najednou a nemůže posuzovat každou adresu ručně. Problém není v tom, že blokuje, ale v tom, co při tom zákazník vidí a co může udělat. Z toho, co jsme doložili, plynou tři věci, které by šly udělat jinak. U každé píšeme, co by to změnilo.
